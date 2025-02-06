@@ -1,0 +1,56 @@
+services:
+  dev-db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - 
+
+  backend:
+    build: ./backend
+    container_name: shop-co-backend
+    environment:
+      - DB_HOST=mysql-db
+      - DB_USER=user
+      - DB_PASSWORD=userpass
+      - DB_NAME=shop_co_db
+      - DB_PORT=3306
+      - JWT_SECRET=my_password_very_very
+      - NODE_ENV=development
+      - BACKEND_PORT=3005
+    ports:
+      - "3005:3005" # Port Mapping for Node.js Apps
+    depends_on:
+      mysql:
+        condition: service_healthy # Wait for MySQL to pass healthcheck
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: shop-co-frontend
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Ensures proper functioning of dependencies
+    networks:
+      - app-network
+    command: npm run dev # Launches Vite development server
+
+volumes:
+  mysql-data: # MySQL storage volume definition
+
+networks:
+  app-network:
+    driver: bridge
