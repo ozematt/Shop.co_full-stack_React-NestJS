@@ -9,8 +9,8 @@ import { create } from 'domain';
 export class OrderService {
   constructor(private prisma: PrismaService) {}
 
-  getOrder(user: User) {
-    const orders = this.prisma.order.findMany({
+  async getOrder(user: User) {
+    const orders =await this.prisma.order.findMany({
       where: {
         user_id: user.id,
       },
@@ -19,6 +19,8 @@ export class OrderService {
     if (!orders)
       throw new HttpException('User has 0 orders', HttpStatus.NOT_FOUND);
 
+   const ordersId = 
+ 
     return orders;
   }
 
@@ -31,7 +33,7 @@ export class OrderService {
         quantity: item.quantity,
       }));
 
-      const order = this.prisma.order.create({
+      const order = await this.prisma.order.create({
         data: {
           total: dto.total,
           user_id: user.id,
