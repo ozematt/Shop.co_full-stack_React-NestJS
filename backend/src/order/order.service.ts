@@ -9,6 +9,22 @@ import { create } from 'domain';
 export class OrderService {
   constructor(private prisma: PrismaService) {}
 
+  async getOrder(user: User) {
+    const orders = await this.prisma.order.findMany({
+      where: {
+        user_id: user.id,
+      },
+      include: {
+        orderItems: true,
+      },
+    });
+
+    if (!orders)
+      throw new HttpException('User has 0 orders', HttpStatus.NOT_FOUND);
+
+    return orders;
+  }
+
   async setOrder(user: User, dto: SetOrderDto) {
     try {
       const itemsArr = dto.orderItems.map((item) => ({
