@@ -10,7 +10,7 @@ export class OrderService {
   constructor(private prisma: PrismaService) {}
 
   async getOrder(user: User) {
-    const orders =await this.prisma.order.findMany({
+    const orders = await this.prisma.order.findMany({
       where: {
         user_id: user.id,
       },
@@ -19,8 +19,8 @@ export class OrderService {
     if (!orders)
       throw new HttpException('User has 0 orders', HttpStatus.NOT_FOUND);
 
-   const ordersId = 
- 
+    const ordersIdArr = orders.map((order) => [order.id]);
+
     return orders;
   }
 
