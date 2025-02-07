@@ -14,12 +14,13 @@ export class OrderService {
       where: {
         user_id: user.id,
       },
+      include: {
+        orderItems: true,
+      },
     });
 
     if (!orders)
       throw new HttpException('User has 0 orders', HttpStatus.NOT_FOUND);
-
-    const ordersIdArr = orders.map((order) => [order.id]);
 
     return orders;
   }
