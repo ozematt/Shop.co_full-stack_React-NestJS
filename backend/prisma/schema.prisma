@@ -17,7 +17,6 @@ model User {
 model Order {
   id            Int         @id @default(autoincrement())
   user_id       Int
-  order_item_id Int
   total         Decimal
   createdAt     DateTime    @default(now())
   user          User        @relation(fields: [user_id], references: [id])
