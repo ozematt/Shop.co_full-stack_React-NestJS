@@ -1,4 +1,4 @@
-# Shop.co
+# Shop.co - with NestJS 
 
 Welcome to my project **Shop.co**! The project was created based on a free layout from Figma: [E-commerce Website Template (Freebie)](https://www.figma.com/community/file/1273571982885059508/e-commerce-website-template-freebie). The goal of this project is to practice working with modern frontend and backend tools.
 
@@ -61,8 +61,9 @@ The project was built using the following technologies:
 
 ### BACKEND:
 
-- **Node.js/Express.js**: A platform and framework used for creating the server and backend logic.
-- **MySQL**: A relational database used for storing data.
+- **Node.js/NestJS**: Backend development framework for scalable applications.
+- **Postgres**: A relational database used for storing data.
+- **Prisma**: Modern ORM for Node.js with type-safe queries and database migrations.
 - **JWT (JSON Web Tokens)**: A technology used for user authentication.
 - **CORS**: Middleware that enables resource sharing between different domains.
 - **bcryptjs**: A library for securely hashing user passwords before storing them in the database.
