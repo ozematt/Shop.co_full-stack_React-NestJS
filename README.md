@@ -1,4 +1,4 @@
-# Shop.co -— Built with NestJS
+# Shop.co — Built with NestJS
 
 Welcome to my project **Shop.co**! The project was created based on a free layout from Figma: [E-commerce Website Template (Freebie)](https://www.figma.com/community/file/1273571982885059508/e-commerce-website-template-freebie). The goal of this project is to practice working with modern frontend and backend tools.
 
