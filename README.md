@@ -81,31 +81,20 @@ To install the project, follow the steps below:
    ```sh
    git clone https://github.com/ozematt/Shop.co_fullstack.git
    ```
-   
 2. **Navigate to the project directory:**
    ```sh
    cd Shop.co_fullstack
    ```
-   
 3. **Build and run the containers:**
    Make sure Docker is installed and running. Then, run the following command.
+
    ```sh
    docker-compose up --build
    ```
 
-5. **Access the app:**
+4. **Access the app:**
    - **Frontend**: http://localhost:5173/
    - **Backend**: http://localhost:3005/
-
-
-## Testing the API using Postman
-   You need to have Postman installed.
-
-To import the tests:
-1. Open Postmana.
-2. Select `Import`.
-3. Point to the file `postman/api-tests.postman_collection.json`.
-4. Import the environment `postman/local-environment.postman_environment.json`.
 
 ## Features in progress
 
