@@ -47,8 +47,10 @@ import FiltersCategory from './FiltersCategory';
 import FiltersPrice from './FiltersPrice';
 import FilterHeader from './FilterHeader';
 import SkeletonProduct from './SkeletonProduct';
+import SkeletonMainImage from './SkeletonMainImage';
 
 export {
+  SkeletonMainImage,
   SkeletonProduct,
   SignUp,
   ProductsList,

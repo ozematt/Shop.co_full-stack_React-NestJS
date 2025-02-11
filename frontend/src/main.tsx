@@ -1,19 +1,27 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.tsx';
 
-import { QueryClientProvider } from "@tanstack/react-query";
-import queryClient from "./api/queryClient.ts";
-import { Provider } from "react-redux";
-import store from "./redux/store.ts";
+import queryClient from './api/queryClient.ts';
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
+import { Provider } from 'react-redux';
+import store from './redux/store.ts';
 
-createRoot(document.getElementById("root")!).render(
+const persister = createSyncStoragePersister({
+  storage: window.localStorage,
+});
+
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
+      <PersistQueryClientProvider
+        client={queryClient}
+        persistOptions={{ persister }}
+      >
         <App />
-      </QueryClientProvider>
+      </PersistQueryClientProvider>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );
