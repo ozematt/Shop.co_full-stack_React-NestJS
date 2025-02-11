@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Comment, Details, DetailsButton } from "./";
-import { type Product } from "../lib/types";
+import { useState } from 'react';
+import { Comment, Details, DetailsButton } from './';
+import { ProductItemSchema } from '../lib/types';
 
 const ProductInfo = ({
   brand,
@@ -9,34 +9,34 @@ const ProductInfo = ({
   warrantyInformation,
   shippingInformation,
   reviews,
-}: Product) => {
+}: ProductItemSchema) => {
   //
   ////DATA
   //state to handle which details were about to show
-  const [details, setDetails] = useState("Product");
+  const [details, setDetails] = useState('Product');
 
   ////UI
   return (
     <section className="mt-[65px] w-full">
       <div className="">
         <DetailsButton
-          onClick={() => setDetails("Product")}
+          onClick={() => setDetails('Product')}
           details={details}
-          title={"Product"}
+          title={'Product'}
         >
           Product Details
         </DetailsButton>
         <DetailsButton
-          onClick={() => setDetails("Reviews")}
+          onClick={() => setDetails('Reviews')}
           details={details}
-          title={"Reviews"}
+          title={'Reviews'}
         >
           Rating & Reviews
         </DetailsButton>
       </div>
 
       <div className="my-8 font-satoshi">
-        {details === "Product" ? (
+        {details === 'Product' ? (
           <Details
             brand={brand}
             weight={weight}

@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchProducts } from '../api/queries';
 import { Product } from '.';
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
@@ -7,13 +6,14 @@ import { useLocation, matchPath } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { addCategorizedProducts, addProducts } from '../redux/productsSlice';
 import { usePagedItems } from '../lib/hooks';
+import getAllProducts from '../api/queries/getAllProducts';
 
 const ProductsList = () => {
   //
   ////DATA
   const { data: products } = useQuery({
     queryKey: ['products'],
-    queryFn: fetchProducts,
+    queryFn: getAllProducts,
   });
 
   const { pathname } = useLocation();

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { FilterHeader } from ".";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState, useAppDispatch } from "../redux/store";
-import { Product } from "../lib/types";
-import { addCategorizedProducts } from "../redux/productsSlice";
+import { useEffect, useState } from 'react';
+import { FilterHeader } from '.';
+import { useSelector } from 'react-redux';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { addCategorizedProducts } from '../redux/productsSlice';
+import { type ProductItemSchema } from '../lib/types';
 
 type FiltersPriceProps = {
   toggle: boolean;
@@ -17,8 +17,8 @@ const FiltersPrice = ({ toggle, close }: FiltersPriceProps) => {
 
   const [open, setOpen] = useState(true); //price filter open/close
   const [priceRange, setPriceRange] = useState({
-    from: "",
-    to: "",
+    from: '',
+    to: '',
   });
 
   const { fetchedProducts: allProducts, filteredProductsByCategory } =
@@ -30,7 +30,11 @@ const FiltersPrice = ({ toggle, close }: FiltersPriceProps) => {
     setOpen(false);
   }, [toggle]);
 
-  const filterByPriceRange = (products: Product[], from: number, to: number) =>
+  const filterByPriceRange = (
+    products: ProductItemSchema[],
+    from: number,
+    to: number,
+  ) =>
     products.filter((product) => product.price >= from && product.price <= to);
 
   const handleApplyFilter = () => {

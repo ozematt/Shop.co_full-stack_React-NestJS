@@ -1,6 +1,5 @@
-import userLogin from "../queries/authorization";
-import fetchCategoriesList from "../queries/categories";
-import fetchProducts from "../queries/products";
-import fetchUserData from "../queries/user";
+import userLogin from '../queries/authorization';
+import fetchCategoriesList from '../queries/categories';
+import getAllProducts from './getAllProducts';
 
-export { userLogin, fetchCategoriesList, fetchProducts, fetchUserData };
+export { userLogin, fetchCategoriesList, getAllProducts };

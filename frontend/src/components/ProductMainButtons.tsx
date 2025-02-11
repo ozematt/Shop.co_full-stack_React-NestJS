@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { addToCart } from "../redux/cartSlice";
-import { AppDispatch, useAppDispatch } from "../redux/store";
-import { QuantityButton } from "./";
-import { useQuantity } from "../lib/hooks";
-import { useCallback } from "react";
-import { type Product } from "../lib/types";
+import { useNavigate } from 'react-router-dom';
+import { addToCart } from '../redux/cartSlice';
+import { AppDispatch, useAppDispatch } from '../redux/store';
+import { QuantityButton } from './';
+import { useQuantity } from '../lib/hooks';
+import { useCallback } from 'react';
+import { type ProductItemSchema } from '../lib/types';
 
 const ProductMainButtons = ({
   shippingInformation,
@@ -15,7 +15,7 @@ const ProductMainButtons = ({
   thumbnail,
   price,
   stock,
-}: Product) => {
+}: ProductItemSchema) => {
   //
   ////DATA
   const dispatch: AppDispatch = useAppDispatch();
@@ -28,7 +28,7 @@ const ProductMainButtons = ({
     handleQuantityDecrement,
   } = useQuantity({ stock });
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   //handle data send to cart
   const handleAddToCart = useCallback(() => {
@@ -48,7 +48,7 @@ const ProductMainButtons = ({
       };
       dispatch(addToCart(modifiedProductData)); //add to global state
     } else {
-      navigate("/login");
+      navigate('/login');
     }
   }, [
     navigate,

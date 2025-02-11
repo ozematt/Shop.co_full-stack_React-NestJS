@@ -1,15 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import {
-  type Product as ProductT,
-  type ProductsFetchedData,
-} from "../lib/types";
-import { fetchProducts } from "../api/queries";
-import { useEffect, useState } from "react";
-import { Product } from "../components";
-import { useNavigate } from "react-router-dom";
-import { AppDispatch, RootState, useAppDispatch } from "../redux/store";
-import { addProducts } from "../redux/productsSlice";
-import { useSelector } from "react-redux";
+import { useQuery } from '@tanstack/react-query';
+import { type Products, type ProductItemSchema } from '../lib/types';
+import { useEffect, useState } from 'react';
+import { Product } from '../components';
+import { useNavigate } from 'react-router-dom';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { addProducts } from '../redux/productsSlice';
+import { useSelector } from 'react-redux';
+import getAllProducts from '../api/queries/getAllProducts';
 
 const TopRating = () => {
   //
@@ -18,7 +15,7 @@ const TopRating = () => {
   const dispatch: AppDispatch = useAppDispatch();
 
   //products to show in this component, array with 4 elements
-  const [productsToShow, setProductsToShow] = useState<ProductT[]>([]);
+  const [productsToShow, setProductsToShow] = useState<ProductItemSchema[]>([]);
 
   //products in global state
   const allItems = useSelector(
@@ -26,9 +23,9 @@ const TopRating = () => {
   );
 
   // fetched products first time
-  const { data: products } = useQuery<ProductsFetchedData>({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
+  const { data: products } = useQuery<Products>({
+    queryKey: ['products'],
+    queryFn: getAllProducts,
   });
 
   ////LOGIC
@@ -43,7 +40,7 @@ const TopRating = () => {
       setProductsToShow(productSlice);
       return;
     }
-    //if products are ready fetched, add them to global state
+    //if products are fetched, add them to global state
     if (products) {
       dispatch(addProducts(products));
     }
@@ -60,7 +57,7 @@ const TopRating = () => {
       </h2>
 
       <div className="scrollbar-hide flex h-[420px] w-full snap-x snap-mandatory gap-4 scroll-smooth max-xl:overflow-x-auto max-sm:mt-[-32px] sm:mt-[55px] sm:gap-5">
-        {" "}
+        {' '}
         {productsToShow?.map((product) => (
           <div
             key={product.id}
@@ -73,7 +70,7 @@ const TopRating = () => {
 
       <button
         onClick={() => {
-          navigate("/shop"), window.scrollTo(0, 0);
+          navigate('/shop'), window.scrollTo(0, 0);
         }}
         className="action:scale-100 mt-[-30px] cursor-pointer rounded-full border px-[80px] py-[15px] hover:scale-95 max-sm:w-full sm:mt-[36px]"
       >

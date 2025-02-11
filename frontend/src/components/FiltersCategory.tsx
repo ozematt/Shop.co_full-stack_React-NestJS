@@ -1,15 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
-import { FilterHeader } from ".";
-import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { fetchCategoriesList } from "../api/queries";
-import { Product } from "../lib/types";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState, useAppDispatch } from "../redux/store";
+import { useEffect, useMemo, useState } from 'react';
+import { FilterHeader } from '.';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { fetchCategoriesList } from '../api/queries';
+import { useSelector } from 'react-redux';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import {
   addCategorizedProducts,
   addCategoryName,
-} from "../redux/productsSlice";
+} from '../redux/productsSlice';
+import { type ProductItemSchema } from '../lib/types';
 
 type FiltersCategoryProps = {
   toggle: boolean;
@@ -31,12 +31,12 @@ const FiltersCategory = ({ toggle, close }: FiltersCategoryProps) => {
   );
 
   const { data: categories } = useQuery({
-    queryKey: ["categories"],
+    queryKey: ['categories'],
     queryFn: fetchCategoriesList,
   });
 
   ////LOGIC
-  const categorizedProducts: Product[] = useMemo(
+  const categorizedProducts: ProductItemSchema[] = useMemo(
     () =>
       allProducts.products.filter(
         (product) => product.category === selectedCategory,
@@ -64,7 +64,7 @@ const FiltersCategory = ({ toggle, close }: FiltersCategoryProps) => {
   }, [toggle]);
 
   const handleHeaderClick = () => {
-    setOpen(!open), setSelectedCategory("");
+    setOpen(!open), setSelectedCategory('');
   };
 
   const handleCategoryClick = (category: string) => {

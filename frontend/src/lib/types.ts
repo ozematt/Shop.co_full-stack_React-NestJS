@@ -1,10 +1,10 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 //// BUTTON TYPES
 export type ButtonProps = {
   children: string;
   onClick?: () => void;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 };
 
 //// CHECKOUT TYPES
@@ -113,17 +113,17 @@ export type InputProps = {
 //// SIGNUP TYPES
 export const signUpSchema = z
   .object({
-    username: z.string().email({ message: "Invalid email" }),
+    username: z.string().email({ message: 'Invalid email' }),
     password: z
       .string()
-      .min(6, { message: "Must be at last 6 characters long" }),
+      .min(6, { message: 'Must be at last 6 characters long' }),
     confirmPassword: z
       .string()
-      .min(6, { message: "Must be at last 6 characters long" }),
+      .min(6, { message: 'Must be at last 6 characters long' }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords must match",
-    path: ["confirmPassword"],
+    message: 'Passwords must match',
+    path: ['confirmPassword'],
   });
 
 export type SignUpSchema = z.infer<typeof signUpSchema>;
@@ -132,13 +132,13 @@ export type SignUpSchema = z.infer<typeof signUpSchema>;
 export const loginSchema = z.object({
   username: z
     .string({
-      required_error: "Name is required",
-      invalid_type_error: "Name must be a string",
+      required_error: 'Name is required',
+      invalid_type_error: 'Name must be a string',
     })
-    .min(3, { message: "Must be 3 or more characters long" })
-    .email({ message: "Invalid email" }),
+    .min(3, { message: 'Must be 3 or more characters long' })
+    .email({ message: 'Invalid email' }),
 
-  password: z.string().min(5, { message: "Password is required" }),
+  password: z.string().min(5, { message: 'Password is required' }),
 });
 
 export type LoginSchema = z.infer<typeof loginSchema>;
@@ -154,6 +154,61 @@ export type PaginationBarProps = {
 };
 
 ////PRODUCT TYPES
+const reviewSchema = z.object({
+  rating: z.number().min(0).max(5),
+  comment: z.string(),
+  date: z.string().datetime(),
+  reviewerName: z.string(),
+  reviewerEmail: z.string().email(),
+});
+
+const dimensionsSchema = z.object({
+  width: z.number().positive(),
+  height: z.number().positive(),
+  depth: z.number().positive(),
+});
+
+const metaSchema = z.object({
+  createdAt: z.string().datetime(),
+  updatedAt: z.string().datetime(),
+  barcode: z.string(),
+  qrCode: z.string().url(),
+});
+
+const productItemSchema = z.object({
+  id: z.number().positive(),
+  title: z.string(),
+  description: z.string(),
+  category: z.string(),
+  price: z.number().positive(),
+  discountPercentage: z.number().min(0).max(100),
+  rating: z.number().min(0).max(5),
+  stock: z.number().nonnegative(),
+  tags: z.array(z.string()),
+  brand: z.string().optional(),
+  sku: z.string(),
+  weight: z.number().positive(),
+  dimensions: dimensionsSchema,
+  warrantyInformation: z.string(),
+  shippingInformation: z.string(),
+  availabilityStatus: z.string(),
+  reviews: z.array(reviewSchema),
+  returnPolicy: z.string(),
+  minimumOrderQuantity: z.number().positive(),
+  meta: metaSchema,
+  images: z.array(z.string().url()),
+  thumbnail: z.string().url(),
+});
+export type ProductItemSchema = z.infer<typeof productItemSchema>;
+
+export const productsSchema = z.object({
+  products: z.array(productItemSchema),
+  total: z.number(),
+  skip: z.number(),
+  limit: z.number(),
+});
+export type Products = z.infer<typeof productsSchema>;
+
 export type ProductProps = {
   id: number;
   title: string;
@@ -166,65 +221,23 @@ export type ProductProps = {
   onClick?: () => void;
 };
 
-export const productSchema = z.object({
-  id: z.number(),
-  title: z.string(),
-  price: z.number(),
-  images: z.array(z.string()),
-  rating: z.number(),
-  category: z.string(),
-  description: z.string(),
-  thumbnail: z.string(),
-  discountPercentage: z.number(),
-  brand: z.string().optional(),
-  weight: z.number(),
-  stock: z.number(),
-  dimensions: z.object({
-    width: z.number(),
-    height: z.number(),
-    depth: z.number(),
-  }),
-  warrantyInformation: z.string(),
-  shippingInformation: z.string(),
-  reviews: z.array(
-    z.object({
-      rating: z.number(),
-      comment: z.string(),
-      date: z.string(),
-      reviewerName: z.string(),
-      reviewerEmail: z.string(),
-    }),
-  ),
-});
-
-export type Product = z.infer<typeof productSchema>;
-
-export const productsFetchedDataSchema = z.object({
-  products: z.array(productSchema),
-  total: z.number(),
-  skip: z.number(),
-  limit: z.number(),
-});
-
-export type ProductsFetchedData = z.infer<typeof productsFetchedDataSchema>;
-
 type SortingOptions = {
   field: string;
   direction?: string;
 };
 
 export type SortMethod =
-  | "Alphabetical"
-  | "Hightest Price"
-  | "Lowest Price"
-  | "Top Rated"
-  | "Least Rated";
+  | 'Alphabetical'
+  | 'Hightest Price'
+  | 'Lowest Price'
+  | 'Top Rated'
+  | 'Least Rated';
 
 export type ProductsInitialState = {
   sortOptions: SortingOptions;
   categoryName: string;
-  filteredProductsByCategory: null | ProductsFetchedData;
-  fetchedProducts: ProductsFetchedData;
+  filteredProductsByCategory: null | Products;
+  fetchedProducts: Products;
 };
 
 ////PRODUCTIMAGE TYPES
@@ -307,7 +320,7 @@ export const userSchema = z.object({
   lastName: z.string(),
   maidenName: z.string(),
   age: z.number(),
-  gender: z.enum(["male", "female", "other"]),
+  gender: z.enum(['male', 'female', 'other']),
   email: z.string().email(),
   phone: z.string(),
   username: z.string(),
@@ -329,7 +342,7 @@ export const userSchema = z.object({
   ssn: z.string(),
   userAgent: z.string(),
   crypto: cryptoSchema,
-  role: z.enum(["admin", "moderator", "user"]),
+  role: z.enum(['admin', 'moderator', 'user']),
 });
 
 export type User = z.infer<typeof userSchema>;

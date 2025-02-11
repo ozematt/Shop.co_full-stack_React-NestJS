@@ -12,7 +12,7 @@ import {
 } from './';
 import { Footer, Newsletter } from '../sections';
 import { defaultProduct } from '../constants';
-import { type Product } from '../lib/types';
+import { type ProductItemSchema } from '../lib/types';
 
 const ProductDetails = () => {
   //
@@ -27,7 +27,7 @@ const ProductDetails = () => {
 
   //displayed product state, initial state is product from local storage
   const [displayedProduct, setDisplayedProduct] =
-    useState<Product>(initialProduct);
+    useState<ProductItemSchema>(initialProduct);
 
   //extracted id from ulr
   const [searchParams] = useSearchParams();
