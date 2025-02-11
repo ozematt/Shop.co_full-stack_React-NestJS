@@ -1,20 +1,20 @@
-import { Footer, Newsletter } from "../sections";
-import { user } from "../assets/index";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState, useAppDispatch } from "../redux/store";
-import { Fragment, useEffect, useState } from "react";
-import { getDate } from "../lib/helpers";
-import { useQuery } from "@tanstack/react-query";
-import getOrder from "../api/queries/getOrders";
-import { logOutUser } from "../redux/userSlice";
-import { Alert } from ".";
+import { Footer, Newsletter } from '../sections';
+import { user } from '../assets/index';
+import { useSelector } from 'react-redux';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { Fragment, useEffect, useState } from 'react';
+import { getDate } from '../lib/helpers';
+import { useQuery } from '@tanstack/react-query';
+import { logOutUser } from '../redux/userSlice';
+import { Alert } from '.';
+import { getOrder } from '../api/queries';
 
 const MyAccount = () => {
   //
   ////DATA
   const username =
     useSelector((state: RootState) => state.user.username) ||
-    localStorage.getItem("user");
+    localStorage.getItem('user');
 
   const dispatch: AppDispatch = useAppDispatch();
 
@@ -26,7 +26,7 @@ const MyAccount = () => {
     isError,
     isSuccess,
   } = useQuery({
-    queryKey: ["orders"],
+    queryKey: ['orders'],
     queryFn: getOrder,
   });
 
@@ -94,7 +94,7 @@ const MyAccount = () => {
                         <p className="font-satoshi text-lg md:text-xl dark:opacity-50">
                           <span className="text-base md:text-lg">
                             {item.quantity} x
-                          </span>{" "}
+                          </span>{' '}
                           {item.price} $
                         </p>
                       </div>
@@ -114,9 +114,9 @@ const MyAccount = () => {
             </h2>
           )}
         </div>
-      </section>{" "}
+      </section>{' '}
       <div className="max-container">
-        {" "}
+        {' '}
         <Newsletter />
         <Footer />
       </div>

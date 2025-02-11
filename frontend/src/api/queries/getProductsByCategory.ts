@@ -1,5 +1,5 @@
-import { Products, productsSchema } from '../../lib/types';
-import { PRODUCTS } from '../constants';
+import { type Products, productsSchema } from '../../lib/types';
+import { API_BASE } from '../constants';
 
 const getProductsByCategory = async (
   category: string | undefined,
@@ -8,7 +8,7 @@ const getProductsByCategory = async (
     throw new Error('Category is required');
   }
   try {
-    const response = await fetch(`${PRODUCTS}/category/${category}`);
+    const response = await fetch(API_BASE + `/products/category/${category}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

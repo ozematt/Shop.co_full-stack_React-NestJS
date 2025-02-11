@@ -1,16 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
-import { Footer, Newsletter } from "../sections";
-import { Alert, Breadcrumbs } from "./";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState, useAppDispatch } from "../redux/store";
-import { clearCart } from "../redux/cartSlice";
+import { useCallback, useEffect, useState } from 'react';
+import { Footer, Newsletter } from '../sections';
+import { Alert, Breadcrumbs } from './';
+import { useSelector } from 'react-redux';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { clearCart } from '../redux/cartSlice';
 import {
   type OrderData,
   cartLocalStorageSchema,
   CartItemT,
-} from "../lib/types";
-import { useMutation } from "@tanstack/react-query";
-import addOrder from "../api/queries/addOrder";
+} from '../lib/types';
+import { useMutation } from '@tanstack/react-query';
+import { addOrder } from '../api/queries';
 
 const Checkout = () => {
   //
@@ -24,7 +24,7 @@ const Checkout = () => {
   ////LOGIC
   //creating order data out of local storage data, with validation
   useEffect(() => {
-    const rawCart: unknown = JSON.parse(localStorage.getItem("cart") || "{}");
+    const rawCart: unknown = JSON.parse(localStorage.getItem('cart') || '{}');
     const parsedCart = cartLocalStorageSchema.safeParse(rawCart);
 
     if (parsedCart.success) {
@@ -44,8 +44,8 @@ const Checkout = () => {
 
       setOrder(order);
     } else {
-      console.error("Invalid cart data in localStorage", parsedCart.error);
-      localStorage.removeItem("cart");
+      console.error('Invalid cart data in localStorage', parsedCart.error);
+      localStorage.removeItem('cart');
       setOrder(null);
     }
   }, []);
@@ -53,7 +53,7 @@ const Checkout = () => {
   const orderMutate = useMutation({
     mutationFn: addOrder,
     onError: () => {
-      console.log("Error fest");
+      console.log('Error fest');
       setSuccess(false);
     },
     onSuccess: (data) => {
@@ -71,7 +71,7 @@ const Checkout = () => {
   return (
     <>
       <section className="max-container relative px-4 sm:px-[100px]">
-        {" "}
+        {' '}
         <Breadcrumbs />
         {success ? (
           <Alert
@@ -98,23 +98,23 @@ const Checkout = () => {
                     User data will be here.
                   </p>
                   <p>
-                    <span className="font-medium">City:</span>{" "}
+                    <span className="font-medium">City:</span>{' '}
                     {/* {userData?.address?.city} */}
                   </p>
                   <p>
-                    <span className="font-medium">Address:</span>{" "}
+                    <span className="font-medium">Address:</span>{' '}
                     {/* {userData?.address?.address} */}
                   </p>
                   <p>
-                    <span className="font-medium">Postal Code:</span>{" "}
+                    <span className="font-medium">Postal Code:</span>{' '}
                     {/* {userData?.address?.postalCode} */}
                   </p>
                   <p>
-                    <span className="font-medium">Country:</span>{" "}
+                    <span className="font-medium">Country:</span>{' '}
                     {/* {userData?.address?.country} */}
                   </p>
                   <p>
-                    <span className="font-medium">State:</span>{" "}
+                    <span className="font-medium">State:</span>{' '}
                     {/* {userData?.address?.state} */}
                   </p>
                 </div>
@@ -129,8 +129,8 @@ const Checkout = () => {
                 <div>
                   <div className="flex justify-between pt-5">
                     <p className="font-satoshi text-base opacity-60 sm:text-xl">
-                      Total Price{" "}
-                    </p>{" "}
+                      Total Price{' '}
+                    </p>{' '}
                     <p className="font-satoshi text-base font-bold sm:text-xl">
                       ${total}
                     </p>
@@ -150,7 +150,7 @@ const Checkout = () => {
         </div>
       </section>
       <div className="max-container">
-        {" "}
+        {' '}
         <Newsletter />
         <Footer />
       </div>

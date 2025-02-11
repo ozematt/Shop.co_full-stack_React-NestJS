@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Footer, Newsletter } from "../sections";
-import { Button } from "./";
-import { user, lock } from "../assets";
-import { type LoginSchema, loginSchema } from "../lib/types";
-import authenticate from "../api/queries/authorization";
-import { getUsername } from "../lib/helpers";
-import { AppDispatch, useAppDispatch } from "../redux/store";
-import { setUsername } from "../redux/userSlice";
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Footer, Newsletter } from '../sections';
+import { Button } from './';
+import { user, lock } from '../assets';
+import { type LoginSchema, loginSchema } from '../lib/types';
+import { getUsername } from '../lib/helpers';
+import { AppDispatch, useAppDispatch } from '../redux/store';
+import { setUsername } from '../redux/userSlice';
+import { authenticate } from '../api/queries';
 
 const LogIn = () => {
   //
@@ -32,26 +32,26 @@ const LogIn = () => {
   const mutation = useMutation({
     mutationFn: authenticate,
     onError: () => {
-      setError("username", {
-        type: "custom",
-        message: "User does not exist",
+      setError('username', {
+        type: 'custom',
+        message: 'User does not exist',
       });
     },
     onSuccess: (data, variables) => {
-      clearErrors(["username"]);
-      localStorage.setItem("token", data.token);
+      clearErrors(['username']);
+      localStorage.setItem('token', data.token);
       const user = getUsername(variables.username);
       dispatch(setUsername(user));
-      localStorage.setItem("user", user);
+      localStorage.setItem('user', user);
       reset(); //form fields reset
-      navigate("/shop");
+      navigate('/shop');
     },
   });
 
   //handle submit form data
   const onSubmit = (data: LoginSchema) => {
     const dataToSend = {
-      auth: "login",
+      auth: 'login',
       username: data.username,
       password: data.password,
     };
@@ -80,7 +80,7 @@ const LogIn = () => {
                 className="absolute left-6 top-[30%] opacity-60"
               />
               <input
-                {...register("username")}
+                {...register('username')}
                 type="text"
                 placeholder="Enter your user name"
                 className="h-[48px] w-full rounded-full bg-white pl-[60px] focus:outline-none focus:ring-1 focus:ring-black max-sm:placeholder:text-[14px] dark:bg-zinc-600 dark:focus:ring-2 dark:focus:ring-orange-700"
@@ -101,7 +101,7 @@ const LogIn = () => {
                 className="absolute left-6 top-[30%] opacity-60"
               />
               <input
-                {...register("password")}
+                {...register('password')}
                 type="password"
                 placeholder="Enter your password"
                 className="h-[48px] w-full rounded-full bg-white pl-[60px] focus:outline-none focus:ring-1 focus:ring-black max-sm:placeholder:text-[14px] dark:bg-zinc-600 dark:focus:ring-2 dark:focus:ring-orange-700"
@@ -115,7 +115,7 @@ const LogIn = () => {
             <div className="flex justify-between space-x-2">
               <Button type="submit">Login</Button>
               <button
-                onClick={() => navigate("/register")}
+                onClick={() => navigate('/register')}
                 className="mt-6 w-full rounded-full px-[50px] py-[15px] text-black opacity-30 ring-1 ring-black transition duration-100 ease-in-out hover:scale-95 hover:opacity-100 sm:mt-[32px] dark:text-white dark:ring-white"
               >
                 Register
@@ -125,7 +125,7 @@ const LogIn = () => {
         </div>
       </section>
       <div className="max-container">
-        {" "}
+        {' '}
         <Newsletter />
         <Footer />
       </div>

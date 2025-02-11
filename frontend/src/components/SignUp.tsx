@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Footer, Newsletter } from "../sections";
-import { Button } from "./";
-import { lock, email } from "../assets";
-import { type SignUpSchema, signUpSchema } from "../lib/types";
-import authenticate from "../api/queries/authorization";
-import { AppDispatch, useAppDispatch } from "../redux/store";
-import { useMutation } from "@tanstack/react-query";
-import { getUsername } from "../lib/helpers";
-import { setUsername } from "../redux/userSlice";
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Footer, Newsletter } from '../sections';
+import { Button } from './';
+import { lock, email } from '../assets';
+import { type SignUpSchema, signUpSchema } from '../lib/types';
+import { AppDispatch, useAppDispatch } from '../redux/store';
+import { useMutation } from '@tanstack/react-query';
+import { getUsername } from '../lib/helpers';
+import { setUsername } from '../redux/userSlice';
+import { authenticate } from '../api/queries';
 
 const SignUp = () => {
   //
@@ -31,26 +31,26 @@ const SignUp = () => {
   const getAuth = useMutation({
     mutationFn: authenticate,
     onError: () => {
-      setError("username", {
-        type: "custom",
-        message: "User already exist",
+      setError('username', {
+        type: 'custom',
+        message: 'User already exist',
       });
     },
     onSuccess: (data, variables) => {
-      clearErrors(["username"]);
-      localStorage.setItem("token", data.token);
+      clearErrors(['username']);
+      localStorage.setItem('token', data.token);
       const user = getUsername(variables.username);
       dispatch(setUsername(user));
-      localStorage.setItem("user", user);
+      localStorage.setItem('user', user);
       reset(); //form fields reset
-      navigate("/shop");
+      navigate('/shop');
     },
   });
 
   //handle submit form data
   const onSubmit = (data: SignUpSchema) => {
     const dataToSend = {
-      auth: "register",
+      auth: 'register',
       username: data.username,
       password: data.password,
     };
@@ -79,7 +79,7 @@ const SignUp = () => {
                 className="absolute left-6 top-[30%] opacity-60"
               />
               <input
-                {...register("username")}
+                {...register('username')}
                 type="text"
                 placeholder="Enter your email"
                 className="h-[48px] w-full rounded-full bg-white pl-[60px] focus:outline-none focus:ring-1 focus:ring-black max-sm:placeholder:text-[14px] dark:bg-zinc-600 dark:focus:ring-2 dark:focus:ring-orange-700"
@@ -100,7 +100,7 @@ const SignUp = () => {
                 className="absolute left-6 top-[30%] opacity-60"
               />
               <input
-                {...register("password")}
+                {...register('password')}
                 type="password"
                 placeholder="Enter your password"
                 className="h-[48px] w-full rounded-full bg-white pl-[60px] focus:outline-none focus:ring-1 focus:ring-black max-sm:placeholder:text-[14px] dark:bg-zinc-600 dark:focus:ring-2 dark:focus:ring-orange-700"
@@ -120,7 +120,7 @@ const SignUp = () => {
                 className="absolute left-6 top-[30%] opacity-60"
               />
               <input
-                {...register("confirmPassword")}
+                {...register('confirmPassword')}
                 type="password"
                 placeholder="Confirm password"
                 className="h-[48px] w-full rounded-full bg-white pl-[60px] focus:outline-none focus:ring-1 focus:ring-black max-sm:placeholder:text-[14px] dark:bg-zinc-600 dark:focus:ring-2 dark:focus:ring-orange-700"
@@ -137,7 +137,7 @@ const SignUp = () => {
         </div>
       </section>
       <div className="max-container">
-        {" "}
+        {' '}
         <Newsletter />
         <Footer />
       </div>

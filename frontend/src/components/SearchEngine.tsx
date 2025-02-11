@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDebounce, useRedirectToProduct } from '../lib/hooks';
 import { useQuery } from '@tanstack/react-query';
-// import { fetchProducts } from "../api/queries";
 import {
   type Products,
   type FilteredProduct,

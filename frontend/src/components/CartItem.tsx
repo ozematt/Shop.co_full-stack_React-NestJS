@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { removeFromCart, updateCart } from "../redux/cartSlice";
-import { AppDispatch, useAppDispatch } from "../redux/store";
-import { minus, plus, deleteIcon } from "../assets";
-import { useCallback } from "react";
-import { CartItemT } from "../lib/types";
+import { useNavigate } from 'react-router-dom';
+import { removeFromCart, updateCart } from '../redux/cartSlice';
+import { AppDispatch, useAppDispatch } from '../redux/store';
+import { minus, plus, deleteIcon } from '../assets';
+import { useCallback } from 'react';
+import { type CartItemT } from '../lib/types';
 
 const CartItem = ({
   id,
@@ -72,7 +72,7 @@ const CartItem = ({
           {/* product details */}
 
           <div className="flex flex-col justify-between pl-[16px]">
-            {" "}
+            {' '}
             <div>
               <h6 className="font-satoshi text-base font-bold lg:text-xl">
                 {title}
@@ -82,7 +82,7 @@ const CartItem = ({
               </p>
             </div>
             <p className="font-satoshi text-lg font-bold lg:text-2xl">
-              $ {purchaseTotal}{" "}
+              $ {purchaseTotal}{' '}
               <span className="hidden text-sm font-medium opacity-30 lg:block">
                 For one: ${price}
               </span>

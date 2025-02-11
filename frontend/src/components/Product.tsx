@@ -1,6 +1,5 @@
 import { Rating } from '@mui/material';
-import { useDiscount } from '../lib/hooks';
-import useRedirectToProduct from '../lib/hooks/useRedirectToProduct';
+import { useDiscount, useRedirectToProduct } from '../lib/hooks';
 import { type ProductProps } from '../lib/types';
 import { SkeletonProduct } from '.';
 

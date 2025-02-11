@@ -1,7 +1,6 @@
 import { Rating, useMediaQuery } from '@mui/material';
 import { useDiscount } from '../lib/hooks';
 import { type ProductItemSchema } from '../lib/types';
-// import { type Product } from "../lib/types";
 
 const ProductMainDetails = ({
   discountPercentage,

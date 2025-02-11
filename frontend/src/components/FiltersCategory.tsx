@@ -9,7 +9,7 @@ import {
   addCategoryName,
 } from '../redux/productsSlice';
 import { type ProductItemSchema } from '../lib/types';
-import getCategoryList from '../api/queries/getCategoryList';
+import { getCategoryList } from '../api/queries';
 
 type FiltersCategoryProps = {
   toggle: boolean;

@@ -3,7 +3,7 @@ import Product from './Product';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { ProductItemSchema, Products } from '../lib/types';
-import getAllProducts from '../api/queries/getAllProducts';
+import { getAllProducts } from '../api/queries';
 
 const AlsoLike = () => {
   //

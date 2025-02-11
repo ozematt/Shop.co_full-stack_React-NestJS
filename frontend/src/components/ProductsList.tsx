@@ -6,7 +6,7 @@ import { useLocation, matchPath } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { addCategorizedProducts, addProducts } from '../redux/productsSlice';
 import { usePagedItems } from '../lib/hooks';
-import getAllProducts from '../api/queries/getAllProducts';
+import { getAllProducts } from '../api/queries';
 
 const ProductsList = () => {
   //
