@@ -1,18 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "../api/queries";
-import { Product } from ".";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState, useAppDispatch } from "../redux/store";
-import { useLocation, matchPath } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
-import { addCategorizedProducts, addProducts } from "../redux/productsSlice";
-import { usePagedItems } from "../lib/hooks";
+import { useQuery } from '@tanstack/react-query';
+import { fetchProducts } from '../api/queries';
+import { Product } from '.';
+import { useSelector } from 'react-redux';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { useLocation, matchPath } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { addCategorizedProducts, addProducts } from '../redux/productsSlice';
+import { usePagedItems } from '../lib/hooks';
 
 const ProductsList = () => {
   //
   ////DATA
   const { data: products } = useQuery({
-    queryKey: ["products"],
+    queryKey: ['products'],
     queryFn: fetchProducts,
   });
 
@@ -40,12 +40,12 @@ const ProductsList = () => {
 
   //if location change, assign different products to the state
   useEffect(() => {
-    if (pathname === "/shop") {
+    if (pathname === '/shop') {
       setProductsData(fetchedProducts);
       dispatch(addCategorizedProducts(null)); //clear filtered products
     } else if (
       filteredProductsByCategory &&
-      matchPath("/shop/:category", pathname)
+      matchPath('/shop/:category', pathname)
     ) {
       setProductsData(filteredProductsByCategory);
     }
@@ -70,12 +70,12 @@ const ProductsList = () => {
 
     // helper function for sorting
     const compareFn = (a: any, b: any) => {
-      if (field === "title") {
+      if (field === 'title') {
         return a.title.localeCompare(b.title);
-      } else if (field === "price") {
-        return direction === "asc" ? a.price - b.price : b.price - a.price;
-      } else if (field === "rating") {
-        return direction === "asc" ? a.rating - b.rating : b.rating - a.rating;
+      } else if (field === 'price') {
+        return direction === 'asc' ? a.price - b.price : b.price - a.price;
+      } else if (field === 'rating') {
+        return direction === 'asc' ? a.rating - b.rating : b.rating - a.rating;
       }
       return 0;
     };

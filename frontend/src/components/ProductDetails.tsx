@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 import {
   AlsoLike,
   Breadcrumbs,
@@ -9,16 +9,18 @@ import {
   ProductMainDetails,
   ProductImages,
   ProductMainButtons,
-} from "./";
-import { Footer, Newsletter } from "../sections";
-import { defaultProduct } from "../constants";
-import { type Product } from "../lib/types";
+} from './';
+import { Footer, Newsletter } from '../sections';
+import { defaultProduct } from '../constants';
+import { type Product } from '../lib/types';
 
 const ProductDetails = () => {
   //
   //DATA
   //data form local storage
-  const localProduct = localStorage.getItem("product");
+
+  const localProduct = localStorage.getItem('product');
+
   const initialProduct = localProduct
     ? JSON.parse(localProduct)
     : defaultProduct;
@@ -29,7 +31,8 @@ const ProductDetails = () => {
 
   //extracted id from ulr
   const [searchParams] = useSearchParams();
-  const productId = Number(searchParams.get("id")) || 1;
+
+  const productId = Number(searchParams.get('id')) || 1;
 
   //found product from all products
   const productFind = useSelector((state: RootState) =>
@@ -39,17 +42,14 @@ const ProductDetails = () => {
   );
 
   ////LOGIC
-
-  useEffect(() => {
-    const scrollToTop = () => window.scrollTo({ top: 0 });
-    scrollToTop();
-  }, []);
-
   useEffect(() => {
     if (productFind) {
       setDisplayedProduct(productFind); // added to local state
-      localStorage.setItem("product", JSON.stringify(productFind)); //added to local storage
+      localStorage.setItem('product', JSON.stringify(productFind)); //added to local storage
+      const scrollToTop = () => window.scrollTo({ top: 0 });
+      scrollToTop();
     }
+    // setDisplayedProduct(product)
   }, [productFind]);
 
   ////UI

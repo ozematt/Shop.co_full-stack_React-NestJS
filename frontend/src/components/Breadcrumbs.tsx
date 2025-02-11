@@ -1,6 +1,8 @@
-import { useLocation, useNavigate } from "react-router";
-import { arrow } from "../assets";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router';
+import { arrow } from '../assets';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import getProductsByCategory from '../api/queries/getProductsByCategory';
 
 const Breadcrumbs = () => {
   //
@@ -10,17 +12,26 @@ const Breadcrumbs = () => {
 
   //params extract from url
   const { category, product } = useParams();
+  console.log(category);
 
   //category name from url
   const upCategory =
     category && category?.charAt(0).toUpperCase() + category?.slice(1);
+
+  const { data } = useQuery({
+    queryKey: ['productsByCategory', { category }],
+    queryFn: () => getProductsByCategory(category),
+    enabled: !!category,
+  });
+
+  console.log(data);
 
   ////UI
   return (
     <div className="flex items-center pt-6 opacity-60 max-sm:text-[14px]">
       <p
         className="cursor-pointer pr-2 font-satoshi leading-none hover:opacity-70"
-        onClick={() => navigate("/")}
+        onClick={() => navigate('/')}
       >
         Home
       </p>
@@ -31,14 +42,14 @@ const Breadcrumbs = () => {
         className="-rotate-90 dark:invert"
       />
 
-      {location.pathname === "/cart" && (
+      {location.pathname === '/cart' && (
         <p className="cursor-pointer px-2 font-satoshi leading-none hover:opacity-70">
           <strong>Cart</strong>
         </p>
       )}
-      {location.pathname === "/cart/checkout" && (
+      {location.pathname === '/cart/checkout' && (
         <div
-          onClick={() => navigate("/cart")}
+          onClick={() => navigate('/cart')}
           className="flex cursor-pointer px-2 font-satoshi leading-none hover:opacity-70"
         >
           Cart
@@ -52,15 +63,15 @@ const Breadcrumbs = () => {
         </div>
       )}
 
-      {location.pathname.includes("/shop") && (
+      {location.pathname.includes('/shop') && (
         <p
           className="cursor-pointer px-2 font-satoshi leading-none hover:opacity-70"
-          onClick={() => navigate("/shop")}
+          onClick={() => navigate('/shop')}
         >
-          {location.pathname === "/shop" ? (
-            <strong onClick={() => navigate("/shop")}>Shop</strong>
+          {location.pathname === '/shop' ? (
+            <strong onClick={() => navigate('/shop')}>Shop</strong>
           ) : (
-            "Shop"
+            'Shop'
           )}
         </p>
       )}
