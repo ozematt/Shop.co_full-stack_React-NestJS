@@ -3,16 +3,25 @@ import { arrow } from '../assets';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getProductsByCategory } from '../api/queries';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { addCategorizedProducts } from '../redux/productsSlice';
+// import { useDispatch } from 'react-redux';
 
 const Breadcrumbs = () => {
   //
   ////DATA
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch: AppDispatch = useAppDispatch();
 
   //params extract from url
   const { category, product } = useParams();
-  console.log(category);
+
+  const productsByCategory = useSelector(
+    (state: RootState) => state.products.filteredProductsByCategory?.products,
+  );
 
   //category name from url
   const upCategory =
@@ -24,7 +33,11 @@ const Breadcrumbs = () => {
     enabled: !!category,
   });
 
-  console.log(data);
+  useEffect(() => {
+    if (productsByCategory && data) {
+      dispatch(addCategorizedProducts(data));
+    }
+  }, [productsByCategory, data]);
 
   ////UI
   return (
