@@ -1,7 +1,8 @@
-import { Rating } from "@mui/material";
-import { useDiscount } from "../lib/hooks";
-import useRedirectToProduct from "../lib/hooks/useRedirectToProduct";
-import { type ProductProps } from "../lib/types";
+import { Rating } from '@mui/material';
+import { useDiscount } from '../lib/hooks';
+import useRedirectToProduct from '../lib/hooks/useRedirectToProduct';
+import { type ProductProps } from '../lib/types';
+import { SkeletonProduct } from '.';
 
 const Product = ({
   id,
@@ -24,22 +25,17 @@ const Product = ({
       onClick={() => handleProductClick(product)}
       className="h-[400px] cursor-pointer transition ease-in-out hover:scale-95 sm:h-[408px]"
     >
-      <div className="h-[304px] w-full rounded-[20px] bg-grayBG sm:h-[298px] sm:w-[295px] dark:bg-zinc-900">
-        <img
-          src={thumbnail}
-          alt={title}
-          className="h-full w-full object-contain"
-        />
-      </div>
+      <SkeletonProduct src={thumbnail} description={title} />
       <p className="w-full max-w-[295px] pt-4 font-satoshi text-xl font-bold">
-        {title.length > 25 ? title.slice(0, 25) + "..." : title}
+        {title.length > 25 ? title.slice(0, 25) + '...' : title}
       </p>
+
       <div className="flex pt-2">
         <Rating
           defaultValue={Math.round(rating * 2) / 2}
           precision={0.5}
           readOnly
-        />{" "}
+        />{' '}
         <p className="pl-2 pt-1 font-satoshi text-sm">
           {Math.round(rating * 2) / 2}
           <span className="opacity-50">/5</span>
@@ -47,7 +43,7 @@ const Product = ({
       </div>
 
       <div className="flex items-center gap-[2px] pt-2 font-satoshi text-2xl font-bold">
-        {" "}
+        {' '}
         ${newPrice}
         {discount === 0 ? null : (
           <>

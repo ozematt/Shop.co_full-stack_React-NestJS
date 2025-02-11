@@ -33,7 +33,7 @@ const ProductImages = ({ images }: ProductImagesProps) => {
       <img
         src={bigImg}
         alt="main image"
-        className="w-full rounded-[20px] bg-grayBG object-contain min-[1430px]:max-w-[444px] dark:bg-zinc-900"
+        className="max-h-[530px] w-full rounded-[20px] bg-grayBG object-contain min-[1430px]:max-w-[444px] dark:bg-zinc-900"
       />
     </div>
   );

@@ -1,19 +1,17 @@
-import CircularProgress from "@mui/material/CircularProgress";
-import { Footer, Newsletter } from "../sections";
-import { usePagedItems, useTimeOut } from "../lib/hooks";
+import { Footer, Newsletter } from '../sections';
+import { usePagedItems } from '../lib/hooks';
 import {
   Breadcrumbs,
   Filters,
   PaginationBar,
   ShopInfoBar,
   ProductsList,
-} from "./";
+} from './';
 
 const Shop = () => {
   //
   ////DATA
   const { page, total } = usePagedItems();
-  const { isReadyToShow } = useTimeOut(1000);
 
   ////UI
   return (
@@ -28,11 +26,7 @@ const Shop = () => {
           <div className="w-full xl:ml-[20px]">
             <ShopInfoBar />
             <div className="mt-4 grid grid-cols-1 flex-wrap justify-center gap-5 sm:flex">
-              {!isReadyToShow ? (
-                <CircularProgress color="inherit" className="m-auto" />
-              ) : (
-                <ProductsList />
-              )}
+              <ProductsList />
             </div>
             <div className="mt-[32px] border-b-2" />
             <PaginationBar total={total} page={page} />
