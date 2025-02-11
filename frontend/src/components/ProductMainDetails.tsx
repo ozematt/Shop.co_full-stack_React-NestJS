@@ -1,6 +1,7 @@
-import { Rating, useMediaQuery } from "@mui/material";
-import { useDiscount } from "../lib/hooks";
-import { type Product } from "../lib/types";
+import { Rating, useMediaQuery } from '@mui/material';
+import { useDiscount } from '../lib/hooks';
+import { type ProductItemSchema } from '../lib/types';
+// import { type Product } from "../lib/types";
 
 const ProductMainDetails = ({
   discountPercentage,
@@ -8,10 +9,10 @@ const ProductMainDetails = ({
   title,
   rating,
   description,
-}: Product) => {
+}: ProductItemSchema) => {
   //
   ////DATA
-  const md = useMediaQuery("(min-width:768px)");
+  const md = useMediaQuery('(min-width:768px)');
   //use custom hook to calculate the new price
   const { newPrice, discount } = useDiscount({ discountPercentage, price });
 
@@ -26,9 +27,9 @@ const ProductMainDetails = ({
           name="rating"
           value={rating ? Math.round(rating * 2) / 2 : 5}
           precision={0.5}
-          size={md ? "large" : "medium"}
+          size={md ? 'large' : 'medium'}
           readOnly
-        />{" "}
+        />{' '}
         <p className="pl-2 pt-[2px] font-satoshi max-md:text-sm md:pt-1">
           {Math.round(rating * 2) / 2}
           <span className="opacity-50">/5</span>
@@ -36,7 +37,7 @@ const ProductMainDetails = ({
       </div>
       {/* price */}
       <div className="flex items-center gap-[2px] pt-[14px] font-satoshi text-2xl font-bold md:text-[32px]">
-        {" "}
+        {' '}
         ${newPrice}
         {discount && (
           <>

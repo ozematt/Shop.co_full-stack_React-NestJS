@@ -1,5 +1,5 @@
 import userLogin from '../queries/authorization';
-import fetchCategoriesList from '../queries/categories';
+import getCategoryList from './getCategoryList';
 import getAllProducts from './getAllProducts';
 
-export { userLogin, fetchCategoriesList, getAllProducts };
+export { userLogin, getCategoryList, getAllProducts };

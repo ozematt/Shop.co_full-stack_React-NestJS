@@ -3,7 +3,7 @@ import { API_BASE } from '../constants';
 
 const getAllProducts = async (): Promise<Products> => {
   try {
-    const response = await fetch(`${API_BASE}/products?limit=0`);
+    const response = await fetch(API_BASE + '/products?limit=0');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

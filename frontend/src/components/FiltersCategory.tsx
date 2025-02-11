@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { FilterHeader } from '.';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCategoriesList } from '../api/queries';
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import {
@@ -10,6 +9,7 @@ import {
   addCategoryName,
 } from '../redux/productsSlice';
 import { type ProductItemSchema } from '../lib/types';
+import getCategoryList from '../api/queries/getCategoryList';
 
 type FiltersCategoryProps = {
   toggle: boolean;
@@ -32,7 +32,7 @@ const FiltersCategory = ({ toggle, close }: FiltersCategoryProps) => {
 
   const { data: categories } = useQuery({
     queryKey: ['categories'],
-    queryFn: fetchCategoriesList,
+    queryFn: getCategoryList,
   });
 
   ////LOGIC

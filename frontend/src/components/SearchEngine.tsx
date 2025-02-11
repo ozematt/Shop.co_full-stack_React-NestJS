@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from "react";
-import { useDebounce, useRedirectToProduct } from "../lib/hooks";
-import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "../api/queries";
+import { useEffect, useRef, useState } from 'react';
+import { useDebounce, useRedirectToProduct } from '../lib/hooks';
+import { useQuery } from '@tanstack/react-query';
+// import { fetchProducts } from "../api/queries";
 import {
-  type ProductsFetchedData,
+  type Products,
   type FilteredProduct,
   type SelectedProduct,
-} from "../lib/types";
+} from '../lib/types';
+import { getAllProducts } from '../api/queries';
 
 const SearchEngine = () => {
   //
   ////DATA
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [filteredProducts, setFilteredProducts] = useState<FilteredProduct[]>(
     [],
   );
@@ -22,9 +23,9 @@ const SearchEngine = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   //fetch products date
-  const { data } = useQuery<ProductsFetchedData>({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
+  const { data } = useQuery<Products>({
+    queryKey: ['products'],
+    queryFn: getAllProducts,
   });
 
   //creating products list for search engine
@@ -39,7 +40,7 @@ const SearchEngine = () => {
   //set array of filtered products included debounced Value
   useEffect(() => {
     // protection against empty value
-    if (debouncedValue.trim() === "") {
+    if (debouncedValue.trim() === '') {
       setFilteredProducts([]);
       return;
     }
@@ -57,15 +58,15 @@ const SearchEngine = () => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setFilteredProducts([]); // clear filtered products array
-        setSearchValue(""); // clear search value
+        setSearchValue(''); // clear search value
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleRedirectToProductDetails = (product: SelectedProduct) => {
-    setSearchValue("");
+    setSearchValue('');
     handleProductClick(product);
   };
 
