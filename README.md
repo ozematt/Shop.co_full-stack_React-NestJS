@@ -99,5 +99,6 @@ To install the project, follow the steps below:
 ## Features in progress
 
 - **Database**: Expanding the database.
+- **Tests**: Adding unit tests and e2e tests.
 
 Thank you for visiting the repository! 😊
