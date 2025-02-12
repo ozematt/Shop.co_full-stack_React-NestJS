@@ -2,6 +2,12 @@ import { Rating } from '@mui/material';
 import { useDiscount, useRedirectToProduct } from '../lib/hooks';
 import { type ProductProps } from '../lib/types';
 import { SkeletonProduct } from '.';
+import { useQuery } from '@tanstack/react-query';
+import { getAllProducts } from '../api/queries';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { addProducts } from '../redux/productsSlice';
 
 const Product = ({
   id,
@@ -17,6 +23,24 @@ const Product = ({
   const { handleProductClick } = useRedirectToProduct();
   const { newPrice, discount } = useDiscount({ discountPercentage, price });
   const product = { id, title, category }; // data for custom hook
+
+  const dispatch: AppDispatch = useAppDispatch();
+
+  const fetchedProducts =
+    useSelector(
+      (state: RootState) => state.products.fetchedProducts.products,
+    ) || null;
+
+  const { data: products } = useQuery({
+    queryKey: ['products'],
+    queryFn: getAllProducts,
+  });
+
+  useEffect(() => {
+    if (products && fetchedProducts) {
+      dispatch(addProducts(products));
+    }
+  }, [products, fetchedProducts]);
 
   ////UI
   return (
