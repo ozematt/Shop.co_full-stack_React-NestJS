@@ -10,22 +10,21 @@ const ProductImages = ({ images }: ProductImagesProps) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (images) setBigImg(images[0]);
+    setLoaded(false);
+    setBigImg(images[0]);
   }, [images]);
 
   ////UI
   return (
-    <div className="mx-auto flex w-full max-w-[610px] gap-[14px] max-[1430px]:flex-col-reverse">
-      {' '}
-      <SkeletonAsideImages
-        images={images}
-        onClick={setBigImg}
-        loaded={loaded}
-      />
-      {/* main IMG */}
+    <div className="mx-auto h-full w-full max-w-[610px] gap-[12px] max-xl:space-y-3 xl:flex xl:flex-row-reverse">
       <SkeletonMainImage
         image={bigImg}
         onLoad={() => setLoaded(true)}
+        loaded={loaded}
+      />
+      <SkeletonAsideImages
+        images={images}
+        onClick={setBigImg}
         loaded={loaded}
       />
     </div>

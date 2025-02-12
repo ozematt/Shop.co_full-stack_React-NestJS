@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { AppDispatch, useAppDispatch } from "../../redux/store";
-import { addCategoryName } from "../../redux/productsSlice";
-import { type SelectedProduct } from "../types";
+import { useNavigate } from 'react-router-dom';
+import { AppDispatch, useAppDispatch } from '../../redux/store';
+import { addCategoryName } from '../../redux/productsSlice';
+import { type SelectedProduct } from '../types';
 
 const useRedirectToProduct = () => {
   //
