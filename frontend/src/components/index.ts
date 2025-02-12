@@ -51,8 +51,10 @@ import SkeletonMainImage from './SkeletonImageMain';
 import ProductImageMain from './ProductImageMain';
 import ProductImagesAside from './ProductImagesAside';
 import SkeletonImagesAside from './SkeletonImagesAside';
+import ProductImage from './ProductImage';
 
 export {
+  ProductImage,
   SkeletonImagesAside,
   ProductImagesAside,
   ProductImageMain,

@@ -1,7 +1,7 @@
 import { Rating } from '@mui/material';
 import { useDiscount, useRedirectToProduct } from '../lib/hooks';
 import { type ProductProps } from '../lib/types';
-import { SkeletonProduct } from '.';
+import { ProductImage } from '.';
 import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '../api/queries';
 import { useEffect } from 'react';
@@ -48,7 +48,7 @@ const Product = ({
       onClick={() => handleProductClick(product)}
       className="h-[400px] cursor-pointer transition ease-in-out hover:scale-95 sm:h-[408px]"
     >
-      <SkeletonProduct src={thumbnail} description={title} />
+      <ProductImage src={thumbnail} description={title} />
       <p className="w-full max-w-[295px] pt-4 font-satoshi text-xl font-bold">
         {title.length > 25 ? title.slice(0, 25) + '...' : title}
       </p>
