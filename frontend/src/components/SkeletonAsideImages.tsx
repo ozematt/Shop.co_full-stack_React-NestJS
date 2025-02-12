@@ -1,9 +1,6 @@
-import { useState } from 'react';
-
 type SkeletonAsideImagesProps = {
   images: string[];
   onClick: (img: string) => void;
-
   loaded: boolean;
 };
 

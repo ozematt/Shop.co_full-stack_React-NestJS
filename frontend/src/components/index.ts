@@ -48,8 +48,10 @@ import FiltersPrice from './FiltersPrice';
 import FilterHeader from './FilterHeader';
 import SkeletonProduct from './SkeletonProduct';
 import SkeletonMainImage from './SkeletonMainImage';
+import ProductImageMain from './ProductImageMain';
 
 export {
+  ProductImageMain,
   SkeletonMainImage,
   SkeletonProduct,
   SignUp,

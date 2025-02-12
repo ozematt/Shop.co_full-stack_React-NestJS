@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { type ProductImagesProps } from '../lib/types';
-import { SkeletonMainImage } from '.';
+import { ProductImageMain } from '.';
 import SkeletonAsideImages from './SkeletonAsideImages';
 
 const ProductImages = ({ images }: ProductImagesProps) => {
@@ -17,7 +17,7 @@ const ProductImages = ({ images }: ProductImagesProps) => {
   ////UI
   return (
     <div className="mx-auto h-full w-full max-w-[610px] gap-[12px] max-xl:space-y-3 xl:flex xl:flex-row-reverse">
-      <SkeletonMainImage
+      <ProductImageMain
         image={bigImg}
         onLoad={() => setLoaded(true)}
         loaded={loaded}
