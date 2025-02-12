@@ -21,14 +21,14 @@ const ProductImagesAside = ({
         images.slice(0, 3).map((image, index) => (
           <div
             key={index}
-            className="grid w-full place-items-center overflow-hidden rounded-xl bg-grayBG hover:ring-2 hover:ring-black lg:h-[158px] dark:bg-zinc-900"
+            className="grid w-full place-items-center overflow-hidden rounded-xl bg-grayBG hover:ring-2 hover:ring-black lg:h-[158px] dark:bg-zinc-900 dark:hover:ring-white"
           >
             {' '}
             <img
               src={image}
               alt="product image"
               onClick={() => onClick(image)}
-              className={`object-contain transition-opacity duration-500 dark:hover:ring-white ${loaded ? 'opacity-100' : 'opacity-0'}`}
+              className={`object-contain transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
             />
           </div>
         ))

@@ -52,8 +52,20 @@ import ProductImageMain from './ProductImageMain';
 import ProductImagesAside from './ProductImagesAside';
 import SkeletonImagesAside from './SkeletonImagesAside';
 import ProductImage from './ProductImage';
+import Arrow from './Arrow';
+import HomeBreadcrumbs from './HomeBreadcrumbs';
+import CartBreadcrumbs from './CartBreadcrumbs';
+import ShopBreadcrumbs from './ShopBreadcrumbs';
+import CategoryBreadcrumbs from './CategoryBreadcrumbs';
+import ProductBreadcrumbs from './ProductBreadcrumbs';
 
 export {
+  ProductBreadcrumbs,
+  CategoryBreadcrumbs,
+  ShopBreadcrumbs,
+  CartBreadcrumbs,
+  HomeBreadcrumbs,
+  Arrow,
   ProductImage,
   SkeletonImagesAside,
   ProductImagesAside,
