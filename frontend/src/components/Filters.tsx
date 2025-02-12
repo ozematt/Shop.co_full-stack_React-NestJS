@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
-import { FilterHeader, FiltersCategory, FiltersPrice, Sorting } from "./";
-import { type FiltersProps } from "../lib/types";
+import { useCallback, useState } from 'react';
+import { FilterHeader, FiltersCategory, FiltersPrice, Sorting } from './';
+import { type FiltersProps } from '../lib/types';
 
 const Filters = ({ iconHide, sortOptions, close }: FiltersProps) => {
   //
@@ -25,7 +25,7 @@ const Filters = ({ iconHide, sortOptions, close }: FiltersProps) => {
         iconHide={iconHide}
       />
       <hr className="mt-4 pb-6" />
-      {sortOptions && <Sorting />}
+      {sortOptions && <Sorting close={close} />}
       <FiltersCategory toggle={openFilters} close={close} />
       <hr className="pb-6" />
       <FiltersPrice toggle={openFilters} close={close} />

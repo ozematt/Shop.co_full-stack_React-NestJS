@@ -1,28 +1,28 @@
-import { useEffect } from "react";
-import { AppDispatch, useAppDispatch } from "../redux/store";
-import { useLocation } from "react-router-dom";
-import { addCategoryName } from "../redux/productsSlice";
+import { useEffect } from 'react';
+import { AppDispatch, useAppDispatch } from '../redux/store';
+import { useLocation } from 'react-router-dom';
+import { addCategoryName } from '../redux/productsSlice';
 import {
   CategoryName,
   FilterSettingsIcon,
   FilterWindow,
   NumberOfProducts,
   SortByMethod,
-} from "./";
-import { useFilterWindow } from "../lib/hooks";
+} from './';
+import { useFilterWindow } from '../lib/hooks';
 
 const ShopInfoBar = () => {
   //
   ////DATA
-  const { pathname } = useLocation();
   const dispatch: AppDispatch = useAppDispatch();
+  const { pathname } = useLocation();
   const { filterWindowOpen, handleFilterOpen } = useFilterWindow();
 
   ////LOGIC
   //when pathname is changing to "/shop" set category name in global state to ""
   useEffect(() => {
-    if (pathname === "/shop") {
-      dispatch(addCategoryName(""));
+    if (pathname === '/shop') {
+      dispatch(addCategoryName(''));
     }
   }, [pathname]);
 

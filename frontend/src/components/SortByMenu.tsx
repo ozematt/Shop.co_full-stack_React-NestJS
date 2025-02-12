@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { sortingOptions } from '../constants';
 import { AppDispatch, useAppDispatch } from '../redux/store';
-import { SortMethod } from '../lib/types';
+import { type SortMethod } from '../lib/types';
 import { addSortMethod } from '../redux/productsSlice';
 
 const SortByMenu = () => {
