@@ -15,7 +15,7 @@ const ProductImages = ({ images }: ProductImagesProps) => {
 
   ////UI
   return (
-    <div className="mx-auto h-full w-full max-w-[610px] gap-[12px] max-xl:space-y-3 xl:flex xl:flex-row-reverse">
+    <div className="mx-auto w-full max-w-[610px] gap-[12px] max-xl:space-y-3 xl:flex xl:flex-row-reverse">
       <ProductImageMain
         image={bigImg}
         onLoad={() => setLoaded(true)}

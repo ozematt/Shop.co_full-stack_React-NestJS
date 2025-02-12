@@ -21,7 +21,7 @@ const ProductImagesAside = ({
         images.slice(0, 3).map((image, index) => (
           <div
             key={index}
-            className="grid h-full max-h-[156px] w-full animate-pulse place-items-center rounded-xl bg-grayBG hover:ring-2 hover:ring-black dark:bg-zinc-900"
+            className="grid h-full max-h-[156px] w-full place-items-center rounded-xl bg-grayBG hover:ring-2 hover:ring-black dark:bg-zinc-900"
           >
             {' '}
             <img
