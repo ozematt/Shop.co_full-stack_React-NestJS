@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { type ProductImagesProps } from '../lib/types';
-import { ProductImageMain } from '.';
-import SkeletonAsideImages from './SkeletonAsideImages';
+import { ProductImageMain, ProductImagesAside } from '.';
 
 const ProductImages = ({ images }: ProductImagesProps) => {
   //
@@ -22,11 +21,7 @@ const ProductImages = ({ images }: ProductImagesProps) => {
         onLoad={() => setLoaded(true)}
         loaded={loaded}
       />
-      <SkeletonAsideImages
-        images={images}
-        onClick={setBigImg}
-        loaded={loaded}
-      />
+      <ProductImagesAside images={images} onClick={setBigImg} loaded={loaded} />
     </div>
   );
 };

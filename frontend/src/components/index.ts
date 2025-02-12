@@ -47,10 +47,14 @@ import FiltersCategory from './FiltersCategory';
 import FiltersPrice from './FiltersPrice';
 import FilterHeader from './FilterHeader';
 import SkeletonProduct from './SkeletonProduct';
-import SkeletonMainImage from './SkeletonMainImage';
+import SkeletonMainImage from './SkeletonImageMain';
 import ProductImageMain from './ProductImageMain';
+import ProductImagesAside from './ProductImagesAside';
+import SkeletonImagesAside from './SkeletonImagesAside';
 
 export {
+  SkeletonImagesAside,
+  ProductImagesAside,
   ProductImageMain,
   SkeletonMainImage,
   SkeletonProduct,
