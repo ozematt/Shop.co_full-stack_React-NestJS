@@ -12,12 +12,12 @@ const SkeletonMainImage = ({
   return (
     <div className="relative flex max-h-[530px] w-full max-w-[644px] flex-auto items-center justify-center overflow-hidden rounded-[20px] bg-grayBG object-contain dark:bg-zinc-900">
       {!loaded && (
-        <div className="absolute inset-0 h-full w-full animate-pulse bg-black/10" />
+        <div className="absolute inset-0 h-full w-full animate-pulse bg-black/30" />
       )}
       <img
         src={image}
         alt="main product image"
-        className={`h-full w-full object-cover transition-opacity ${
+        className={`h-full w-full object-cover transition-opacity duration-500 ${
           loaded ? 'opacity-100' : 'opacity-0'
         }`}
         onLoad={onLoad}
