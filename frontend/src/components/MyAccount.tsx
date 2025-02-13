@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { getDate } from '../lib/helpers';
 import { useQuery } from '@tanstack/react-query';
 import { logOutUser } from '../redux/userSlice';
-import { Alert } from '.';
+import { Alert, Empty } from '.';
 import { getOrder } from '../api/queries';
 
 const MyAccount = () => {
@@ -110,9 +110,7 @@ const MyAccount = () => {
               </div>
             ))
           ) : (
-            <h2 className="insert-0 py-[190px] text-center font-integralCFBold text-7xl opacity-10 sm:text-8xl">
-              Empty
-            </h2>
+            <Empty />
           )}
         </div>
       </section>{' '}

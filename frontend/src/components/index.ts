@@ -59,8 +59,26 @@ import ShopBreadcrumbs from './ShopBreadcrumbs';
 import CategoryBreadcrumbs from './CategoryBreadcrumbs';
 import ProductBreadcrumbs from './ProductBreadcrumbs';
 import SectionTitle from './SectionTitle';
+import CartItemsList from './CartItemsList';
+import Empty from './Empty';
+import CartTotals from './CartTotals';
+import CartSubtotal from './CartSubtotal';
+import CartDiscount from './CartDiscount';
+import CartDeliveryFee from './CartDeliveryFee';
+import CartTotalPrice from './CartTotalPrice';
+import CartPromoCode from './CartPromoCode';
+import CartCheckoutButton from './CartCheckoutButton';
 
 export {
+  CartCheckoutButton,
+  CartPromoCode,
+  CartTotalPrice,
+  CartDeliveryFee,
+  CartDiscount,
+  CartSubtotal,
+  CartTotals,
+  Empty,
+  CartItemsList,
   SectionTitle,
   ProductBreadcrumbs,
   CategoryBreadcrumbs,
