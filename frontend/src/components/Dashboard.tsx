@@ -7,8 +7,9 @@ const Dashboard = () => {
   return (
     <>
       <TopBar />
-
-      <Nav />
+      <div className="sticky top-0 z-50 backdrop-blur-[10px]">
+        <Nav />
+      </div>
       <Outlet />
     </>
   );
