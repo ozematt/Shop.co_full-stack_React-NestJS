@@ -25,7 +25,7 @@ const HamburgerMenu = () => {
       {/* overlay */}
       <div
         onClick={() => setMenuOpen(false)}
-        className={`fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 ${
+        className={`fixed inset-0 z-10 h-[100vh] bg-black/50 transition-opacity duration-300 ${
           menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
       />
