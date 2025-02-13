@@ -1,4 +1,4 @@
-import { AUTH_BASE } from '../constants';
+import { URL_BASE } from '../constants';
 
 type Authenticate = {
   auth: string;
@@ -8,7 +8,7 @@ type Authenticate = {
 
 const authenticate = async ({ auth, email, password }: Authenticate) => {
   try {
-    const response = await fetch(AUTH_BASE + '/auth/' + auth, {
+    const response = await fetch(URL_BASE + '/auth/' + auth, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
