@@ -39,7 +39,8 @@ const SignIn = () => {
     },
     onSuccess: (data, variables) => {
       clearErrors(['email']);
-      localStorage.setItem('token', data.access_token);
+
+      localStorage.setItem('token', `Bearer ${data.access_token}`);
       const user = getUsername(variables.email);
       dispatch(setUsername(user));
       localStorage.setItem('user', user);
