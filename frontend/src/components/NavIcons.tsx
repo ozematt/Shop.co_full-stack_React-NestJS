@@ -1,4 +1,4 @@
-import { CartIcon, SearchEngineIcon, ThemeIcon, UserIcon } from ".";
+import { CartIcon, SearchEngineIcon, ThemeIcon, UserIcon } from '.';
 
 const NavIcons = () => {
   //

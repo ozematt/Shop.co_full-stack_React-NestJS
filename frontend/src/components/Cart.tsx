@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { addTotalPrice, selectAllCart } from "../redux/cartSlice";
-import { AppDispatch, RootState, useAppDispatch } from "../redux/store";
-import { Footer, Newsletter } from "../sections";
-import { Breadcrumbs, CartItem } from "./";
-import { calculateTotalDiscount } from "../lib/helpers";
-import { discount, arrowWhite } from "../assets";
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { addTotalPrice, selectAllCart } from '../redux/cartSlice';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { Footer, Newsletter } from '../sections';
+import { Breadcrumbs, CartItem, SectionTitle } from './';
+import { calculateTotalDiscount } from '../lib/helpers';
+import { discount, arrowWhite } from '../assets';
 
 const Cart = () => {
   //
@@ -41,7 +41,7 @@ const Cart = () => {
   const handleCheckout = useCallback(() => {
     const totalPrice = Number((subtotal - savings + 15).toFixed(2)) || 0;
     if (cart.length) {
-      navigate("/cart/checkout");
+      navigate('/cart/checkout');
       dispatch(addTotalPrice(totalPrice));
     }
   }, [subtotal, savings, cart, navigate, dispatch]);
@@ -49,14 +49,15 @@ const Cart = () => {
   ////UI
   return (
     <>
-      {" "}
+      {' '}
       <section className="max-container px-4 sm:px-[100px]">
         <div className="border-b-2" />
         <Breadcrumbs />
         <div>
-          <h2 className="mt-[8px] font-integralCFBold text-[32px] max-md:leading-[36px] sm:mt-[24px] sm:text-5xl">
-            your cart
-          </h2>
+          <div className="mt-[8px] sm:mt-[24px]">
+            <SectionTitle title="your cart" />
+          </div>
+
           {/* flex flex-wrap justify-center  */}
           <div className="mt-[20px] flex flex-wrap gap-[20px] sm:mt-[24px] min-[1454px]:flex-nowrap">
             {/* cart items */}
@@ -80,8 +81,8 @@ const Cart = () => {
                 <div>
                   <div className="flex justify-between pt-5">
                     <p className="font-satoshi text-base opacity-60 sm:text-xl">
-                      Subtotal{" "}
-                    </p>{" "}
+                      Subtotal{' '}
+                    </p>{' '}
                     <p className="font-satoshi text-base font-bold sm:text-xl">
                       ${subtotal}
                     </p>
@@ -89,8 +90,8 @@ const Cart = () => {
 
                   <div className="flex justify-between pt-5">
                     <p className="font-satoshi text-base opacity-60 sm:text-xl">
-                      Discount <span>(-{totalDiscount}%)</span>{" "}
-                    </p>{" "}
+                      Discount <span>(-{totalDiscount}%)</span>{' '}
+                    </p>{' '}
                     <p className="font-satoshi text-base font-bold text-red-500 sm:text-xl">
                       -${savings}
                     </p>
@@ -98,8 +99,8 @@ const Cart = () => {
 
                   <div className="flex justify-between pt-5">
                     <p className="font-satoshi text-base opacity-60 sm:text-xl">
-                      Delivery Fee{" "}
-                    </p>{" "}
+                      Delivery Fee{' '}
+                    </p>{' '}
                     <p className="font-satoshi text-base font-bold sm:text-xl">
                       $15
                     </p>
@@ -108,7 +109,7 @@ const Cart = () => {
                   <div className="border-b-[1px] pt-5" />
 
                   <div className="flex justify-between pt-5">
-                    <p className="font-satoshi text-base sm:text-xl">Total </p>{" "}
+                    <p className="font-satoshi text-base sm:text-xl">Total </p>{' '}
                     <p className="font-satoshi text-xl font-bold sm:text-2xl">
                       ${(subtotal - savings + 15).toFixed(2)}
                     </p>
@@ -126,16 +127,16 @@ const Cart = () => {
                         type="text"
                         placeholder="Add promo code"
                         className="h-[48px] w-full rounded-full bg-grayBG pl-[50px] placeholder:opacity-40 focus:outline-none focus:ring-1 focus:ring-black placeholder:max-sm:text-sm dark:bg-zinc-900 dark:focus:ring-white"
-                      />{" "}
+                      />{' '}
                       <button className="ml-[12px] rounded-full bg-black px-[25px] py-[13px] font-satoshi font-medium text-white transition duration-100 ease-in-out hover:scale-95 max-sm:text-sm sm:px-[38px] dark:ring-1 dark:ring-white">
                         Apply
                       </button>
-                    </div>{" "}
+                    </div>{' '}
                     <button
                       onClick={handleCheckout}
                       className="relative mt-6 w-full max-w-[457px] rounded-full bg-black py-[19px] pr-9 font-satoshi font-medium text-white transition duration-100 ease-in-out hover:scale-95 max-sm:text-sm dark:bg-white dark:text-black"
                     >
-                      Go to Checkout{" "}
+                      Go to Checkout{' '}
                       <img
                         src={arrowWhite}
                         alt="white arrow icon"

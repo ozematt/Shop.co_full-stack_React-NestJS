@@ -1,5 +1,5 @@
-import { Outlet } from "react-router";
-import { Nav, TopBar } from "../sections";
+import { Outlet } from 'react-router';
+import { Nav, TopBar } from '../sections';
 
 const Dashboard = () => {
   //
@@ -7,6 +7,7 @@ const Dashboard = () => {
   return (
     <>
       <TopBar />
+
       <Nav />
       <Outlet />
     </>

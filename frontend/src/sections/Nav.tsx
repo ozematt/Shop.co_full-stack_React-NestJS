@@ -10,7 +10,7 @@ const Nav = () => {
   //
   ////UI
   return (
-    <nav className="max-container sticky top-0 z-50 flex h-[96px] items-center px-4 backdrop-blur-[15px] max-[838px]:justify-between sm:px-[100px]">
+    <nav className="max-container flex h-[96px] items-center bg-white px-4 max-[838px]:justify-between sm:px-[100px] dark:bg-black">
       <div className="flex items-center">
         <HamburgerMenu />
         <Logo />

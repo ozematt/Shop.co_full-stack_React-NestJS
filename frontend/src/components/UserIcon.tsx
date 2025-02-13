@@ -57,9 +57,9 @@ const UserIcon = () => {
       />
       <div
         {...menuProps}
-        className={`${menuOpen ? 'translate-x-0' : 'translate-x-full'} fixed right-[0] top-[0] z-50 h-[100vh] w-[40vw] transform bg-stone-100 shadow-lg transition-transform duration-300 lg:w-[30vw] xl:w-[20vw] 2xl:w-[15vw] dark:dark:bg-zinc-800`}
+        className={`${menuOpen ? 'translate-x-0' : 'translate-x-full'} fixed right-[0] top-[0] z-50 h-[100vh] w-[40vw] transform bg-stone-100 shadow-lg transition-transform duration-300 lg:w-[30vw] xl:w-[20vw] 2xl:w-[15vw] dark:bg-zinc-800`}
       >
-        <ul className="text-xl text-black md:p-10">
+        <ul className="w-full p-4 text-xl text-black md:p-6">
           <div className="flex justify-between px-4 pb-4 pt-4 font-bold dark:text-white">
             User Panel{' '}
             <img
