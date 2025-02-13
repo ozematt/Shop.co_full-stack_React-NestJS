@@ -68,8 +68,10 @@ import CartDeliveryFee from './CartDeliveryFee';
 import CartTotalPrice from './CartTotalPrice';
 import CartPromoCode from './CartPromoCode';
 import CartCheckoutButton from './CartCheckoutButton';
+import CartBadge from './CartBadge';
 
 export {
+  CartBadge,
   CartCheckoutButton,
   CartPromoCode,
   CartTotalPrice,
