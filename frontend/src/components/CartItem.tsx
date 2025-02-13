@@ -4,6 +4,12 @@ import { AppDispatch, useAppDispatch } from '../redux/store';
 import { minus, plus, deleteIcon } from '../assets';
 import { useCallback } from 'react';
 import { type CartItemT } from '../lib/types';
+import {
+  CartItemImg,
+  CartItemPrice,
+  CartItemShippingTime,
+  CartItemTitle,
+} from '.';
 
 const CartItem = ({
   id,
@@ -62,31 +68,19 @@ const CartItem = ({
   return (
     <>
       <div className="relative flex justify-between px-[14px] pt-[14px] sm:px-[24px] sm:pt-[24px]">
-        {/* IMG */}
         <div className="flex">
-          <img
-            src={image}
-            className="h-[99px] w-[99px] rounded-lg bg-grayBG object-contain lg:h-[124px] lg:w-[124px] dark:bg-zinc-900"
-            onClick={() => navigate(`/shop/${category}/${title}?id=${id}`)}
+          <CartItemImg
+            image={image}
+            category={category}
+            title={title}
+            id={id}
           />
-          {/* product details */}
-
           <div className="flex flex-col justify-between pl-[16px]">
-            {' '}
             <div>
-              <h6 className="font-satoshi text-base font-bold lg:text-xl">
-                {title}
-              </h6>
-              <p className="font-satoshi text-xs opacity-60 lg:text-sm">
-                {shippingTime}
-              </p>
+              <CartItemTitle title={title} />
+              <CartItemShippingTime shippingTime={shippingTime} />
             </div>
-            <p className="font-satoshi text-lg font-bold lg:text-2xl">
-              $ {purchaseTotal}{' '}
-              <span className="hidden text-sm font-medium opacity-30 lg:block">
-                For one: ${price}
-              </span>
-            </p>
+            <CartItemPrice purchaseTotal={purchaseTotal} price={price} />
           </div>
         </div>
 

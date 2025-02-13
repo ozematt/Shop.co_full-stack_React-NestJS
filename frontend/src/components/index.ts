@@ -69,8 +69,16 @@ import CartTotalPrice from './CartTotalPrice';
 import CartPromoCode from './CartPromoCode';
 import CartCheckoutButton from './CartCheckoutButton';
 import CartBadge from './CartBadge';
+import CartItemImg from './CartItemImg';
+import CartItemTitle from './CartItemTitle';
+import CartItemShippingTime from './CartItemShippingTime';
+import CartItemPrice from './CartItemPrice';
 
 export {
+  CartItemPrice,
+  CartItemShippingTime,
+  CartItemTitle,
+  CartItemImg,
   CartBadge,
   CartCheckoutButton,
   CartPromoCode,
