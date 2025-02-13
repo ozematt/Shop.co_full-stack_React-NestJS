@@ -5,11 +5,10 @@ type Authenticate = {
   email: string;
   password: string;
 };
-//AUTH_BASE + '/auth' + auth
 
 const authenticate = async ({ auth, email, password }: Authenticate) => {
   try {
-    const response = await fetch('http://localhost:3005/auth/register', {
+    const response = await fetch(AUTH_BASE + '/auth/' + auth, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
