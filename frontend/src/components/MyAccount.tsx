@@ -29,6 +29,7 @@ const MyAccount = () => {
     queryKey: ['orders'],
     queryFn: getOrder,
   });
+  console.log(orders);
 
   useEffect(() => {
     if (isError) {
@@ -73,7 +74,7 @@ const MyAccount = () => {
           </h6>
           <div className="border-b-[1px] py-2" />
 
-          {orders ? (
+          {orders?.length ? (
             orders.map((order) => (
               <div key={order.orderId} className="my-1">
                 <p className="py-1 pt-3 font-satoshi opacity-60 max-md:text-sm md:py-2">
