@@ -73,8 +73,12 @@ import CartItemImg from './CartItemImg';
 import CartItemTitle from './CartItemTitle';
 import CartItemShippingTime from './CartItemShippingTime';
 import CartItemPrice from './CartItemPrice';
+import CartItemDeleteIcon from './CartItemDeleteIcon';
+import CartItemQuantity from './CartItemQuantity';
 
 export {
+  CartItemQuantity,
+  CartItemDeleteIcon,
   CartItemPrice,
   CartItemShippingTime,
   CartItemTitle,
