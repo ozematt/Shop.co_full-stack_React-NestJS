@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { type Products, type ProductItemSchema } from '../lib/types';
 import { useEffect, useState } from 'react';
-import { Product } from '../components';
+import { Product, SectionTitle } from '../components';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import { addProducts } from '../redux/productsSlice';
@@ -52,10 +52,10 @@ const TopRating = () => {
       id="topRating"
       className="mt-[50px] flex w-full max-w-[1400px] flex-col items-center px-4 sm:mt-[72px] sm:px-[100px]"
     >
-      <h2 className="text-center font-integralCFBold text-[32px] sm:text-5xl">
+      {/* <h2 className="text-center font-integralCFBold text-[32px] sm:text-5xl">
         Top Rating
-      </h2>
-
+      </h2> */}
+      <SectionTitle title="Top Rating" center />
       <div className="scrollbar-hide flex h-[420px] w-full snap-x snap-mandatory gap-4 scroll-smooth max-xl:overflow-x-auto max-sm:mt-[-32px] sm:mt-[55px] sm:gap-5">
         {' '}
         {productsToShow?.map((product) => (

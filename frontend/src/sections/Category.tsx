@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { beauty, clothes, electronics, kitchen } from "../assets";
-import { useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
+import { beauty, clothes, electronics, kitchen } from '../assets';
+import { useCallback } from 'react';
+import { SectionTitle } from '../components';
 
 const Category = () => {
   //
@@ -9,7 +10,7 @@ const Category = () => {
 
   ////LOGIC
   const handleClick = useCallback(() => {
-    navigate("/shop");
+    navigate('/shop');
     window.scrollTo(0, 0);
   }, [navigate]);
 
@@ -17,9 +18,10 @@ const Category = () => {
   return (
     <section id="category" className="mt-[80px] px-4 sm:px-[100px]">
       <div className="z-[1] rounded-[40px] bg-grayBG dark:bg-zinc-900">
-        <h2 className="pb-[24px] pt-[40px] text-center font-integralCFBold text-[32px] leading-9 sm:pb-[64px] sm:pt-[70px] sm:text-5xl">
-          browse by category
-        </h2>
+        <div className="pb-[24px] pt-[40px] sm:pb-[64px] sm:pt-[70px]">
+          <SectionTitle title="browse by category" center />
+        </div>
+
         <div className="space-y-4 px-[24px] sm:px-[64px]">
           <div className="flex gap-4 max-xl:flex-wrap">
             <div

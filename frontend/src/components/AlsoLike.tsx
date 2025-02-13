@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { ProductItemSchema, Products } from '../lib/types';
 import { getAllProducts } from '../api/queries';
+import { SectionTitle } from '.';
 
 const AlsoLike = () => {
   //
@@ -40,10 +41,10 @@ const AlsoLike = () => {
   ////UI
   return (
     <section className="mt-[50px] flex w-full max-w-[1400px] flex-col items-center sm:mt-[72px]">
-      <h2 className="text-center font-integralCFBold text-[32px] max-md:leading-[36px] sm:text-5xl">
+      {/* <h2 className="text-center font-integralCFBold text-[32px] max-md:leading-[36px] sm:text-5xl">
         You might also like
-      </h2>
-
+      </h2> */}
+      <SectionTitle title="You might also like" />
       <div className="scrollbar-hide flex h-[420px] w-full snap-x snap-mandatory gap-4 scroll-smooth max-xl:overflow-x-auto max-sm:mt-[-32px] sm:mt-[55px] sm:gap-5">
         {' '}
         {productsToShow?.map((product) => (

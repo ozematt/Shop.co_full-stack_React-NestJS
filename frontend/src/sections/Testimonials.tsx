@@ -1,15 +1,15 @@
-import { useMediaQuery } from "@mui/material";
-import { comments } from "../constants";
-import { useCallback, useState } from "react";
-import { arrowRight, arrowLeft } from "../assets";
-import { Comment } from "../components";
+import { useMediaQuery } from '@mui/material';
+import { comments } from '../constants';
+import { useCallback, useState } from 'react';
+import { arrowRight, arrowLeft } from '../assets';
+import { Comment, SectionTitle } from '../components';
 
 const Testimonials = () => {
   //
   ////DATA
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const smallDevices = useMediaQuery("(max-width:640px)");
+  const smallDevices = useMediaQuery('(max-width:640px)');
 
   ////LOGIC
   const handlePrev = useCallback(() => {
@@ -29,12 +29,9 @@ const Testimonials = () => {
     <>
       <section className="relative overflow-hidden px-4 sm:px-[100px]">
         <div className="flex items-end justify-between pb-[40px] pt-[80px]">
-          {" "}
-          <h2 className="font-integralCFBold text-[32px] max-sm:leading-9 sm:text-5xl">
-            Our happy customers
-          </h2>
+          <SectionTitle title="Our happy customers" />
           <div className="flex-shrink-0">
-            {" "}
+            {' '}
             <button onClick={handlePrev}>
               <img src={arrowLeft} alt="" width={24} height={24} />
             </button>

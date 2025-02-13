@@ -58,8 +58,10 @@ import CartBreadcrumbs from './CartBreadcrumbs';
 import ShopBreadcrumbs from './ShopBreadcrumbs';
 import CategoryBreadcrumbs from './CategoryBreadcrumbs';
 import ProductBreadcrumbs from './ProductBreadcrumbs';
+import SectionTitle from './SectionTitle';
 
 export {
+  SectionTitle,
   ProductBreadcrumbs,
   CategoryBreadcrumbs,
   ShopBreadcrumbs,
