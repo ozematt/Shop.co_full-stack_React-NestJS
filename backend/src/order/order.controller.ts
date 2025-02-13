@@ -14,12 +14,12 @@ export class OrderController {
     private prisma: PrismaService,
   ) {}
 
-  @Get('one')
+  @Get()
   getOrder(@GetUser() user: User) {
     return this.orderService.getOrder(user);
   }
 
-  @Post('two')
+  @Post()
   setOrder(@GetUser() user: User, @Body() dto: SetOrderDto) {
     return this.orderService.setOrder(user, dto);
   }

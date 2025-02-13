@@ -1,25 +1,25 @@
-import { AUTH_BASE } from "../constants";
+import { URL_BASE } from '../constants';
 
 const getUser = async () => {
-  const token = localStorage.getItem("token") || null;
+  const token = localStorage.getItem('token') || null;
 
   try {
     if (!token) {
-      throw new Error("User is not logged in");
+      throw new Error('User is not logged in');
     }
 
-    const response = await fetch(`${AUTH_BASE}/user`, {
+    const response = await fetch(URL_BASE + '/user', {
       headers: { Authorization: token },
     });
 
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error('Network response was not ok');
     }
     const user = await response.json();
 
     return user;
   } catch (error) {
-    console.error("There has been a problem with fetch", error);
+    console.error('There has been a problem with fetch', error);
     throw error;
   }
 };
