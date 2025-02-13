@@ -31,15 +31,15 @@ const SignUp = () => {
   const getAuth = useMutation({
     mutationFn: authenticate,
     onError: () => {
-      setError('username', {
+      setError('email', {
         type: 'custom',
         message: 'User already exist',
       });
     },
     onSuccess: (data, variables) => {
-      clearErrors(['username']);
+      clearErrors(['email']);
       localStorage.setItem('token', data.token);
-      const user = getUsername(variables.username);
+      const user = getUsername(variables.email);
       dispatch(setUsername(user));
       localStorage.setItem('user', user);
       reset(); //form fields reset
@@ -51,7 +51,7 @@ const SignUp = () => {
   const onSubmit = (data: SignUpSchema) => {
     const dataToSend = {
       auth: 'register',
-      username: data.username,
+      email: data.email,
       password: data.password,
     };
     getAuth.mutate(dataToSend);
@@ -79,15 +79,15 @@ const SignUp = () => {
                 className="absolute left-6 top-[30%] opacity-60"
               />
               <input
-                {...register('username')}
+                {...register('email')}
                 type="text"
                 placeholder="Enter your email"
                 className="h-[48px] w-full rounded-full bg-white pl-[60px] focus:outline-none focus:ring-1 focus:ring-black max-sm:placeholder:text-[14px] dark:bg-zinc-600 dark:focus:ring-2 dark:focus:ring-orange-700"
               />
             </div>
-            {errors.username && (
+            {errors.email && (
               <p className="pb-2 pl-5 leading-[1px] text-red-500">
-                {errors.username.message}
+                {errors.email.message}
               </p>
             )}
 

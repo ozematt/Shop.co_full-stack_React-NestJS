@@ -13,7 +13,7 @@ import Filters from './Filters';
 import HamburgerMenu from './HamburgerMenu';
 import HomePage from './HomePage';
 import Input from './Input';
-import LogIn from './LogIn';
+import SignIn from './SignIn';
 import MyAccount from './MyAccount';
 import PaginationBar from './PaginationBar';
 import Product from './Product';
@@ -91,7 +91,7 @@ export {
   HamburgerMenu,
   HomePage,
   Input,
-  LogIn,
+  SignIn,
   MyAccount,
   PaginationBar,
   Product,

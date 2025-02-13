@@ -1,15 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   HomePage,
   Dashboard,
-  LogIn,
+  SignIn,
   Shop,
   ProductDetails,
   Cart,
   MyAccount,
   Checkout,
   SignUp,
-} from "./components";
+} from './components';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:category" element={<Shop />} />
           <Route path="/shop/:category/:product" element={<ProductDetails />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route path="/login" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/checkout" element={<Checkout />} />

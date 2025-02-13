@@ -113,7 +113,7 @@ export type InputProps = {
 //// SIGNUP TYPES
 export const signUpSchema = z
   .object({
-    username: z.string().email({ message: 'Invalid email' }),
+    email: z.string().email({ message: 'Invalid email' }),
     password: z
       .string()
       .min(6, { message: 'Must be at last 6 characters long' }),
@@ -130,7 +130,7 @@ export type SignUpSchema = z.infer<typeof signUpSchema>;
 
 ////LOGIN TYPES
 export const loginSchema = z.object({
-  username: z
+  email: z
     .string({
       required_error: 'Name is required',
       invalid_type_error: 'Name must be a string',
