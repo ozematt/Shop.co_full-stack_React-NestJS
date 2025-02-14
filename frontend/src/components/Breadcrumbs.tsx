@@ -17,6 +17,7 @@ const Breadcrumbs = () => {
   //
   ////DATA
   const dispatch: AppDispatch = useAppDispatch();
+
   const { category } = useParams();
 
   const productsByCategory = useSelector(

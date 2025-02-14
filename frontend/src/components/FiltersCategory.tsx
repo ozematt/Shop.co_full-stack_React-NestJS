@@ -21,7 +21,7 @@ const FiltersCategory = ({ toggle, window }: FiltersCategoryProps) => {
 
   const { category } = useParams();
   const [open, setOpen] = useState(true);
-  category;
+  // category;
 
   const { fetchedProducts: allProducts } = useSelector(
     (state: RootState) => state.products,
