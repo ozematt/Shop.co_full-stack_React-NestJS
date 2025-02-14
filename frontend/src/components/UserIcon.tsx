@@ -62,6 +62,7 @@ const UserIcon = () => {
             <CloseButton onClick={() => setMenuOpen(false)} />
           </div>
           <hr className="border-b-1 border-stone-400" />
+
           <li
             className="hover: cursor-pointer pb-2 pl-4 pt-2 font-satoshi hover:bg-white dark:text-white dark:hover:bg-zinc-700"
             onClick={() => {
