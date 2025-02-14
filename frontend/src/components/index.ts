@@ -86,8 +86,12 @@ import CheckoutSummary from './CheckoutSummary';
 import FilterPriceInput from './FilterPriceInput';
 import FilterApplyButton from './FilterApplyButton';
 import FilterCategoryList from './FilterCategoryList';
+import Overlay from './Overlay';
+import CloseButton from './CloseButton';
 
 export {
+  CloseButton,
+  Overlay,
   FilterCategoryList,
   FilterApplyButton,
   FilterPriceInput,

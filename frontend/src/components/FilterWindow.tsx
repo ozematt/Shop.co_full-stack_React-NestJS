@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Filters } from '.';
+import { Filters, Overlay } from '.';
 import { close } from '../assets';
 import { filterOpen } from '../redux/filterSlice';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
@@ -27,10 +27,7 @@ const FilterWindow = () => {
         />
         <Filters window iconHide sortOptions />
       </div>
-      <div
-        onClick={() => dispatch(filterOpen())}
-        className={` ${open ? 'fixed' : 'hidden'} inset-0 z-10 bg-black opacity-50`}
-      />
+      <Overlay onClick={() => dispatch(filterOpen())} open={open} />
     </>
   );
 };
