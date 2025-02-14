@@ -83,8 +83,12 @@ import PriceTag from './PriceTag';
 import CheckoutTotalPrice from './CheckoutTotalPrice';
 import CheckoutPayButton from './CheckoutPayButton';
 import CheckoutSummary from './CheckoutSummary';
+import FilterPriceInput from './FilterPriceInput';
+import FilterApplyButton from './FilterApplyButton';
 
 export {
+  FilterApplyButton,
+  FilterPriceInput,
   CheckoutSummary,
   CheckoutPayButton,
   CheckoutTotalPrice,

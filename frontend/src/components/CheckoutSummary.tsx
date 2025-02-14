@@ -84,14 +84,14 @@ const CheckoutSummary = () => {
           </div>
         </div>
       </div>
-      {success ? (
+      {success && (
         <Alert
           title="Success!"
           text="Thank you for your purchase! Your order has been successfully placed.
           You will be redirected to the homepage shortly."
           buttonText="OK"
         />
-      ) : null}
+      )}
     </>
   );
 };

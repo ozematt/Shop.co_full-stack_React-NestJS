@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FilterHeader } from '.';
+import { FilterApplyButton, FilterHeader, FilterPriceInput } from '.';
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import { addCategorizedProducts } from '../redux/productsSlice';
@@ -73,7 +73,7 @@ const FiltersPrice = ({ toggle, close }: FiltersPriceProps) => {
       <FilterHeader title="Price" onClick={() => setOpen(!open)} state={open} />
       {open && (
         <div className="mt-4 flex gap-2">
-          <input
+          <FilterPriceInput
             value={priceRange.from}
             name="from"
             onChange={(e) =>
@@ -82,11 +82,8 @@ const FiltersPrice = ({ toggle, close }: FiltersPriceProps) => {
                 [e.target.name]: e.target.value,
               }))
             }
-            type="text"
-            className="h-7 w-full max-w-[120px] rounded-sm pl-2 ring-1 ring-black ring-opacity-20 placeholder:text-sm focus:outline-none focus:ring-black dark:bg-zinc-700"
-            placeholder="from:"
           />
-          <input
+          <FilterPriceInput
             value={priceRange.to}
             name="to"
             onChange={(e) =>
@@ -95,19 +92,11 @@ const FiltersPrice = ({ toggle, close }: FiltersPriceProps) => {
                 [e.target.name]: e.target.value,
               }))
             }
-            type="text"
-            className="h-7 w-full max-w-[120px] rounded-sm pl-2 ring-1 ring-black ring-opacity-20 placeholder:text-sm focus:outline-none focus:ring-black dark:bg-zinc-700"
-            placeholder="to:"
           />
         </div>
       )}
       <hr className="mt-6 pb-6" />
-      <button
-        onClick={handleApplyFilter}
-        className="w-full rounded-full bg-black px-[86px] py-[15px] text-[14px] text-white transition duration-100 ease-in-out hover:scale-95 dark:bg-white dark:text-black"
-      >
-        Apply Filter
-      </button>
+      <FilterApplyButton onClick={handleApplyFilter} />
     </>
   );
 };
