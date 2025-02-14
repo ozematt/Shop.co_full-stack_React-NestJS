@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 type AlertProps = {
   url?: string;
@@ -12,6 +12,12 @@ const Alert = ({ url, title, text, buttonText }: AlertProps) => {
   ////DATA
   const navigate = useNavigate();
 
+  ////LOGIC
+  const handleOnClick = () => {
+    if (url) return navigate(`/${url}`);
+    navigate('/');
+  };
+
   ////UI
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-70">
@@ -24,7 +30,7 @@ const Alert = ({ url, title, text, buttonText }: AlertProps) => {
             {text}
           </p>
           <button
-            onClick={() => navigate(`/${url}`)}
+            onClick={handleOnClick}
             className="mx-auto my-3 rounded-full bg-black px-[60px] py-2 font-satoshi text-white hover:scale-90 active:scale-100 md:py-3 dark:bg-white dark:text-black"
           >
             {buttonText}

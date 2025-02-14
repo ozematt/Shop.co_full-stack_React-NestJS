@@ -9,7 +9,7 @@ export type ButtonProps = {
 
 //// CHECKOUT TYPES
 const itemSchema = z.object({
-  product_name: z.string(),
+  productName: z.string(),
   image: z.string().url(),
   price: z.number(),
   quantity: z.number(),
@@ -17,7 +17,7 @@ const itemSchema = z.object({
 
 export const orderDataSchema = z.object({
   total: z.number(),
-  items: z.array(itemSchema),
+  orderItems: z.array(itemSchema),
 });
 
 const itemsSchema = z.object({
