@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
 import { FilterHeader, FiltersCategory, FiltersPrice, Sorting } from './';
-// import { type FiltersProps } from '../lib/types';
 
 type FiltersProps = {
   iconHide?: boolean;
