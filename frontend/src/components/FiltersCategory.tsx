@@ -1,13 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FilterCategoryList, FilterHeader } from '.';
 import { useParams } from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
-import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
+import { AppDispatch, useAppDispatch } from '../redux/store';
 import { addCategorizedProducts } from '../redux/productsSlice';
-import { type ProductItemSchema } from '../lib/types';
-
 import { addCategoryName } from '../redux/filterSlice';
+import { useQuery } from '@tanstack/react-query';
+import { getProductsByCategory } from '../api/queries';
 
 type FiltersCategoryProps = {
   toggle: boolean;
@@ -21,40 +19,20 @@ const FiltersCategory = ({ toggle, window }: FiltersCategoryProps) => {
 
   const { category } = useParams();
   const [open, setOpen] = useState(true);
-  // category;
 
-  const { fetchedProducts: allProducts } = useSelector(
-    (state: RootState) => state.products,
-  );
-  const selectedCategory = useSelector(
-    (state: RootState) => state.filter.selectedCategory,
-  );
+  const { data } = useQuery({
+    queryKey: ['productsByCategory', { category }],
+    queryFn: () => getProductsByCategory(category),
+    enabled: !!category,
+  });
 
   ////LOGIC
   useEffect(() => {
-    if (category) dispatch(addCategoryName(category));
-  }, [category]);
-
-  const categorizedProducts: ProductItemSchema[] = useMemo(
-    () =>
-      allProducts.products.filter(
-        (product) => product.category === selectedCategory,
-      ),
-    [allProducts.products, selectedCategory],
-  );
-
-  useEffect(() => {
-    if (selectedCategory) {
-      const dataToAdd = {
-        products: categorizedProducts,
-        total: categorizedProducts.length,
-        skip: 0,
-        limit: 0,
-      };
-      dispatch(addCategorizedProducts(dataToAdd));
-      dispatch(addCategoryName(selectedCategory ?? selectedCategory));
+    if (category && data) {
+      dispatch(addCategoryName(category));
+      dispatch(addCategorizedProducts(data));
     }
-  }, [selectedCategory]);
+  }, [category, data]);
 
   //toggle open state if filter icon was clicked
   useEffect(() => {

@@ -230,7 +230,6 @@ export type SortMethod =
 
 export type ProductsInitialState = {
   sortOptions: SortingOptions;
-  categoryName: string;
   filteredProductsByCategory: null | Products;
   fetchedProducts: Products;
 };

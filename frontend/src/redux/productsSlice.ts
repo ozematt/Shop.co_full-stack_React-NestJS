@@ -11,7 +11,6 @@ const initialState: ProductsInitialState = {
     field: 'title',
     direction: 'asc',
   },
-  categoryName: '',
   filteredProductsByCategory: null,
   fetchedProducts: {
     products: [],
@@ -31,12 +30,7 @@ const productsSlice = createSlice({
     addCategorizedProducts: (state, action: PayloadAction<Products | null>) => {
       state.filteredProductsByCategory = action.payload;
     },
-    addCategoryName: (state, action: PayloadAction<string>) => {
-      const category = action.payload;
-      const categoryUpperCase =
-        category.charAt(0).toUpperCase() + category.slice(1);
-      state.categoryName = categoryUpperCase;
-    },
+
     addSortMethod: (state, action: PayloadAction<SortMethod>) => {
       const selectedOption = sortOptionsMap[action.payload];
       if (selectedOption) {
@@ -46,11 +40,7 @@ const productsSlice = createSlice({
   },
 });
 
-export const {
-  addProducts,
-  addCategorizedProducts,
-  addSortMethod,
-  addCategoryName,
-} = productsSlice.actions;
+export const { addProducts, addCategorizedProducts, addSortMethod } =
+  productsSlice.actions;
 
 export default productsSlice.reducer;

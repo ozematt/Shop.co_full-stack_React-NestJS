@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { useLocation } from 'react-router-dom';
-import { addCategoryName } from '../redux/productsSlice';
 import {
   CategoryName,
   FilterSettingsIcon,
@@ -9,6 +8,7 @@ import {
   NumberOfProducts,
   SortByMethod,
 } from './';
+import { addCategoryName } from '../redux/filterSlice';
 
 const ShopInfoBar = () => {
   //
