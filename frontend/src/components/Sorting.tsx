@@ -3,16 +3,19 @@ import { addSortMethod } from '../redux/productsSlice';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { sortingOptions } from '../constants';
 import { FilterHeader } from '.';
+import { filterOpen } from '../redux/filterSlice';
+import { SortMethod } from '../lib/types';
 
-type SortingProps = {
-  close?: () => void;
-};
-
-const Sorting = ({ close }: SortingProps) => {
+const Sorting = () => {
   //
   ////DATA
   const dispatch: AppDispatch = useAppDispatch();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); //sorting open/close
+
+  const handleClick = (option: SortMethod) => {
+    dispatch(addSortMethod(option));
+    dispatch(filterOpen());
+  };
 
   ////UI
   return (
@@ -29,7 +32,7 @@ const Sorting = ({ close }: SortingProps) => {
           sortingOptions.map((option) => (
             <div
               key={option}
-              onClick={() => dispatch(addSortMethod(option), close?.())}
+              onClick={() => handleClick(option)}
               className="flex items-center justify-between first:pt-6"
             >
               {' '}

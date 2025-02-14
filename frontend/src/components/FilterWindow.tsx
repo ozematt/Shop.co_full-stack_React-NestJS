@@ -1,18 +1,21 @@
-import { Filters } from ".";
-import { close } from "../assets";
+import { useSelector } from 'react-redux';
+import { Filters } from '.';
+import { close } from '../assets';
+import { filterOpen } from '../redux/filterSlice';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 
-type FilterWindowProps = {
-  onClick: () => void;
-  open: boolean;
-};
+const FilterWindow = () => {
+  //
+  ////DATA
+  const dispatch: AppDispatch = useAppDispatch();
+  const open = useSelector((state: RootState) => state.filter.filterOpen);
 
-const FilterWindow = ({ onClick, open }: FilterWindowProps) => {
   ////UI
   return (
     <>
-      {" "}
+      {' '}
       <div
-        className={`absolute top-[-70px] ${open ? "block" : "hidden"} z-20 w-full rounded-2xl bg-white dark:bg-black`}
+        className={`absolute top-[-70px] ${open ? 'block' : 'hidden'} z-20 w-full rounded-2xl bg-white dark:bg-black`}
       >
         <img
           src={close}
@@ -20,13 +23,13 @@ const FilterWindow = ({ onClick, open }: FilterWindowProps) => {
           width={15}
           height={15}
           className="absolute right-5 top-7 cursor-pointer hover:scale-95 dark:invert"
-          onClick={onClick}
+          onClick={() => dispatch(filterOpen())}
         />
-        <Filters iconHide sortOptions close={onClick} />
+        <Filters window iconHide sortOptions />
       </div>
       <div
-        onClick={onClick}
-        className={` ${open ? "fixed" : "hidden"} inset-0 z-10 bg-black opacity-50`}
+        onClick={() => dispatch(filterOpen())}
+        className={` ${open ? 'fixed' : 'hidden'} inset-0 z-10 bg-black opacity-50`}
       />
     </>
   );

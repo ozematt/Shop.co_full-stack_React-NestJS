@@ -1,11 +1,12 @@
-import { settings } from "../assets";
+import { settings } from '../assets';
+import { filterOpen } from '../redux/filterSlice';
+import { AppDispatch, useAppDispatch } from '../redux/store';
 
-type FilterSettingsIconProps = {
-  onClick: () => void;
-};
-
-const FilterSettingsIcon = ({ onClick }: FilterSettingsIconProps) => {
+const FilterSettingsIcon = () => {
   //
+  ////DATA
+  const dispatch: AppDispatch = useAppDispatch();
+
   ////UI
   return (
     <img
@@ -13,7 +14,7 @@ const FilterSettingsIcon = ({ onClick }: FilterSettingsIconProps) => {
       alt="settings"
       width={34}
       height={34}
-      onClick={onClick}
+      onClick={() => dispatch(filterOpen())}
       className="mb-[-3px] ml-5 hidden -rotate-90 cursor-pointer rounded-full bg-grayBG p-[7px] opacity-80 hover:opacity-100 max-xl:block"
     />
   );

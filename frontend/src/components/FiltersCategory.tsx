@@ -1,41 +1,40 @@
 import { useEffect, useMemo, useState } from 'react';
-import { FilterHeader } from '.';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { FilterCategoryList, FilterHeader } from '.';
+import { useParams } from 'react-router-dom';
+
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
-import {
-  addCategorizedProducts,
-  addCategoryName,
-} from '../redux/productsSlice';
+import { addCategorizedProducts } from '../redux/productsSlice';
 import { type ProductItemSchema } from '../lib/types';
-import { getCategoryList } from '../api/queries';
+
+import { addCategoryName } from '../redux/filterSlice';
 
 type FiltersCategoryProps = {
   toggle: boolean;
-  close?: () => void;
+  window?: boolean;
 };
 
-const FiltersCategory = ({ toggle, close }: FiltersCategoryProps) => {
+const FiltersCategory = ({ toggle, window }: FiltersCategoryProps) => {
   //
   ////DATA
-  const navigate = useNavigate();
   const dispatch: AppDispatch = useAppDispatch();
-  const { category } = useParams();
 
+  const { category } = useParams();
   const [open, setOpen] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState(category);
+  category;
 
   const { fetchedProducts: allProducts } = useSelector(
     (state: RootState) => state.products,
   );
-
-  const { data: categories } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getCategoryList,
-  });
+  const selectedCategory = useSelector(
+    (state: RootState) => state.filter.selectedCategory,
+  );
 
   ////LOGIC
+  useEffect(() => {
+    if (category) dispatch(addCategoryName(category));
+  }, [category]);
+
   const categorizedProducts: ProductItemSchema[] = useMemo(
     () =>
       allProducts.products.filter(
@@ -63,33 +62,16 @@ const FiltersCategory = ({ toggle, close }: FiltersCategoryProps) => {
     setOpen(false);
   }, [toggle]);
 
-  const handleHeaderClick = () => {
-    setOpen(!open), setSelectedCategory('');
-  };
-
-  const handleCategoryClick = (category: string) => {
-    navigate(`/shop/${category}`);
-    setSelectedCategory(category);
-    close?.();
-  };
-
   ////UI
   return (
     <>
-      <FilterHeader title="Category" onClick={handleHeaderClick} state={open} />
+      <FilterHeader
+        title="Category"
+        onClick={() => setOpen(!open)}
+        state={open}
+      />
       <div className="pb-6">
-        {open &&
-          categories?.map((category) => (
-            <div
-              key={category}
-              className="flex items-center justify-between first:pt-6"
-              onClick={() => handleCategoryClick(category)}
-            >
-              <p className="cursor-pointer pb-2 font-satoshi opacity-60 hover:opacity-100">
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </p>
-            </div>
-          ))}
+        {open && <FilterCategoryList window={window} />}
       </div>
     </>
   );

@@ -4,13 +4,14 @@ import { useSelector } from 'react-redux';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import { addCategorizedProducts } from '../redux/productsSlice';
 import { type ProductItemSchema } from '../lib/types';
+import { filterOpen } from '../redux/filterSlice';
 
 type FiltersPriceProps = {
   toggle: boolean;
-  close?: () => void;
+  window?: boolean;
 };
 
-const FiltersPrice = ({ toggle, close }: FiltersPriceProps) => {
+const FiltersPrice = ({ toggle, window }: FiltersPriceProps) => {
   //
   ////DATA
   const dispatch: AppDispatch = useAppDispatch();
@@ -62,8 +63,7 @@ const FiltersPrice = ({ toggle, close }: FiltersPriceProps) => {
       skip: 0,
       limit: 0,
     };
-
-    close?.();
+    if (window) dispatch(filterOpen());
 
     dispatch(addCategorizedProducts(dataToAdd));
   };

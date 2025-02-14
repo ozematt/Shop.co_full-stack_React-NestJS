@@ -9,14 +9,12 @@ import {
   NumberOfProducts,
   SortByMethod,
 } from './';
-import { useFilterWindow } from '../lib/hooks';
 
 const ShopInfoBar = () => {
   //
   ////DATA
   const dispatch: AppDispatch = useAppDispatch();
   const { pathname } = useLocation();
-  const { filterWindowOpen, handleFilterOpen } = useFilterWindow();
 
   ////LOGIC
   //when pathname is changing to "/shop" set category name in global state to ""
@@ -32,10 +30,10 @@ const ShopInfoBar = () => {
       <CategoryName />
       <div className="flex items-center pt-2 max-sm:text-[14px]">
         <NumberOfProducts />
-        <FilterSettingsIcon onClick={handleFilterOpen} />
+        <FilterSettingsIcon />
         <SortByMethod />
       </div>
-      <FilterWindow onClick={handleFilterOpen} open={filterWindowOpen} />
+      <FilterWindow />
     </div>
   );
 };

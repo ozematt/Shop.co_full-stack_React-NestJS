@@ -96,11 +96,6 @@ export type DetailsButtonProps = {
 };
 
 ////FILTERS TYPES
-export type FiltersProps = {
-  iconHide?: boolean;
-  sortOptions?: boolean;
-  close?: () => void;
-};
 
 ////INPUT TYPES
 export type InputProps = {
@@ -221,7 +216,7 @@ export type ProductProps = {
   onClick?: () => void;
 };
 
-type SortingOptions = {
+export type SortingOptions = {
   field: string;
   direction?: string;
 };

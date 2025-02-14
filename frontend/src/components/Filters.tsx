@@ -1,8 +1,14 @@
 import { useCallback, useState } from 'react';
 import { FilterHeader, FiltersCategory, FiltersPrice, Sorting } from './';
-import { type FiltersProps } from '../lib/types';
+// import { type FiltersProps } from '../lib/types';
 
-const Filters = ({ iconHide, sortOptions, close }: FiltersProps) => {
+type FiltersProps = {
+  iconHide?: boolean;
+  sortOptions?: boolean;
+  window?: boolean;
+};
+
+const Filters = ({ iconHide, sortOptions, window }: FiltersProps) => {
   //
   ////DATA
   const [openFilters, setOpenFilters] = useState(false);
@@ -24,11 +30,12 @@ const Filters = ({ iconHide, sortOptions, close }: FiltersProps) => {
         main
         iconHide={iconHide}
       />
+
       <hr className="mt-4 pb-6" />
-      {sortOptions && <Sorting close={close} />}
-      <FiltersCategory toggle={openFilters} close={close} />
+      {sortOptions && <Sorting />}
+      <FiltersCategory toggle={openFilters} window={window} />
       <hr className="pb-6" />
-      <FiltersPrice toggle={openFilters} close={close} />
+      <FiltersPrice toggle={openFilters} window={window} />
     </div>
   );
 };

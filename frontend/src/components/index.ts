@@ -85,8 +85,10 @@ import CheckoutPayButton from './CheckoutPayButton';
 import CheckoutSummary from './CheckoutSummary';
 import FilterPriceInput from './FilterPriceInput';
 import FilterApplyButton from './FilterApplyButton';
+import FilterCategoryList from './FilterCategoryList';
 
 export {
+  FilterCategoryList,
   FilterApplyButton,
   FilterPriceInput,
   CheckoutSummary,
