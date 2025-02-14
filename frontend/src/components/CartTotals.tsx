@@ -11,6 +11,7 @@ import {
   CartPromoCode,
   CartSubtotal,
   CartTotalPrice,
+  SectionSubtitle,
 } from '.';
 
 const CartTotals = () => {
@@ -54,9 +55,9 @@ const CartTotals = () => {
   return (
     <div className="w-full rounded-[20px] ring-1 ring-black ring-opacity-10 min-[1454px]:max-w-[505px] dark:ring-white">
       <div className="px-6 pb-[33px] pt-[20px]">
-        <h6 className="pb-1 font-satoshi text-xl font-bold sm:text-2xl">
-          Order Summary
-        </h6>
+        <div className="pb-1">
+          <SectionSubtitle title="Order Summary" />
+        </div>
         <div>
           <CartSubtotal subtotal={subtotal} />
           <CartDiscount totalDiscount={totalDiscount} savings={savings} />

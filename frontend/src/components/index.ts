@@ -75,8 +75,24 @@ import CartItemShippingTime from './CartItemShippingTime';
 import CartItemPrice from './CartItemPrice';
 import CartItemDeleteIcon from './CartItemDeleteIcon';
 import CartItemQuantity from './CartItemQuantity';
+import SectionSubtitle from './SectionSubtitle';
+import CheckoutAddress from './CheckoutAddress';
+import CheckoutShippingDetails from './CheckoutShippingDetails';
+import SubduedText from './SubduedText';
+import PriceTag from './PriceTag';
+import CheckoutTotalPrice from './CheckoutTotalPrice';
+import CheckoutPayButton from './CheckoutPayButton';
+import CheckoutSummary from './CheckoutSummary';
 
 export {
+  CheckoutSummary,
+  CheckoutPayButton,
+  CheckoutTotalPrice,
+  PriceTag,
+  SubduedText,
+  CheckoutShippingDetails,
+  CheckoutAddress,
+  SectionSubtitle,
   CartItemQuantity,
   CartItemDeleteIcon,
   CartItemPrice,
