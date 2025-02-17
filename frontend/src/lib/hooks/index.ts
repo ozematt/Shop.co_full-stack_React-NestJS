@@ -8,7 +8,10 @@ import usePagedItems from './usePagedItems';
 import useSlideMenu from './useSlideMenu';
 import useToggleTheme from './useToggleTheme';
 import useFilterWindow from './useFilterWindow';
+import usePagination from './usePagination';
+
 export {
+  usePagination,
   useSlideMenu,
   usePagedItems,
   useTimeOut,
