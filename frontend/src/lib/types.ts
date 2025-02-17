@@ -21,21 +21,25 @@ export const orderDataSchema = z.object({
 });
 
 const itemsSchema = z.object({
-  itemId: z.number(),
-  product_name: z.string(),
+  id: z.number(),
+  order_id: z.number(),
+  productName: z.string(),
   image: z.string().url(),
-  price: z.number(),
+  price: z.string(),
   quantity: z.number(),
 });
+
 export const ordersSchema = z.object({
-  orderId: z.number(),
+  id: z.number(),
+  user_id: z.number(),
   total: z.number(),
-  created_at: z.string(),
-  items: z.array(itemsSchema),
+  createdAt: z.string(),
+  orderItems: z.array(itemsSchema),
 });
 
 export type OrdersT = z.infer<typeof ordersSchema>;
 export type OrderData = z.infer<typeof orderDataSchema>;
+export type OrderItem = z.infer<typeof itemsSchema>;
 
 const cartRecord = z.object({
   id: z.number(),

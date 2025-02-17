@@ -93,8 +93,10 @@ import HamburgerListItems from './HamburgerListItems';
 import UserMenuListItems from './UserMenuListItems';
 import UserInfo from './UserInfo';
 import UserPurchaseHistory from './UserPurchaseHistory';
+import UserPurchaseHistoryItem from './UserPurchaseHistoryItem';
 
 export {
+  UserPurchaseHistoryItem,
   UserPurchaseHistory,
   UserInfo,
   UserMenuListItems,
