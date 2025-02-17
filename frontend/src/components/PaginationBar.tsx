@@ -52,20 +52,13 @@ const PaginationBar = ({ total, page }: PaginationBarProps) => {
             onClick={() =>
               number !== '...' && handleSelectedPageNumber(Number(number))
             }
-            className="h-[40px] w-[40px] rounded-[8px] font-satoshi text-xs font-medium opacity-50 hover:bg-grayBG hover:opacity-100 md:text-sm dark:hover:text-black"
-            style={{
-              ...(number === pageNumber
-                ? { background: '#f0f0f0', opacity: '100%', color: 'black' }
-                : {}),
-              ...(number === '...'
-                ? { background: 'none', cursor: 'auto' }
-                : {}),
-            }}
+            className={` ${number === pageNumber && 'bg-grayBG text-black opacity-100'} ${number === '...' && 'cursor-auto bg-none'} h-[40px] w-[40px] rounded-[8px] font-satoshi text-xs font-medium opacity-50 hover:bg-grayBG hover:opacity-100 md:text-sm dark:hover:text-black`}
           >
             {number}
           </button>
         ))}
       </div>
+
       <PaginationButton onClick={handleNext} icon={arrowRight} text="Next" />
     </div>
   );
