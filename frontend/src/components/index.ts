@@ -90,8 +90,10 @@ import Overlay from './Overlay';
 import CloseButton from './CloseButton';
 import SlideMenuHeader from './SlideMenuHeader';
 import HamburgerListItems from './HamburgerListItems';
+import UserMenuListItems from './UserMenuListItems';
 
 export {
+  UserMenuListItems,
   HamburgerListItems,
   SlideMenuHeader,
   CloseButton,

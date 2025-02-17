@@ -2,23 +2,14 @@ import { useCallback } from 'react';
 import { userIcon } from '../assets';
 import { useSlideMenu } from '../lib/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
-import { logOutUser } from '../redux/userSlice';
-import { clearCart } from '../redux/cartSlice';
-import { Overlay, SlideMenuHeader } from '.';
+import { Overlay, SlideMenuHeader, UserMenuListItems } from '.';
 
 const UserIcon = () => {
   //
   ////DATA
   const navigate = useNavigate();
-  const dispatch: AppDispatch = useAppDispatch();
 
   const token = localStorage.getItem('token');
-
-  const username =
-    useSelector((state: RootState) => state.user.username) ||
-    localStorage.getItem('user');
 
   //custom hook
   const { menuOpen, setMenuOpen, menuProps } = useSlideMenu();
@@ -31,13 +22,6 @@ const UserIcon = () => {
     }
     setMenuOpen((prevState) => !prevState);
   }, [token, navigate]);
-
-  const handleLogOut = useCallback(() => {
-    dispatch(logOutUser());
-    dispatch(clearCart());
-    setMenuOpen(false);
-    navigate('/');
-  }, []);
 
   ////UI
   return (
@@ -63,24 +47,7 @@ const UserIcon = () => {
           />
 
           <hr className="border-b-1 border-stone-400" />
-
-          <li
-            className="hover: cursor-pointer pb-2 pl-4 pt-2 font-satoshi hover:bg-white dark:text-white dark:hover:bg-zinc-700"
-            onClick={() => {
-              navigate(`account/${username}`);
-              setMenuOpen(false);
-            }}
-          >
-            My Account
-          </li>
-
-          <li
-            className="hover: cursor-pointer pb-2 pl-4 pt-2 font-satoshi hover:bg-white dark:text-white dark:hover:bg-zinc-700"
-            onClick={handleLogOut}
-          >
-            {' '}
-            Log Out
-          </li>
+          <UserMenuListItems onClick={() => setMenuOpen(false)} />
         </ul>
       </div>
     </>
