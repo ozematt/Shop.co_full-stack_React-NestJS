@@ -88,8 +88,10 @@ import FilterApplyButton from './FilterApplyButton';
 import FilterCategoryList from './FilterCategoryList';
 import Overlay from './Overlay';
 import CloseButton from './CloseButton';
+import SlideMenuHeader from './SlideMenuHeader';
 
 export {
+  SlideMenuHeader,
   CloseButton,
   Overlay,
   FilterCategoryList,

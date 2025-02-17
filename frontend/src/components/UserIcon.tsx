@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import { logOutUser } from '../redux/userSlice';
 import { clearCart } from '../redux/cartSlice';
-import { CloseButton, Overlay } from '.';
+import { CloseButton, Overlay, SlideMenuHeader } from '.';
 
 const UserIcon = () => {
   //
@@ -57,10 +57,11 @@ const UserIcon = () => {
         className={`${menuOpen ? 'translate-x-0' : 'translate-x-full'} fixed right-[0] top-[0] z-50 h-[100vh] w-[50vw] transform bg-stone-100 shadow-lg transition-transform duration-300 lg:w-[30vw] xl:w-[20vw] 2xl:w-[15vw] dark:bg-zinc-800`}
       >
         <ul className="w-full p-4 text-xl text-black md:p-6">
-          <div className="flex justify-between px-4 pb-4 pt-4 font-bold dark:text-white">
-            User Panel
-            <CloseButton onClick={() => setMenuOpen(false)} />
-          </div>
+          <SlideMenuHeader
+            onCloseClick={() => setMenuOpen(false)}
+            title="User Panel"
+          />
+
           <hr className="border-b-1 border-stone-400" />
 
           <li
