@@ -96,8 +96,10 @@ import UserPurchaseHistory from './UserPurchaseHistory';
 import UserPurchaseHistoryItem from './UserPurchaseHistoryItem';
 import PaginationButton from './PaginationButton';
 import PaginationPageNumberButton from './PaginationPageNumberButton';
+import ProductTitle from './ProductTitle';
 
 export {
+  ProductTitle,
   PaginationPageNumberButton,
   PaginationButton,
   UserPurchaseHistoryItem,

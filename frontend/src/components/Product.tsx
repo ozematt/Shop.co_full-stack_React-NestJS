@@ -1,7 +1,7 @@
 import { Rating } from '@mui/material';
 import { useDiscount, useRedirectToProduct } from '../lib/hooks';
 import { type ProductProps } from '../lib/types';
-import { ProductImage } from '.';
+import { ProductImage, ProductTitle } from '.';
 import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '../api/queries';
 import { useEffect } from 'react';
@@ -49,9 +49,7 @@ const Product = ({
       className="h-[400px] cursor-pointer transition ease-in-out hover:scale-95 sm:h-[408px]"
     >
       <ProductImage src={thumbnail} description={title} />
-      <p className="w-full max-w-[295px] pt-4 font-satoshi text-xl font-bold">
-        {title.length > 25 ? title.slice(0, 25) + '...' : title}
-      </p>
+      <ProductTitle title={title} />
 
       <div className="flex pt-2">
         <Rating
