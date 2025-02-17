@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { arrowLeft, arrowRight } from '../assets';
 import { generatePagination } from '../lib/helpers/generatePagination';
 import { type PaginationBarProps } from '../lib/types';
-import { PaginationButton } from '.';
+import { PaginationButton, PaginationPageNumberButton } from '.';
 
 const PaginationBar = ({ total, page }: PaginationBarProps) => {
   //
@@ -47,15 +47,14 @@ const PaginationBar = ({ total, page }: PaginationBarProps) => {
 
       <div className="mx-auto hidden space-x-2 md:block">
         {pageNumbers.map((number, index) => (
-          <button
+          <PaginationPageNumberButton
             key={index}
             onClick={() =>
               number !== '...' && handleSelectedPageNumber(Number(number))
             }
-            className={` ${number === pageNumber && 'bg-grayBG text-black opacity-100'} ${number === '...' && 'cursor-auto bg-none'} h-[40px] w-[40px] rounded-[8px] font-satoshi text-xs font-medium opacity-50 hover:bg-grayBG hover:opacity-100 md:text-sm dark:hover:text-black`}
-          >
-            {number}
-          </button>
+            number={number}
+            pageNumber={pageNumber}
+          />
         ))}
       </div>
 
