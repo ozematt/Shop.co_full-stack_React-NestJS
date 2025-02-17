@@ -91,8 +91,10 @@ import CloseButton from './CloseButton';
 import SlideMenuHeader from './SlideMenuHeader';
 import HamburgerListItems from './HamburgerListItems';
 import UserMenuListItems from './UserMenuListItems';
+import UserInfo from './UserInfo';
 
 export {
+  UserInfo,
   UserMenuListItems,
   HamburgerListItems,
   SlideMenuHeader,

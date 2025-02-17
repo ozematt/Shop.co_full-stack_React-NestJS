@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { getDate } from '../lib/helpers';
 import { useQuery } from '@tanstack/react-query';
 import { logOutUser } from '../redux/userSlice';
-import { Alert, Empty } from '.';
+import { Alert, Empty, UserInfo } from '.';
 import { getOrder } from '../api/queries';
 
 const MyAccount = () => {
@@ -29,7 +29,6 @@ const MyAccount = () => {
     queryKey: ['orders'],
     queryFn: getOrder,
   });
-  console.log(orders);
 
   useEffect(() => {
     if (isError) {
@@ -57,17 +56,9 @@ const MyAccount = () => {
             buttonText="Login"
           />
         ) : null}
-        <div className="flex max-h-[400px] w-1/3 shrink-0 flex-col items-center rounded-[20px] py-5 ring-1 ring-black ring-opacity-10 max-lg:w-full md:py-7 dark:ring-white">
-          <img
-            src={user}
-            alt="avatar"
-            className="h-[150px] w-[150px] rounded-full bg-grayBG object-contain opacity-80 md:h-[200px] md:w-[200px] dark:bg-zinc-900 dark:bg-opacity-30 dark:opacity-100 dark:invert"
-          />
 
-          <p className="mt-2 font-satoshi text-2xl font-medium opacity-60 dark:opacity-100">
-            {username}
-          </p>
-        </div>
+        <UserInfo />
+
         <div className="w-full rounded-[20px] px-7 py-5 ring-1 ring-black ring-opacity-10 md:px-9 md:py-7 dark:ring-white">
           <h6 className="font-integralCFBold text-2xl md:text-4xl">
             Purchase History
