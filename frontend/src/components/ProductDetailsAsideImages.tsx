@@ -1,16 +1,16 @@
 import { SkeletonImagesAside } from '.';
 
-type ProductImagesAsideProps = {
+type ProductDetailsAsideImagesProps = {
   images: string[];
   onClick: (img: string) => void;
   loaded: boolean;
 };
 
-const ProductImagesAside = ({
+const ProductDetailsAsideImages = ({
   images,
   onClick,
   loaded,
-}: ProductImagesAsideProps) => {
+}: ProductDetailsAsideImagesProps) => {
   //
   ////UI
   return (
@@ -37,4 +37,4 @@ const ProductImagesAside = ({
   );
 };
 
-export default ProductImagesAside;
+export default ProductDetailsAsideImages;

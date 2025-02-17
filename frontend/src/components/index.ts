@@ -48,8 +48,8 @@ import FiltersPrice from './FiltersPrice';
 import FilterHeader from './FilterHeader';
 import SkeletonProduct from './SkeletonProduct';
 import SkeletonMainImage from './SkeletonImageMain';
-import ProductImageMain from './ProductImageMain';
-import ProductImagesAside from './ProductImagesAside';
+import ProductDetailsMainImage from './ProductDetailsMainImage';
+import ProductDetailsAsideImages from './ProductDetailsAsideImages';
 import SkeletonImagesAside from './SkeletonImagesAside';
 import ProductImage from './ProductImage';
 import Arrow from './Arrow';
@@ -150,8 +150,8 @@ export {
   Arrow,
   ProductImage,
   SkeletonImagesAside,
-  ProductImagesAside,
-  ProductImageMain,
+  ProductDetailsAsideImages,
+  ProductDetailsMainImage,
   SkeletonMainImage,
   SkeletonProduct,
   SignUp,

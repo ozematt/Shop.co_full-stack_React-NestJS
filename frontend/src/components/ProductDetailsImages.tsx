@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { type ProductImagesProps } from '../lib/types';
-import { ProductImageMain, ProductImagesAside } from '.';
+import { ProductDetailsMainImage, ProductDetailsAsideImages } from '.';
 
 const ProductDetailsImages = ({ images }: ProductImagesProps) => {
   //
@@ -16,12 +16,16 @@ const ProductDetailsImages = ({ images }: ProductImagesProps) => {
   ////UI
   return (
     <div className="mx-auto w-full max-w-[610px] gap-[12px] max-xl:space-y-3 xl:flex xl:flex-row-reverse">
-      <ProductImageMain
+      <ProductDetailsMainImage
         image={bigImg}
         onLoad={() => setLoaded(true)}
         loaded={loaded}
       />
-      <ProductImagesAside images={images} onClick={setBigImg} loaded={loaded} />
+      <ProductDetailsAsideImages
+        images={images}
+        onClick={setBigImg}
+        loaded={loaded}
+      />
     </div>
   );
 };

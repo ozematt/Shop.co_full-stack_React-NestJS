@@ -1,12 +1,16 @@
 import { SkeletonMainImage } from '.';
 
-type ProductImageMainProps = {
+type ProductDetailsMainImageProps = {
   image: string | undefined;
   onLoad: () => void;
   loaded: boolean;
 };
 
-const ProductImageMain = ({ image, onLoad, loaded }: ProductImageMainProps) => {
+const ProductDetailsMainImage = ({
+  image,
+  onLoad,
+  loaded,
+}: ProductDetailsMainImageProps) => {
   //
   //UI
   return (
@@ -24,4 +28,4 @@ const ProductImageMain = ({ image, onLoad, loaded }: ProductImageMainProps) => {
   );
 };
 
-export default ProductImageMain;
+export default ProductDetailsMainImage;
