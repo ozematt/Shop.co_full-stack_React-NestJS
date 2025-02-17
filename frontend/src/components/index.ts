@@ -98,8 +98,10 @@ import PaginationButton from './PaginationButton';
 import PaginationPageNumberButton from './PaginationPageNumberButton';
 import ProductTitle from './ProductTitle';
 import ProductRating from './ProductRating';
+import ProductPrice from './ProductPrice';
 
 export {
+  ProductPrice,
   ProductRating,
   ProductTitle,
   PaginationPageNumberButton,
