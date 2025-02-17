@@ -1,8 +1,9 @@
-import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { arrowLeft, arrowRight } from "../assets";
-import { generatePagination } from "../lib/helpers/generatePagination";
-import { type PaginationBarProps } from "../lib/types";
+import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { arrowLeft, arrowRight } from '../assets';
+import { generatePagination } from '../lib/helpers/generatePagination';
+import { type PaginationBarProps } from '../lib/types';
+import { PaginationButton } from '.';
 
 const PaginationBar = ({ total, page }: PaginationBarProps) => {
   //
@@ -38,28 +39,26 @@ const PaginationBar = ({ total, page }: PaginationBarProps) => {
   ////UI
   return (
     <div className="mt-[20px] flex justify-between">
-      <button
+      <PaginationButton
         onClick={handlePrevious}
-        className="flex items-center rounded-lg px-[14px] py-2 font-satoshi text-sm font-medium ring-1 ring-black ring-opacity-20 transition duration-200 ease-in-out hover:scale-95 active:scale-105 dark:ring-white"
-      >
-        <img src={arrowLeft} alt="arrow left" className="pr-3 dark:invert" />
-        Previous
-      </button>
+        icon={arrowLeft}
+        text="Previous"
+      />
 
       <div className="mx-auto hidden space-x-2 md:block">
         {pageNumbers.map((number, index) => (
           <button
             key={index}
             onClick={() =>
-              number !== "..." && handleSelectedPageNumber(Number(number))
+              number !== '...' && handleSelectedPageNumber(Number(number))
             }
             className="h-[40px] w-[40px] rounded-[8px] font-satoshi text-xs font-medium opacity-50 hover:bg-grayBG hover:opacity-100 md:text-sm dark:hover:text-black"
             style={{
               ...(number === pageNumber
-                ? { background: "#f0f0f0", opacity: "100%", color: "black" }
+                ? { background: '#f0f0f0', opacity: '100%', color: 'black' }
                 : {}),
-              ...(number === "..."
-                ? { background: "none", cursor: "auto" }
+              ...(number === '...'
+                ? { background: 'none', cursor: 'auto' }
                 : {}),
             }}
           >
@@ -67,14 +66,7 @@ const PaginationBar = ({ total, page }: PaginationBarProps) => {
           </button>
         ))}
       </div>
-      <button
-        onClick={handleNext}
-        className="flex items-center rounded-lg px-[14px] py-5 font-satoshi text-sm font-medium ring-1 ring-black ring-opacity-20 transition duration-200 ease-in-out hover:scale-95 active:scale-105 md:py-2 dark:ring-white"
-      >
-        {" "}
-        Next
-        <img src={arrowRight} alt="" className="pl-3 dark:invert" />
-      </button>
+      <PaginationButton onClick={handleNext} icon={arrowRight} text="Next" />
     </div>
   );
 };
