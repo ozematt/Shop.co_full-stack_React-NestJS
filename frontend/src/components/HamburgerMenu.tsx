@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { navLinks } from '../constants';
 import { hamburger } from '../assets';
 import { useMenuOpen, useToggleTheme } from '../lib/hooks';
-import { CloseButton, Overlay, ThemeIcon } from '.';
+import { CloseButton, Overlay, SlideMenuHeader, ThemeIcon } from '.';
 
 const HamburgerMenu = () => {
   //
@@ -28,12 +28,12 @@ const HamburgerMenu = () => {
         className={`${menuOpen ? 'translate-x-0' : '-translate-x-full'} absolute left-0 top-0 z-50 h-[100vh] w-[50vw] transform bg-stone-100 shadow-lg transition-transform duration-300 sm:w-[40vw] lg:w-[30vw] xl:w-[20vw] 2xl:w-[15vw] dark:dark:bg-zinc-800`}
       >
         <ul className="w-full p-4 text-xl text-black md:p-10">
-          <div className="flex justify-between px-4 pb-4 pt-4 font-bold dark:text-white">
-            MENU
-            <CloseButton onClick={() => setMenuOpen(false)} />
-          </div>
-
+          <SlideMenuHeader
+            onCloseClick={() => setMenuOpen(false)}
+            title="MENU"
+          />
           <hr className="border-b-1 border-stone-400" />
+
           <li
             onClick={() => {
               navigate('/shop'), setMenuOpen(false);
@@ -42,6 +42,7 @@ const HamburgerMenu = () => {
           >
             Shop
           </li>
+
           {navLinks.map((link, index) => (
             <li
               key={index}
@@ -51,7 +52,9 @@ const HamburgerMenu = () => {
               {link.label}
             </li>
           ))}
+
           <hr className="border-b-1 border-stone-400" />
+
           <li
             {...themeToggle}
             className="flex cursor-pointer items-center pb-2 pl-4 pt-2 font-satoshi hover:bg-white dark:text-white dark:hover:bg-zinc-700"
