@@ -1,7 +1,7 @@
 import { Rating } from '@mui/material';
 import { useDiscount, useRedirectToProduct } from '../lib/hooks';
 import { type ProductProps } from '../lib/types';
-import { ProductImage, ProductTitle } from '.';
+import { ProductImage, ProductRating, ProductTitle } from '.';
 import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '../api/queries';
 import { useEffect } from 'react';
@@ -50,18 +50,7 @@ const Product = ({
     >
       <ProductImage src={thumbnail} description={title} />
       <ProductTitle title={title} />
-
-      <div className="flex pt-2">
-        <Rating
-          defaultValue={Math.round(rating * 2) / 2}
-          precision={0.5}
-          readOnly
-        />{' '}
-        <p className="pl-2 pt-1 font-satoshi text-sm">
-          {Math.round(rating * 2) / 2}
-          <span className="opacity-50">/5</span>
-        </p>
-      </div>
+      <ProductRating rating={rating} />
 
       <div className="flex items-center gap-[2px] pt-2 font-satoshi text-2xl font-bold">
         {' '}
