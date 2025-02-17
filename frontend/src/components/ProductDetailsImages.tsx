@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { type ProductImagesProps } from '../lib/types';
 import { ProductImageMain, ProductImagesAside } from '.';
 
-const ProductImages = ({ images }: ProductImagesProps) => {
+const ProductDetailsImages = ({ images }: ProductImagesProps) => {
   //
   ///DATA
   const [bigImg, setBigImg] = useState<string>('');
@@ -26,4 +26,4 @@ const ProductImages = ({ images }: ProductImagesProps) => {
   );
 };
 
-export default ProductImages;
+export default ProductDetailsImages;

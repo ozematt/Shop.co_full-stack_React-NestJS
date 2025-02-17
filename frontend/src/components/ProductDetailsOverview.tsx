@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Comment, Details, DetailsButton } from './';
+import { Comment, Details, DetailsButton } from '.';
 import { ProductItemSchema } from '../lib/types';
 
-const ProductInfo = ({
+const ProductDetailsOverview = ({
   brand,
   weight,
   dimensions,
@@ -67,4 +67,4 @@ const ProductInfo = ({
   );
 };
 
-export default ProductInfo;
+export default ProductDetailsOverview;

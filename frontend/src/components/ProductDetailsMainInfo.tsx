@@ -2,7 +2,7 @@ import { Rating, useMediaQuery } from '@mui/material';
 import { useDiscount } from '../lib/hooks';
 import { type ProductItemSchema } from '../lib/types';
 
-const ProductMainDetails = ({
+const ProductDetailsMainInfo = ({
   discountPercentage,
   price,
   title,
@@ -34,6 +34,7 @@ const ProductMainDetails = ({
           <span className="opacity-50">/5</span>
         </p>
       </div>
+
       {/* price */}
       <div className="flex items-center gap-[2px] pt-[14px] font-satoshi text-2xl font-bold md:text-[32px]">
         {' '}
@@ -49,6 +50,7 @@ const ProductMainDetails = ({
           </>
         )}
       </div>
+
       {/* captions */}
       <p className="pt-[20px] font-satoshi opacity-60 max-md:text-sm">
         {description}
@@ -57,4 +59,4 @@ const ProductMainDetails = ({
   );
 };
 
-export default ProductMainDetails;
+export default ProductDetailsMainInfo;

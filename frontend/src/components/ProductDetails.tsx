@@ -5,11 +5,11 @@ import { RootState } from '../redux/store';
 import {
   AlsoLike,
   Breadcrumbs,
-  ProductInfo,
-  ProductMainDetails,
-  ProductImages,
-  ProductMainButtons,
-} from './';
+  ProductDetailsImages,
+  ProductDetailsMainInfo,
+  ProductDetailsMainButtons,
+  ProductDetailsOverview,
+} from '.';
 import { Footer, Newsletter } from '../sections';
 import { defaultProduct } from '../constants';
 import { type ProductItemSchema } from '../lib/types';
@@ -59,14 +59,15 @@ const ProductDetails = () => {
         <div className="border-b-2" />
         <Breadcrumbs />
         <div className="mt-9 lg:flex">
-          <ProductImages images={displayedProduct.images} />
+          <ProductDetailsImages images={displayedProduct.images} />
+
           <div className="mx-auto flex w-full max-w-[627px] flex-col justify-between max-lg:mt-7 lg:ml-[40px]">
-            <ProductMainDetails {...displayedProduct} />
-            <ProductMainButtons {...displayedProduct} />
+            <ProductDetailsMainInfo {...displayedProduct} />
+            <ProductDetailsMainButtons {...displayedProduct} />
           </div>
         </div>
         {/* Product details + reviews */}
-        <ProductInfo {...displayedProduct} />
+        <ProductDetailsOverview {...displayedProduct} />
         <AlsoLike />
       </section>
 

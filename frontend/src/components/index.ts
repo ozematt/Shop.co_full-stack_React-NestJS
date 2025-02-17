@@ -18,10 +18,10 @@ import MyAccount from './MyAccount';
 import PaginationBar from './PaginationBar';
 import Product from './Product';
 import ProductDetails from './ProductDetails';
-import ProductImages from './ProductImages';
-import ProductInfo from './ProductInfo';
-import ProductMainButtons from './ProductMainButtons';
-import ProductMainDetails from './ProductMainDetails';
+import ProductDetailsImages from './ProductDetailsImages';
+import ProductDetailsOverview from './ProductDetailsOverview';
+import ProductDetailsMainButtons from './ProductDetailsMainButtons';
+import ProductDetailsMainInfo from './ProductDetailsMainInfo';
 import QuantityButton from './QuantityButton';
 import Shop from './Shop';
 import ShopInfoBar from './ShopInfoBar';
@@ -178,10 +178,10 @@ export {
   PaginationBar,
   Product,
   ProductDetails,
-  ProductImages,
-  ProductInfo,
-  ProductMainButtons,
-  ProductMainDetails,
+  ProductDetailsImages,
+  ProductDetailsOverview,
+  ProductDetailsMainButtons,
+  ProductDetailsMainInfo,
   QuantityButton,
   Shop,
   ShopInfoBar,

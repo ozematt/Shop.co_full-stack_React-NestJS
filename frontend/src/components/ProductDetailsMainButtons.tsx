@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../redux/cartSlice';
 import { AppDispatch, useAppDispatch } from '../redux/store';
-import { QuantityButton } from './';
+import { QuantityButton } from '.';
 import { useQuantity } from '../lib/hooks';
 import { useCallback } from 'react';
 import { type ProductItemSchema } from '../lib/types';
 
-const ProductMainButtons = ({
+const ProductDetailsMainButtons = ({
   shippingInformation,
   discountPercentage,
   id,
@@ -92,4 +92,4 @@ const ProductMainButtons = ({
   );
 };
 
-export default ProductMainButtons;
+export default ProductDetailsMainButtons;
