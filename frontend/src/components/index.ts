@@ -92,8 +92,10 @@ import SlideMenuHeader from './SlideMenuHeader';
 import HamburgerListItems from './HamburgerListItems';
 import UserMenuListItems from './UserMenuListItems';
 import UserInfo from './UserInfo';
+import UserPurchaseHistory from './UserPurchaseHistory';
 
 export {
+  UserPurchaseHistory,
   UserInfo,
   UserMenuListItems,
   HamburgerListItems,
