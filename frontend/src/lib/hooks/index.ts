@@ -5,11 +5,11 @@ import useDebounce from './useDebounce';
 import useRedirectToProduct from './useRedirectToProduct';
 import useTimeOut from './useTimeOut';
 import usePagedItems from './usePagedItems';
-import useMenuOpen from './useMenuOpen';
+import useSlideMenu from './useSlideMenu';
 import useToggleTheme from './useToggleTheme';
 import useFilterWindow from './useFilterWindow';
 export {
-  useMenuOpen,
+  useSlideMenu,
   usePagedItems,
   useTimeOut,
   useDiscount,

@@ -1,16 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import { navLinks } from '../constants';
 import { hamburger } from '../assets';
-import { useMenuOpen, useToggleTheme } from '../lib/hooks';
-import { CloseButton, Overlay, SlideMenuHeader, ThemeIcon } from '.';
+import { useSlideMenu } from '../lib/hooks';
+import { HamburgerListItems, Overlay, SlideMenuHeader } from '.';
 
 const HamburgerMenu = () => {
   //
   ////DATA
-  const navigate = useNavigate();
   const { menuOpen, setMenuOpen, toggleMenu, handleMenuItemClick, menuProps } =
-    useMenuOpen();
-  const { themeToggle } = useToggleTheme();
+    useSlideMenu();
+
   ////UI
   return (
     <>
@@ -33,37 +30,7 @@ const HamburgerMenu = () => {
             title="MENU"
           />
           <hr className="border-b-1 border-stone-400" />
-
-          <li
-            onClick={() => {
-              navigate('/shop'), setMenuOpen(false);
-            }}
-            className="hover: cursor-pointer pb-2 pl-4 pt-2 font-satoshi hover:bg-white dark:text-white dark:hover:bg-zinc-700"
-          >
-            Shop
-          </li>
-
-          {navLinks.map((link, index) => (
-            <li
-              key={index}
-              onClick={() => handleMenuItemClick(link.id)}
-              className="cursor-pointer py-2 pl-4 font-satoshi hover:bg-white dark:text-white dark:hover:bg-zinc-700"
-            >
-              {link.label}
-            </li>
-          ))}
-
-          <hr className="border-b-1 border-stone-400" />
-
-          <li
-            {...themeToggle}
-            className="flex cursor-pointer items-center pb-2 pl-4 pt-2 font-satoshi hover:bg-white dark:text-white dark:hover:bg-zinc-700"
-          >
-            <div className="mr-2">
-              <ThemeIcon isVisible />
-            </div>{' '}
-            Theme
-          </li>
+          <HamburgerListItems onLinkClick={handleMenuItemClick} />
         </ul>
       </div>
     </>

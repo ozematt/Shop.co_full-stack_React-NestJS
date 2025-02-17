@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { userIcon } from '../assets';
-import { useMenuOpen } from '../lib/hooks';
+import { useSlideMenu } from '../lib/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import { logOutUser } from '../redux/userSlice';
 import { clearCart } from '../redux/cartSlice';
-import { CloseButton, Overlay, SlideMenuHeader } from '.';
+import { Overlay, SlideMenuHeader } from '.';
 
 const UserIcon = () => {
   //
@@ -21,7 +21,7 @@ const UserIcon = () => {
     localStorage.getItem('user');
 
   //custom hook
-  const { menuOpen, setMenuOpen, menuProps } = useMenuOpen();
+  const { menuOpen, setMenuOpen, menuProps } = useSlideMenu();
 
   ////LOGIC
   const handleUserPanel = useCallback(() => {

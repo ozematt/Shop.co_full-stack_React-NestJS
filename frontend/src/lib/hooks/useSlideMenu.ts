@@ -1,19 +1,24 @@
-import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const useMenuOpen = () => {
+const useSlideMenu = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenuItemClick = useCallback(
-    (id: string) => {
-      navigate("/");
+    (id?: string) => {
+      if (!id) {
+        navigate('/shop');
+        setMenuOpen(false);
+        return;
+      }
+      navigate('/');
       setMenuOpen(false);
       // Scrolling to section id after page load
       setTimeout(() => {
         const targetElement = document.getElementById(id);
         if (targetElement) {
-          targetElement.scrollIntoView({ behavior: "smooth" });
+          targetElement.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100); // delay to make sure the page has loaded
     },
@@ -23,16 +28,16 @@ const useMenuOpen = () => {
   // Escape key support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === 'Escape') setMenuOpen(false);
     };
 
     // start listening when menu is open
     if (menuOpen) {
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [menuOpen]);
 
@@ -64,12 +69,12 @@ const useMenuOpen = () => {
       }
     };
 
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchmove', handleTouchMove);
 
     return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, [menuOpen]);
 
@@ -89,4 +94,4 @@ const useMenuOpen = () => {
   };
 };
 
-export default useMenuOpen;
+export default useSlideMenu;

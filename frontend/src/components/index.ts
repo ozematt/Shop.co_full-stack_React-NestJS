@@ -89,8 +89,10 @@ import FilterCategoryList from './FilterCategoryList';
 import Overlay from './Overlay';
 import CloseButton from './CloseButton';
 import SlideMenuHeader from './SlideMenuHeader';
+import HamburgerListItems from './HamburgerListItems';
 
 export {
+  HamburgerListItems,
   SlideMenuHeader,
   CloseButton,
   Overlay,
