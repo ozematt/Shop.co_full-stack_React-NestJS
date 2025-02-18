@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 //// BUTTON TYPES
 export type ButtonProps = {
+  accent: boolean;
   children: string;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset' | undefined;

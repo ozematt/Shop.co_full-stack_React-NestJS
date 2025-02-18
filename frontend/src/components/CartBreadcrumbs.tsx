@@ -19,11 +19,12 @@ const CartBreadcrumbs = () => {
       {location.pathname === '/cart/checkout' && (
         <div
           onClick={() => navigate('/cart')}
-          className="flex cursor-pointer px-2 font-satoshi leading-none hover:opacity-70"
+          className="flex font-satoshi leading-none"
         >
-          Cart
+          <span className="cursor-pointer px-2 hover:opacity-70">Cart</span>
+
           <Arrow />
-          <strong>Checkout</strong>
+          <strong className="pl-2">Checkout</strong>
         </div>
       )}
     </>

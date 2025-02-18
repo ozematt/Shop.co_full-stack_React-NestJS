@@ -20,14 +20,13 @@ const CartIcon = () => {
 
   ////UI
   return (
-    <div className="relative">
+    <div onClick={handleCart} className="relative cursor-pointer">
       <img
         src={cartIcon}
         alt="cart icon"
         width={24}
         height={24}
-        onClick={handleCart}
-        className="cursor-pointer hover:opacity-60 dark:invert"
+        className="hover:opacity-60 dark:invert"
       />
       <CartBadge />
     </div>

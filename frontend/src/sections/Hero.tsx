@@ -1,7 +1,7 @@
-import { stats } from "../constants";
-import { heroIMG } from "../assets";
-import { Button } from "../components";
-import { useNavigate } from "react-router-dom";
+import { stats } from '../constants';
+import { heroIMG } from '../assets';
+import { Button } from '../components';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   //
@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <section className="relative bg-grayBG px-4 sm:px-[100px] dark:bg-zinc-900">
       <div className="w-full max-w-[360px] pt-10 max-sm:mx-auto sm:max-w-[520px] sm:pt-[103px]">
-        {" "}
+        {' '}
         <h1 className="font-integralCFBold text-4xl sm:text-[64px] sm:leading-[64px]">
           Discover what makes your style truly yours
         </h1>
@@ -21,7 +21,9 @@ const Hero = () => {
           designed to highlight your individuality and meet your unique
           preferences.
         </p>
-        <Button onClick={() => navigate("/shop")}>Shop now</Button>
+        <Button accent onClick={() => navigate('/shop')}>
+          Shop now
+        </Button>
       </div>
 
       <div className="flex flex-wrap gap-[27px] py-[22px] max-[833px]:justify-center sm:gap-10 sm:pb-[116px] sm:pt-[48px]">
