@@ -105,8 +105,10 @@ import SortByMenuItem from './SortByMenuItem';
 import SortByMethodItem from './SortByMethodItem';
 import SortByMethodMenu from './SortByMethodMenu';
 import SortingItem from './SortingItem';
+import UserPurchaseHistoryOrder from './UserPurchaseHistoryOrder';
 
 export {
+  UserPurchaseHistoryOrder,
   SortingItem,
   SortByMethodMenu,
   SortByMethodItem,

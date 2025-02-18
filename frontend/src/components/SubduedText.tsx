@@ -1,10 +1,12 @@
+import { memo } from 'react';
+
 type SubduedTextProps = {
   text: string;
   show?: boolean;
   discount?: number;
 };
 
-const SubduedText = ({ text, show, discount }: SubduedTextProps) => {
+const SubduedText = memo(({ text, show, discount }: SubduedTextProps) => {
   //
   ////UI
   return (
@@ -12,6 +14,6 @@ const SubduedText = ({ text, show, discount }: SubduedTextProps) => {
       {text} {show ? <span>(-{discount}%)</span> : null}
     </p>
   );
-};
+});
 
 export default SubduedText;

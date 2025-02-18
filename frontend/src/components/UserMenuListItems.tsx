@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { logOutUser } from '../redux/userSlice';
 import { clearCart } from '../redux/cartSlice';
 
@@ -9,7 +9,7 @@ type UserMenuListItemsProps = {
   onClick: () => void;
 };
 
-const UserMenuListItems = ({ onClick }: UserMenuListItemsProps) => {
+const UserMenuListItems = memo(({ onClick }: UserMenuListItemsProps) => {
   //
   ////DATA
   const navigate = useNavigate();
@@ -49,6 +49,6 @@ const UserMenuListItems = ({ onClick }: UserMenuListItemsProps) => {
       </li>
     </>
   );
-};
+});
 
 export default UserMenuListItems;

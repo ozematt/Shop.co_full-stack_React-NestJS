@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type SortingItemProps = {
   onClick: () => void;
   option: string;
 };
 
-const SortingItem = ({ onClick, option }: SortingItemProps) => {
+const SortingItem = memo(({ onClick, option }: SortingItemProps) => {
   //
   ////UI
   return (
@@ -17,6 +19,6 @@ const SortingItem = ({ onClick, option }: SortingItemProps) => {
       </p>
     </div>
   );
-};
+});
 
 export default SortingItem;

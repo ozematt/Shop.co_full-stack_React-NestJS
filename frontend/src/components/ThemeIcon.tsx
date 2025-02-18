@@ -1,11 +1,12 @@
-import { darkIcon } from "../assets";
-import { useToggleTheme } from "../lib/hooks";
+import { memo } from 'react';
+import { darkIcon } from '../assets';
+import { useToggleTheme } from '../lib/hooks';
 
 type ThemeIconProps = {
   isVisible?: boolean;
 };
 
-const ThemeIcon = ({ isVisible }: ThemeIconProps) => {
+const ThemeIcon = memo(({ isVisible }: ThemeIconProps) => {
   //
   ////DATA
   const { themeToggle } = useToggleTheme();
@@ -17,9 +18,9 @@ const ThemeIcon = ({ isVisible }: ThemeIconProps) => {
       src={darkIcon}
       width={24}
       height={24}
-      className={`cursor-pointer hover:opacity-60 ${isVisible ? "" : "max-[1192px]:hidden"} dark:invert`}
+      className={`cursor-pointer hover:opacity-60 ${isVisible ? '' : 'max-[1192px]:hidden'} dark:invert`}
     />
   );
-};
+});
 
 export default ThemeIcon;
