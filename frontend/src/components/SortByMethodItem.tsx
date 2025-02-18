@@ -1,13 +1,13 @@
 import { memo } from 'react';
 
-type SortByMenuItemProps = {
+type SortByMethodItemProps = {
   onClick: () => void;
   option: string;
 };
 
-const SortByMenuItem = memo(({ onClick, option }: SortByMenuItemProps) => {
+const SortByMethodItem = memo(({ onClick, option }: SortByMethodItemProps) => {
   //
-  //UI
+  ////UI
   return (
     <li
       className="relative z-50 cursor-pointer px-6 py-3 font-satoshi hover:bg-slate-200"
@@ -18,4 +18,4 @@ const SortByMenuItem = memo(({ onClick, option }: SortByMenuItemProps) => {
   );
 });
 
-export default SortByMenuItem;
+export default SortByMethodItem;

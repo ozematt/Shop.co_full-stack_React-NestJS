@@ -102,8 +102,10 @@ import ProductPrice from './ProductPrice';
 import NavLink from './NavLink';
 import SearchEngineItem from './SearchEngineItem';
 import SortByMenuItem from './SortByMenuItem';
+import SortByMethodItem from './SortByMethodItem';
 
 export {
+  SortByMethodItem,
   SortByMenuItem,
   SearchEngineItem,
   NavLink,
