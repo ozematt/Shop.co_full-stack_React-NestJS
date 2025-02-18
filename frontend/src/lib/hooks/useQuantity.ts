@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { type UseQuantityProps } from "../types";
+import { useCallback, useState } from 'react';
+import { type UseQuantityProps } from '../types';
 
 const useQuantity = ({ stock }: UseQuantityProps) => {
   //
@@ -7,12 +7,12 @@ const useQuantity = ({ stock }: UseQuantityProps) => {
   const [quantity, setQuantity] = useState(1);
 
   ////LOGIC
-  const handleQuantityIncrement = () => {
+  const handleQuantityIncrement = useCallback(() => {
     setQuantity((prev) => (prev < stock ? prev + 1 : prev));
-  };
-  const handleQuantityDecrement = () => {
+  }, [quantity]);
+  const handleQuantityDecrement = useCallback(() => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
-  };
+  }, [quantity]);
 
   return {
     quantity,

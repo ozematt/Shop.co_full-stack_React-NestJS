@@ -2,8 +2,9 @@ import { arrowLeft, arrowRight } from '../assets';
 import { type PaginationBarProps } from '../lib/types';
 import { PaginationButton, PaginationPageNumberButton } from '.';
 import { usePagination } from '../lib/hooks';
+import { memo } from 'react';
 
-const PaginationBar = ({ total, page }: PaginationBarProps) => {
+const PaginationBar = memo(({ total, page }: PaginationBarProps) => {
   //
   ////DATA
   const {
@@ -39,6 +40,6 @@ const PaginationBar = ({ total, page }: PaginationBarProps) => {
       <PaginationButton onClick={handleNext} icon={arrowRight} text="Next" />
     </div>
   );
-};
+});
 
 export default PaginationBar;

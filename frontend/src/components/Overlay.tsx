@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type OverlayProps = {
   onClick: () => void;
   open: boolean;
 };
 
-const Overlay = ({ onClick, open }: OverlayProps) => {
+const Overlay = memo(({ onClick, open }: OverlayProps) => {
   //
   ////UI
   return (
@@ -14,6 +16,6 @@ const Overlay = ({ onClick, open }: OverlayProps) => {
       }`}
     />
   );
-};
+});
 
 export default Overlay;

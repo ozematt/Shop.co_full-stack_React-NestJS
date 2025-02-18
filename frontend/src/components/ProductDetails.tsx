@@ -18,7 +18,6 @@ const ProductDetails = () => {
   //
   //DATA
   //data form local storage
-
   const localProduct = localStorage.getItem('product');
 
   const initialProduct = localProduct
