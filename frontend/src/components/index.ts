@@ -101,9 +101,6 @@ import ProductRating from './ProductRating';
 import ProductPrice from './ProductPrice';
 
 export {
-  ProductPrice,
-  ProductRating,
-  ProductTitle,
   PaginationPageNumberButton,
   PaginationButton,
   UserPurchaseHistoryItem,
@@ -155,7 +152,6 @@ export {
   SkeletonMainImage,
   SkeletonProduct,
   SignUp,
-  ProductsList,
   SearchEngine,
   SearchEngineIcon,
   AlsoLike,
@@ -177,6 +173,10 @@ export {
   MyAccount,
   PaginationBar,
   Product,
+  ProductsList,
+  ProductPrice,
+  ProductRating,
+  ProductTitle,
   ProductDetails,
   ProductDetailsImages,
   ProductDetailsOverview,
