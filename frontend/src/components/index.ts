@@ -108,8 +108,10 @@ import SortingItem from './SortingItem';
 import UserPurchaseHistoryOrder from './UserPurchaseHistoryOrder';
 import UserMenu from './UserMenu';
 import HamburgerMenu from './HamburgerMenu';
+import FilterCategoryListItem from './FilterCategoryListItem';
 
 export {
+  FilterCategoryListItem,
   HamburgerMenu,
   UserMenu,
   UserPurchaseHistoryOrder,

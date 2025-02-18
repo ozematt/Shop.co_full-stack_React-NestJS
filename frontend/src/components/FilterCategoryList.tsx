@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { addCategoryName, filterOpen } from '../redux/filterSlice';
 import { memo } from 'react';
+import { FilterCategoryListItem } from '.';
 
 type FilterCategoryListProps = {
   window?: boolean;
@@ -31,15 +32,11 @@ const FilterCategoryList = memo(({ window }: FilterCategoryListProps) => {
   return (
     <>
       {categories?.map((category) => (
-        <div
+        <FilterCategoryListItem
           key={category}
-          className="flex items-center justify-between first:pt-6"
           onClick={() => handleCategoryClick(category)}
-        >
-          <p className="cursor-pointer pb-2 font-satoshi opacity-60 hover:opacity-100">
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </p>
-        </div>
+          category={category}
+        />
       ))}
     </>
   );
