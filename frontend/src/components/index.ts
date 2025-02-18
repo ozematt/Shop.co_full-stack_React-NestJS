@@ -109,8 +109,10 @@ import UserPurchaseHistoryOrder from './UserPurchaseHistoryOrder';
 import UserMenu from './UserMenu';
 import HamburgerMenu from './HamburgerMenu';
 import FilterCategoryListItem from './FilterCategoryListItem';
+import BrandBarItem from './BrandBarItem';
 
 export {
+  BrandBarItem,
   FilterCategoryListItem,
   HamburgerMenu,
   UserMenu,

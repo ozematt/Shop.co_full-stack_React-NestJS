@@ -1,4 +1,5 @@
-import { brands } from "../constants";
+import { BrandBarItem } from '../components';
+import { brands } from '../constants';
 
 const BrandBar = () => {
   //
@@ -6,12 +7,7 @@ const BrandBar = () => {
   return (
     <section className="flex h-[122px] items-center justify-center gap-10 bg-black px-4 sm:px-[100px] dark:bg-grayBG">
       {brands.map((brand) => (
-        <img
-          src={brand.img}
-          alt={brand.name}
-          key={brand.name}
-          className="aspect-[3/2] h-[50%] w-[15%] object-contain contrast-200 grayscale invert filter max-[974px]:last:hidden max-md:first:hidden dark:invert-0"
-        />
+        <BrandBarItem key={brand.name} image={brand.img} name={brand.name} />
       ))}
     </section>
   );
