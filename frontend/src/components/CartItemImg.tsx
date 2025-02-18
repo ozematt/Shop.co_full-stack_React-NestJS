@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type CartItemImgProps = {
@@ -7,7 +8,7 @@ type CartItemImgProps = {
   id: number;
 };
 
-const CartItemImg = ({ image, category, title, id }: CartItemImgProps) => {
+const CartItemImg = memo(({ image, category, title, id }: CartItemImgProps) => {
   //
   ////DATA
   const navigate = useNavigate();
@@ -20,6 +21,6 @@ const CartItemImg = ({ image, category, title, id }: CartItemImgProps) => {
       onClick={() => navigate(`/shop/${category}/${title}?id=${id}`)}
     />
   );
-};
+});
 
 export default CartItemImg;

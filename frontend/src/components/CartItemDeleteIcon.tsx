@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { deleteIcon } from '../assets';
 
 type CartItemDeleteIconProps = {
   onClick: () => void;
 };
 
-const CartItemDeleteIcon = ({ onClick }: CartItemDeleteIconProps) => {
+const CartItemDeleteIcon = memo(({ onClick }: CartItemDeleteIconProps) => {
   //
   ////UI
   return (
@@ -15,6 +16,6 @@ const CartItemDeleteIcon = ({ onClick }: CartItemDeleteIconProps) => {
       className="cursor-pointer hover:opacity-70 max-lg:absolute max-sm:scale-[0.8]"
     />
   );
-};
+});
 
 export default CartItemDeleteIcon;

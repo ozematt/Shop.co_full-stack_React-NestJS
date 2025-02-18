@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { PriceTag, SubduedText } from '.';
 
 type CartDiscountProps = {
@@ -5,7 +6,7 @@ type CartDiscountProps = {
   savings: number;
 };
 
-const CartDiscount = ({ totalDiscount, savings }: CartDiscountProps) => {
+const CartDiscount = memo(({ totalDiscount, savings }: CartDiscountProps) => {
   //
   ////UI
   return (
@@ -14,6 +15,6 @@ const CartDiscount = ({ totalDiscount, savings }: CartDiscountProps) => {
       <PriceTag price={'-$' + savings} red />
     </div>
   );
-};
+});
 
 export default CartDiscount;

@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { arrowWhite } from '../assets';
 
 type CartCheckoutButtonProps = {
   onClick: () => void;
 };
 
-const CartCheckoutButton = ({ onClick }: CartCheckoutButtonProps) => {
+const CartCheckoutButton = memo(({ onClick }: CartCheckoutButtonProps) => {
   //
   ////UI
   return (
@@ -20,6 +21,6 @@ const CartCheckoutButton = ({ onClick }: CartCheckoutButtonProps) => {
       />
     </button>
   );
-};
+});
 
 export default CartCheckoutButton;
