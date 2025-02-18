@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type AlertProps = {
@@ -7,7 +8,7 @@ type AlertProps = {
   buttonText: string;
 };
 
-const Alert = ({ url, title, text, buttonText }: AlertProps) => {
+const Alert = memo(({ url, title, text, buttonText }: AlertProps) => {
   //
   ////DATA
   const navigate = useNavigate();
@@ -39,6 +40,6 @@ const Alert = ({ url, title, text, buttonText }: AlertProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default Alert;

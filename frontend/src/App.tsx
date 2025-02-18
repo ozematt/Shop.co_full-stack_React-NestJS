@@ -1,15 +1,3 @@
-// import {
-//   HomePage,
-//   Dashboard,
-//   SignIn,
-//   Shop,
-//   ProductDetails,
-//   Cart,
-//   MyAccount,
-//   Checkout,
-//   SignUp,
-// } from './components';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
