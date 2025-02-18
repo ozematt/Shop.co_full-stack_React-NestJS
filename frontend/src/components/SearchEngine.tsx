@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDebounce, useRedirectToProduct } from '../lib/hooks';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -7,6 +7,7 @@ import {
   type SelectedProduct,
 } from '../lib/types';
 import { getAllProducts } from '../api/queries';
+import { SearchEngineItem } from '.';
 
 const SearchEngine = () => {
   //
@@ -64,10 +65,13 @@ const SearchEngine = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleRedirectToProductDetails = (product: SelectedProduct) => {
-    setSearchValue('');
-    handleProductClick(product);
-  };
+  const handleRedirectToProductDetails = useCallback(
+    (product: SelectedProduct) => {
+      setSearchValue('');
+      handleProductClick(product);
+    },
+    [handleProductClick],
+  );
 
   ////UI
   return (
@@ -85,13 +89,11 @@ const SearchEngine = () => {
           <div className="scrollbar-hide absolute inset-0 left-0 top-[53px] z-20 h-[100px] overflow-auto rounded-xl bg-grayBG opacity-80 ring-1 ring-black dark:bg-zinc-600">
             <ul className="font-satoshi">
               {filteredProducts.map((product) => (
-                <li
+                <SearchEngineItem
                   key={product.id}
                   onClick={() => handleRedirectToProductDetails(product)}
-                  className="cursor-pointer px-9 py-2 hover:bg-grayBG hover:brightness-110 dark:hover:bg-zinc-600"
-                >
-                  {product.title}
-                </li>
+                  title={product.title}
+                />
               ))}
             </ul>
           </div>

@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { sortingOptions } from '../constants';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { type SortMethod } from '../lib/types';
 import { addSortMethod } from '../redux/productsSlice';
+import { SortByMenuItem } from '.';
 
 const SortByMenu = () => {
   //
@@ -11,10 +12,13 @@ const SortByMenu = () => {
   const [open, setOpen] = useState(false);
 
   ////LOGIC
-  const handleSortChange = (option: SortMethod) => {
-    setOpen(false);
-    dispatch(addSortMethod(option));
-  };
+  const handleSortChange = useCallback(
+    (option: SortMethod) => {
+      setOpen(false);
+      dispatch(addSortMethod(option));
+    },
+    [dispatch],
+  );
 
   ////UI
   return (
@@ -23,13 +27,11 @@ const SortByMenu = () => {
     >
       <div className="absolute right-4 top-[-7px] z-40 h-3 w-3 rotate-45 border-l-[1px] border-t-[1px] border-black bg-white" />
       {sortingOptions.map((option) => (
-        <li
+        <SortByMenuItem
           key={option}
-          className="relative z-50 cursor-pointer px-6 py-3 font-satoshi hover:bg-slate-200"
           onClick={() => handleSortChange(option)}
-        >
-          {option}
-        </li>
+          option={option}
+        />
       ))}
     </ul>
   );

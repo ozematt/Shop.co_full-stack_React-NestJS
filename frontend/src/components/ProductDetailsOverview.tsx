@@ -12,7 +12,6 @@ const ProductDetailsOverview = ({
 }: ProductItemSchema) => {
   //
   ////DATA
-  //state to handle which details were about to show
   const [details, setDetails] = useState('Product');
 
   ////UI

@@ -100,8 +100,12 @@ import ProductTitle from './ProductTitle';
 import ProductRating from './ProductRating';
 import ProductPrice from './ProductPrice';
 import NavLink from './NavLink';
+import SearchEngineItem from './SearchEngineItem';
+import SortByMenuItem from './SortByMenuItem';
 
 export {
+  SortByMenuItem,
+  SearchEngineItem,
   NavLink,
   PaginationPageNumberButton,
   PaginationButton,

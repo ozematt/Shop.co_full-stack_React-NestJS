@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type SectionTitleProps = {
   title: string;
   center?: boolean;
 };
 
-const SectionTitle = ({ title, center }: SectionTitleProps) => {
+const SectionTitle = memo(({ title, center }: SectionTitleProps) => {
   //
   ////UI
   return (
@@ -13,6 +15,6 @@ const SectionTitle = ({ title, center }: SectionTitleProps) => {
       {title}
     </h2>
   );
-};
+});
 
 export default SectionTitle;

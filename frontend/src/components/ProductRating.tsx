@@ -1,6 +1,7 @@
 import { Rating } from '@mui/material';
+import { memo } from 'react';
 
-const ProductRating = ({ rating }: { rating: number }) => {
+const ProductRating = memo(({ rating }: { rating: number }) => {
   //
   ////UI
   return (
@@ -16,6 +17,6 @@ const ProductRating = ({ rating }: { rating: number }) => {
       </p>
     </div>
   );
-};
+});
 
 export default ProductRating;

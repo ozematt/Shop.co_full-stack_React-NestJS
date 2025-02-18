@@ -1,4 +1,6 @@
-const ProductTitle = ({ title }: { title: string }) => {
+import { memo } from 'react';
+
+const ProductTitle = memo(({ title }: { title: string }) => {
   //
   ////UI
   return (
@@ -6,6 +8,6 @@ const ProductTitle = ({ title }: { title: string }) => {
       {title.length > 25 ? title.slice(0, 25) + '...' : title}
     </p>
   );
-};
+});
 
 export default ProductTitle;
