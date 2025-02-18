@@ -103,8 +103,10 @@ import NavLink from './NavLink';
 import SearchEngineItem from './SearchEngineItem';
 import SortByMenuItem from './SortByMenuItem';
 import SortByMethodItem from './SortByMethodItem';
+import SortByMethodMenu from './SortByMethodMenu';
 
 export {
+  SortByMethodMenu,
   SortByMethodItem,
   SortByMenuItem,
   SearchEngineItem,
