@@ -110,8 +110,14 @@ import UserMenu from './UserMenu';
 import HamburgerMenu from './HamburgerMenu';
 import FilterCategoryListItem from './FilterCategoryListItem';
 import BrandBarItem from './BrandBarItem';
+import CategoryBeautyItem from './CategoryBeautyItem';
+import CategoryClothesItem from './CategoryClothesItem';
+import CategoryElectronicsItem from './CategoryElectronicsItem';
 
 export {
+  CategoryElectronicsItem,
+  CategoryClothesItem,
+  CategoryBeautyItem,
   BrandBarItem,
   FilterCategoryListItem,
   HamburgerMenu,
