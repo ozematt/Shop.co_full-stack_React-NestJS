@@ -1,5 +1,5 @@
 import {
-  HamburgerMenu,
+  HamburgerMenuIcon,
   SearchEngine,
   NavLinks,
   Logo,
@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <nav className="max-container flex h-[96px] items-center px-4 max-[838px]:justify-between sm:px-[100px]">
       <div className="flex items-center">
-        <HamburgerMenu />
+        <HamburgerMenuIcon />
         <Logo />
       </div>
       <NavLinks />

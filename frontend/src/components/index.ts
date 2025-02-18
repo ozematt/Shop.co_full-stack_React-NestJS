@@ -10,7 +10,7 @@ import Dashboard from './Dashboard';
 import Details from './Details';
 import DetailsButton from './DetailsButton';
 import Filters from './Filters';
-import HamburgerMenu from './HamburgerMenu';
+import HamburgerMenuIcon from './HamburgerMenuIcon';
 import HomePage from './HomePage';
 import Input from './Input';
 import SignIn from './SignIn';
@@ -107,8 +107,10 @@ import SortByMethodMenu from './SortByMethodMenu';
 import SortingItem from './SortingItem';
 import UserPurchaseHistoryOrder from './UserPurchaseHistoryOrder';
 import UserMenu from './UserMenu';
+import HamburgerMenu from './HamburgerMenu';
 
 export {
+  HamburgerMenu,
   UserMenu,
   UserPurchaseHistoryOrder,
   SortingItem,
@@ -182,7 +184,7 @@ export {
   Details,
   DetailsButton,
   Filters,
-  HamburgerMenu,
+  HamburgerMenuIcon,
   HomePage,
   Input,
   SignIn,
