@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { addSortMethod } from '../redux/productsSlice';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { sortingOptions } from '../constants';
-import { FilterHeader } from '.';
+import { FilterHeader, SortingItem } from '.';
 import { filterOpen } from '../redux/filterSlice';
 import { SortMethod } from '../lib/types';
 
@@ -12,10 +12,14 @@ const Sorting = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const [open, setOpen] = useState(false); //sorting open/close
 
-  const handleClick = (option: SortMethod) => {
-    dispatch(addSortMethod(option));
-    dispatch(filterOpen());
-  };
+  ////LOGIC
+  const handleClick = useCallback(
+    (option: SortMethod) => {
+      dispatch(addSortMethod(option));
+      dispatch(filterOpen());
+    },
+    [dispatch],
+  );
 
   ////UI
   return (
@@ -30,16 +34,11 @@ const Sorting = () => {
       <div className="pb-6">
         {open &&
           sortingOptions.map((option) => (
-            <div
+            <SortingItem
               key={option}
               onClick={() => handleClick(option)}
-              className="flex items-center justify-between first:pt-6"
-            >
-              {' '}
-              <p className="cursor-pointer pb-2 font-satoshi opacity-60 hover:opacity-100">
-                {option}
-              </p>
-            </div>
+              option={option}
+            />
           ))}
       </div>
       <hr className="pb-6" />
