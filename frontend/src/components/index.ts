@@ -99,8 +99,10 @@ import PaginationPageNumberButton from './PaginationPageNumberButton';
 import ProductTitle from './ProductTitle';
 import ProductRating from './ProductRating';
 import ProductPrice from './ProductPrice';
+import NavLink from './NavLink';
 
 export {
+  NavLink,
   PaginationPageNumberButton,
   PaginationButton,
   UserPurchaseHistoryItem,

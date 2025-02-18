@@ -1,8 +1,10 @@
+import { memo } from 'react';
+
 type FilterApplyButtonProps = {
   onClick: () => void;
 };
 
-const FilterApplyButton = ({ onClick }: FilterApplyButtonProps) => {
+const FilterApplyButton = memo(({ onClick }: FilterApplyButtonProps) => {
   //
   ////UI
   return (
@@ -13,6 +15,6 @@ const FilterApplyButton = ({ onClick }: FilterApplyButtonProps) => {
       Apply Filter
     </button>
   );
-};
+});
 
 export default FilterApplyButton;

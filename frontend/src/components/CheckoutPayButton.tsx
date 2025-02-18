@@ -1,8 +1,10 @@
+import { memo } from 'react';
+
 type CheckoutPayButtonProps = {
   onClick: () => void;
 };
 
-const CheckoutPayButton = ({ onClick }: CheckoutPayButtonProps) => {
+const CheckoutPayButton = memo(({ onClick }: CheckoutPayButtonProps) => {
   //
   ////UI
   return (
@@ -13,6 +15,6 @@ const CheckoutPayButton = ({ onClick }: CheckoutPayButtonProps) => {
       PAY
     </button>
   );
-};
+});
 
 export default CheckoutPayButton;

@@ -1,9 +1,10 @@
-import { Rating } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import { tick } from "../assets";
-import { type CommentProps } from "../lib/types";
+import { Rating } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
+import { tick } from '../assets';
+import { type CommentProps } from '../lib/types';
+import { memo } from 'react';
 
-const Comment = ({ rating, name, text, date }: CommentProps) => {
+const Comment = memo(({ rating, name, text, date }: CommentProps) => {
   //
   ////UI
   return (
@@ -13,12 +14,12 @@ const Comment = ({ rating, name, text, date }: CommentProps) => {
         precision={0.5}
         emptyIcon={<StarIcon style={{ opacity: 0 }} />}
         sx={{
-          fontSize: { xs: "1.2rem", sm: "1.5rem" },
+          fontSize: { xs: '1.2rem', sm: '1.5rem' },
         }}
         readOnly
-      />{" "}
+      />{' '}
       <div className="flex items-center gap-1 pb-1 sm:pb-[12px] sm:pt-1">
-        {" "}
+        {' '}
         <p className="font-satoshi text-base font-bold sm:text-xl">{name}</p>
         <img src={tick} alt="green tick" width={24} height={24} />
       </div>
@@ -30,6 +31,6 @@ const Comment = ({ rating, name, text, date }: CommentProps) => {
       )}
     </div>
   );
-};
+});
 
 export default Comment;

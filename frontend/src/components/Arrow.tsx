@@ -1,6 +1,8 @@
 import { arrow } from '../assets';
 
 const Arrow = () => {
+  //
+  ////UI
   return (
     <img
       src={arrow}

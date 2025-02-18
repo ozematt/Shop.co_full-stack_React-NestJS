@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { close } from '../assets';
 
 type CloseButtonProps = {
   onClick: () => void;
 };
 
-const CloseButton = ({ onClick }: CloseButtonProps) => {
+const CloseButton = memo(({ onClick }: CloseButtonProps) => {
   return (
     <img
       onClick={onClick}
@@ -15,6 +16,6 @@ const CloseButton = ({ onClick }: CloseButtonProps) => {
       className="cursor-pointer dark:invert"
     />
   );
-};
+});
 
 export default CloseButton;

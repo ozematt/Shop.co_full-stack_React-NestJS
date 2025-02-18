@@ -65,6 +65,7 @@ const CartItem = memo(
       [dispatch],
     );
 
+    ////UI
     return (
       <>
         <div className="relative flex justify-between px-[14px] pt-[14px] sm:px-[24px] sm:pt-[24px]">

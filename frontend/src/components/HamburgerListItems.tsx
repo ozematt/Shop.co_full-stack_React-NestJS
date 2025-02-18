@@ -1,12 +1,13 @@
 import { navLinks } from '../constants';
 import { useToggleTheme } from '../lib/hooks';
 import { ThemeIcon } from '.';
+import { memo } from 'react';
 
 type HamburgerListItemsProps = {
   onLinkClick: (id: string) => void;
 };
 
-const HamburgerListItems = ({ onLinkClick }: HamburgerListItemsProps) => {
+const HamburgerListItems = memo(({ onLinkClick }: HamburgerListItemsProps) => {
   //
   ////DATA
   const { themeToggle } = useToggleTheme();
@@ -43,6 +44,6 @@ const HamburgerListItems = ({ onLinkClick }: HamburgerListItemsProps) => {
       ;
     </>
   );
-};
+});
 
 export default HamburgerListItems;

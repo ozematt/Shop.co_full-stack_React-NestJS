@@ -1,6 +1,7 @@
-import { type InputProps } from "../lib/types";
+import { memo } from 'react';
+import { type InputProps } from '../lib/types';
 
-const Input = ({ icon, alt, type, placeholder }: InputProps) => {
+const Input = memo(({ icon, alt, type, placeholder }: InputProps) => {
   //
   ////UI
   return (
@@ -19,6 +20,6 @@ const Input = ({ icon, alt, type, placeholder }: InputProps) => {
       />
     </div>
   );
-};
+});
 
 export default Input;

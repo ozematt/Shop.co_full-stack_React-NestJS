@@ -6,6 +6,7 @@ const CheckoutTotalPrice = () => {
   //
   ////DATA
   const total = useSelector((state: RootState) => state.cart.total);
+
   ////UI
   return (
     <div className="flex justify-between pt-5">

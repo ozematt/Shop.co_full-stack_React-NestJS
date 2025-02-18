@@ -3,12 +3,13 @@ import { getCategoryList } from '../api/queries';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { addCategoryName, filterOpen } from '../redux/filterSlice';
+import { memo } from 'react';
 
 type FilterCategoryListProps = {
   window?: boolean;
 };
 
-const FilterCategoryList = ({ window }: FilterCategoryListProps) => {
+const FilterCategoryList = memo(({ window }: FilterCategoryListProps) => {
   //
   ////DATA
   const navigate = useNavigate();
@@ -42,6 +43,6 @@ const FilterCategoryList = ({ window }: FilterCategoryListProps) => {
       ))}
     </>
   );
-};
+});
 
 export default FilterCategoryList;

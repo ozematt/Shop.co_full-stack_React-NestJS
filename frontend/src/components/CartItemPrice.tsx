@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type CartItemPriceProps = {
   purchaseTotal: number;
   price: number;
 };
 
-const CartItemPrice = ({ purchaseTotal, price }: CartItemPriceProps) => {
+const CartItemPrice = memo(({ purchaseTotal, price }: CartItemPriceProps) => {
   //
   ////UI
   return (
@@ -14,6 +16,6 @@ const CartItemPrice = ({ purchaseTotal, price }: CartItemPriceProps) => {
       </span>
     </p>
   );
-};
+});
 
 export default CartItemPrice;

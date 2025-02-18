@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type CartTotalPriceProps = {
   subtotal: number;
   savings: number;
 };
 
-const CartTotalPrice = ({ subtotal, savings }: CartTotalPriceProps) => {
+const CartTotalPrice = memo(({ subtotal, savings }: CartTotalPriceProps) => {
   //
   ////UI
   return (
@@ -14,6 +16,6 @@ const CartTotalPrice = ({ subtotal, savings }: CartTotalPriceProps) => {
       </p>
     </div>
   );
-};
+});
 
 export default CartTotalPrice;
