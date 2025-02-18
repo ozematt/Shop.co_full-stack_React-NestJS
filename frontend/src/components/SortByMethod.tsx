@@ -1,8 +1,10 @@
-import { useCallback, useState } from 'react';
+import { Suspense, lazy, useCallback, useState } from 'react';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { SortMethod } from '../lib/types';
 import { addSortMethod } from '../redux/productsSlice';
-import { RotatingArrow, SortByMethodMenu } from '.';
+import { RotatingArrow } from '.';
+
+const LazySortByMethodMenu = lazy(() => import('./SortByMethodMenu'));
 
 const SortByMethod = () => {
   //
@@ -26,15 +28,17 @@ const SortByMethod = () => {
     <>
       <span
         onClick={() => setOpenSortByMenu(!openSortByMenu)}
-        className="flex cursor-pointer items-center pl-2 pt-2 font-satoshi font-bold max-xl:hidden"
+        className="flex cursor-pointer items-center gap-2 pl-2 pt-2 font-satoshi font-bold max-xl:hidden"
       >
         {sortBy}
         <RotatingArrow rotateOn={openSortByMenu} />
       </span>
-      <SortByMethodMenu
-        open={openSortByMenu}
-        onMethodClick={handleSortChange}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazySortByMethodMenu
+          open={openSortByMenu}
+          onMethodClick={handleSortChange}
+        />
+      </Suspense>
     </>
   );
 };

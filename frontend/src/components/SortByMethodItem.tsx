@@ -10,7 +10,7 @@ const SortByMethodItem = memo(({ onClick, option }: SortByMethodItemProps) => {
   ////UI
   return (
     <li
-      className="relative z-50 cursor-pointer px-6 py-3 font-satoshi hover:bg-slate-200"
+      className="relative z-50 cursor-pointer px-6 py-3 font-satoshi hover:bg-slate-200 dark:hover:bg-zinc-900"
       onClick={onClick}
     >
       {option}

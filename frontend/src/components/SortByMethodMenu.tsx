@@ -14,9 +14,9 @@ const SortByMethodMenu = memo(
     ////UI
     return (
       <ul
-        className={`absolute right-[-12px] text-lg ${open ? 'block' : 'hidden'} top-[50px] z-10 bg-white text-center ring-1 ring-black`}
+        className={`absolute right-[-12px] text-lg ${open ? 'block' : 'hidden'} top-[50px] z-10 bg-white text-center ring-1 ring-black dark:bg-black dark:ring-white`}
       >
-        <div className="absolute right-4 top-[-7px] z-40 h-3 w-3 rotate-45 border-l-[1px] border-t-[1px] border-black bg-white" />
+        <div className="absolute right-4 top-[-7px] z-40 h-3 w-3 rotate-45 border-l-[1px] border-t-[1px] border-black bg-white dark:border-white dark:bg-black" />
         {sortingOptions.map((option) => (
           <SortByMethodItem
             key={option}

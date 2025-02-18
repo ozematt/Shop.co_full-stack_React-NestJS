@@ -69,7 +69,7 @@ const TopRating = () => {
         onClick={() => {
           navigate('/shop'), window.scrollTo(0, 0);
         }}
-        className="action:scale-100 mt-[-30px] cursor-pointer rounded-full border px-[80px] py-[15px] hover:scale-95 max-sm:w-full sm:mt-[36px]"
+        className="action:scale-100 mt-[-30px] cursor-pointer rounded-full border px-[80px] py-[15px] transition duration-200 ease-in-out hover:scale-95 max-sm:w-full sm:mt-[36px]"
       >
         View All
       </button>
