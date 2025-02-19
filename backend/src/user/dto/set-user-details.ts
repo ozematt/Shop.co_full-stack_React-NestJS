@@ -1,4 +1,11 @@
-import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export enum Gender {
   M = 'M',
@@ -8,17 +15,21 @@ export enum Gender {
 export class SetUserDetails {
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   firstName?: string;
 
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   lastName?: string;
 
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   username?: string;
 
-  @IsNumber()
+  @Type(() => Number)
+  @IsNumber({}, { message: 'Age must be a number' })
   @IsOptional()
   age?: number;
 

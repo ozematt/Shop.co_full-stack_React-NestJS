@@ -15,6 +15,7 @@ export class UserController {
     return this.userService.getUser(user);
   }
 
+  ////////
   @Post('details')
   async setUserDetails(@GetUser() user: User, @Body() dto: SetUserDetails) {
     return this.userService.setUserDetails(user, dto);
