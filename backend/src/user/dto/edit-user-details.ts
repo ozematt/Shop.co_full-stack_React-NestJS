@@ -1,35 +1,26 @@
 import { Gender } from '@prisma/client';
 import { Type } from 'class-transformer';
-import {
-  IsEnum,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
 
-export class SetUserDetails {
+export class EditUserDetailsDto {
   @IsString()
   @IsOptional()
-  @IsNotEmpty()
-  firstName: string;
+  firstName?: string;
 
   @IsString()
   @IsOptional()
-  @IsNotEmpty()
-  lastName: string;
+  lastName?: string;
 
   @IsString()
   @IsOptional()
-  @IsNotEmpty()
-  username: string;
+  username?: string;
 
   @Type(() => Number)
   @IsNumber({}, { message: 'Age must be a number' })
   @IsOptional()
-  age: number;
+  age?: number;
 
   @IsEnum(Gender, { message: 'Gender must be M or F' })
   @IsOptional()
-  gender: Gender;
+  gender?: Gender;
 }
