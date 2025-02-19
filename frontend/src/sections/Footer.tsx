@@ -1,5 +1,5 @@
-import { footerData, socials } from "../constants";
-import { pay } from "../assets";
+import { footerData, socials } from '../constants';
+import { pay } from '../assets';
 
 const Footer = () => {
   //
@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <section className="relative mt-[50px] px-4 sm:px-[80px]">
       <div className="flex max-[820px]:flex-wrap">
-        {" "}
+        {' '}
         <div className="">
           <h3 className="font-integralCFBold text-[34px] leading-[28px]">
             Shop.co
@@ -17,7 +17,7 @@ const Footer = () => {
             everyone, everywhere.
           </p>
           <div className="mt-[35px] flex gap-3">
-            {" "}
+            {' '}
             {socials.map((social) => (
               <img
                 src={social.iconIMG}
@@ -29,7 +29,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="ld:grid-cols-3 grid grid-cols-2 max-[820px]:pt-[24px] xl:grid-cols-4">
-          {" "}
+          {' '}
           {footerData.map((item) => (
             <div
               key={item.title}
@@ -50,9 +50,10 @@ const Footer = () => {
           ))}
         </div>
       </div>
+
       <div className="mt-[50px] border-b-2" />
       <div className="flex flex-wrap items-center justify-center sm:justify-between">
-        {" "}
+        {' '}
         <p className="mt-[25px] font-satoshi text-[14px] opacity-60 sm:mb-[88px]">
           Shop.co © 2000-2024, All Rights Reserved
         </p>

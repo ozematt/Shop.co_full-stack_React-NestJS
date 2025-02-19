@@ -8,27 +8,56 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
+  id       Int          @id @default(autoincrement())
+  email    String       @unique
   password String
   orders   Order[]
+  address  UserAddress?
+  details  UserDetails?
 }
 
 model Order {
-  id            Int         @id @default(autoincrement())
-  user_id       Int
-  total         Decimal
-  createdAt     DateTime    @default(now())
-  user          User        @relation(fields: [user_id], references: [id])
-  orderItems    OrderItem[]
+  id         Int         @id @default(autoincrement())
+  user_id    Int
+  total      Decimal
+  createdAt  DateTime    @default(now())
+  user       User        @relation(fields: [user_id], references: [id])
+  orderItems OrderItem[]
 }
 
 model OrderItem {
   id          Int     @id @default(autoincrement())
-  order_id     Int
+  order_id    Int
   productName String
   image       String?
   quantity    Int
   price       Decimal
   order       Order   @relation(fields: [order_id], references: [id])
+}
+
+model UserAddress {
+  id          Int    @id @default(autoincrement())
+  user_id     Int    @unique
+  fullName    String
+  street      String
+  houseNumber String
+  city        String
+  zipCode     String
+  country     String
+  user        User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model UserDetails {
+  user_id   Int    @id @unique
+  firstName String
+  lastName  String
+  username  String
+  age       Int
+  gender    Gender
+  user      User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+enum Gender {
+  M
+  F
 }
