@@ -47,7 +47,7 @@ export class OrderService {
       return order;
     } catch (error) {
       console.error('Error creating order:', error);
-      throw new HttpException('Cos nie tak', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }
 }
