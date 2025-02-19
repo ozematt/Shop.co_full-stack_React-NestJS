@@ -1,4 +1,9 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  ForbiddenException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
 import { User } from '@prisma/client';
 import { EditUserDetailsDto, SetUserDetails } from './dto';
 import { PrismaService } from '../prisma/prisma.service';
@@ -57,6 +62,25 @@ export class UserService {
 
   async editUserDetails(user: User, dto: EditUserDetailsDto) {
     try {
+      const details = await this.prisma.userDetails.findFirst({
+        where: {
+          user_id: user.id,
+        },
+      });
+
+      if (!details || details.user_id !== user.id) {
+        throw new ForbiddenException('Access to resource denied');
+      }
+
+      const detailsUpdate = await this.prisma.userDetails.update({
+        where: {
+          user_id: user.id,
+        },
+        data: {
+          ...dto,
+        },
+      });
+      return detailsUpdate;
     } catch (error) {
       console.error('Error editing user details:', error);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);

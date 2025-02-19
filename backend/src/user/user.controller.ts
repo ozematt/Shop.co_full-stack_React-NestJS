@@ -27,7 +27,10 @@ export class UserController {
   }
 
   @Patch('details')
-  async editUserDetails(@GetUser() user: User, dto: EditUserDetailsDto) {
+  async editUserDetails(
+    @GetUser() user: User,
+    @Body() dto: EditUserDetailsDto,
+  ) {
     return this.userService.editUserDetails(user, dto);
   }
 
