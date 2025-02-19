@@ -48,10 +48,10 @@ model UserAddress {
 }
 
 model UserDetails {
-  user_id   Int    @id @unique
+  user_id   Int    @id
   firstName String
   lastName  String
-  username  String
+  username  String @unique
   age       Int
   gender    Gender
   user      User   @relation(fields: [user_id], references: [id], onDelete: Cascade)

@@ -1,3 +1,4 @@
-export * from './set-user-details';
-export * from './edit-user-details';
-export * from './set-user-address';
+export * from './set-user-details.dto';
+export * from './edit-user-details.dto';
+export * from './set-user-address.dto';
+export * from './edit-user-address.dto';

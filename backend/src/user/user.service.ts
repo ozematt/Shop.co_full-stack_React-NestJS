@@ -5,7 +5,12 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { EditUserDetailsDto, SetUserAddressDto, SetUserDetails } from './dto';
+import {
+  EditUserAddressDto,
+  EditUserDetailsDto,
+  SetUserAddressDto,
+  SetUserDetails,
+} from './dto';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -26,6 +31,17 @@ export class UserService {
         throw new HttpException(
           'User details already exist',
           HttpStatus.CONFLICT,
+        );
+      }
+
+      const existingUser = await this.prisma.userDetails.findUnique({
+        where: { username: dto.username },
+      });
+
+      if (existingUser) {
+        throw new HttpException(
+          'Username already exists',
+          HttpStatus.BAD_REQUEST,
         );
       }
 
@@ -119,6 +135,38 @@ export class UserService {
       return addresses;
     } catch (error) {
       console.error('Error getting user address:', error);
+      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+    }
+  }
+  async editUserAddress(user: User, dto: EditUserAddressDto) {
+    try {
+      const address = await this.prisma.userAddress.findUnique({
+        where: {
+          id: dto.addressId,
+          user_id: user.id,
+        },
+      });
+
+      if (!address) {
+        throw new HttpException(
+          'No addresses found for this user',
+          HttpStatus.NOT_FOUND,
+        );
+      }
+      const updatedAddress = await this.prisma.userAddress.update({
+        where: { id: dto.addressId },
+        data: {
+          fullName: dto.fullName,
+          street: dto.street,
+          houseNumber: dto.houseNumber,
+          city: dto.city,
+          zipCode: dto.zipCode,
+          country: dto.country,
+        },
+      });
+      return updatedAddress;
+    } catch (error) {
+      console.error('Error editing user address:', error);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }

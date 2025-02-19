@@ -62,10 +62,7 @@ CREATE TABLE "UserDetails" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "UserAddress_user_id_key" ON "UserAddress"("user_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "UserDetails_user_id_key" ON "UserDetails"("user_id");
+CREATE UNIQUE INDEX "UserDetails_username_key" ON "UserDetails"("username");
 
 -- AddForeignKey
 ALTER TABLE "Order" ADD CONSTRAINT "Order_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

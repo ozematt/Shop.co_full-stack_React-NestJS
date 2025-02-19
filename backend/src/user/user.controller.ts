@@ -3,7 +3,12 @@ import { GetUser } from 'src/auth/decorator';
 import { User } from '@prisma/client';
 import { UserService } from './user.service';
 import { JwtGuard } from 'src/auth/guard';
-import { EditUserDetailsDto, SetUserAddressDto, SetUserDetails } from './dto';
+import {
+  EditUserAddressDto,
+  EditUserDetailsDto,
+  SetUserAddressDto,
+  SetUserDetails,
+} from './dto';
 
 @UseGuards(JwtGuard)
 @Controller('user')
@@ -43,5 +48,13 @@ export class UserController {
   @Get('address')
   async getUserAddress(@GetUser() user: User) {
     return this.userService.getUserAddress(user);
+  }
+
+  @Patch('address')
+  async editUserAddress(
+    @GetUser() user: User,
+    @Body() dto: EditUserAddressDto,
+  ) {
+    return this.userService.editUserAddress(user, dto);
   }
 }
