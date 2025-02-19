@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { GetUser } from 'src/auth/decorator';
 import { User } from '@prisma/client';
 import { UserService } from './user.service';
@@ -12,5 +12,25 @@ export class UserController {
   @Get()
   async getUser(@GetUser() user: User) {
     return this.userService.getUser(user);
+  }
+
+  @Post('details')
+  async setUserDetails(@GetUser() user: User) {
+    return this.userService.setUserDetails(user);
+  }
+
+  @Get('details')
+  async getUserDetails(@GetUser() user: User) {
+    return this.userService.getUserDetails(user);
+  }
+
+  @Post('address')
+  async setUserAddress(@GetUser() user: User) {
+    return this.userService.setUserAddress(user);
+  }
+
+  @Get('address')
+  async getUserAddress(@GetUser() user: User) {
+    return this.userService.getUserAddress(user);
   }
 }
