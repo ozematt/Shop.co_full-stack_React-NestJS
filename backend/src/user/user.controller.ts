@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post, UseGuards } from '@nestjs/common';
 import { GetUser } from 'src/auth/decorator';
 import { User } from '@prisma/client';
 import { UserService } from './user.service';
@@ -15,7 +15,7 @@ export class UserController {
     return this.userService.getUser(user);
   }
 
-  ////////
+  // DETAILS <-------
   @Post('details')
   async setUserDetails(@GetUser() user: User, @Body() dto: SetUserDetails) {
     return this.userService.setUserDetails(user, dto);
@@ -25,7 +25,12 @@ export class UserController {
   async getUserDetails(@GetUser() user: User) {
     return this.userService.getUserDetails(user);
   }
+  @Patch('details')
+  async editUserDetails(@GetUser() user: User) {
+    return this.userService.editUserDetails(user);
+  }
 
+  // ADDRESS <--------
   @Post('address')
   async setUserAddress(@GetUser() user: User) {
     return this.userService.setUserAddress(user);

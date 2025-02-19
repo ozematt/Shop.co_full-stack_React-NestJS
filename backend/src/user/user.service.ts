@@ -38,7 +38,20 @@ export class UserService {
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }
-  async getUserDetails(user: User) {}
+  async getUserDetails(user: User) {
+    try {
+      const details = await this.prisma.userDetails.findUnique({
+        where: {
+          user_id: user.id,
+        },
+      });
+      return details;
+    } catch (error) {
+      console.error('Error adding user details:', error);
+      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+    }
+  }
+  async editUserDetails(user: User) {}
   async setUserAddress(user: User) {}
   async getUserAddress(ser: User) {}
 }
