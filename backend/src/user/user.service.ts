@@ -5,7 +5,7 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { EditUserDetailsDto, SetUserDetails } from './dto';
+import { EditUserDetailsDto, SetUserAddressDto, SetUserDetails } from './dto';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -87,6 +87,39 @@ export class UserService {
     }
   }
 
-  async setUserAddress(user: User) {}
-  async getUserAddress(ser: User) {}
+  async setUserAddress(user: User, dto: SetUserAddressDto) {
+    try {
+      const address = await this.prisma.userAddress.create({
+        data: {
+          user_id: user.id,
+          ...dto,
+        },
+      });
+      return address;
+    } catch (error) {
+      console.error('Error adding user address:', error);
+      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async getUserAddress(user: User) {
+    try {
+      const addresses = await this.prisma.userAddress.findMany({
+        where: {
+          user_id: user.id,
+        },
+      });
+
+      if (addresses.length === 0) {
+        throw new HttpException(
+          'No addresses found for this user',
+          HttpStatus.NOT_FOUND,
+        );
+      }
+      return addresses;
+    } catch (error) {
+      console.error('Error getting user address:', error);
+      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+    }
+  }
 }
