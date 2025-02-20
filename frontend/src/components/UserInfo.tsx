@@ -3,8 +3,6 @@ import { user } from '../assets/index';
 import { UserInfoDetails, UserInfoDetailsEdit } from '.';
 import { useQuery } from '@tanstack/react-query';
 import { getUserDetails } from '../api/queries';
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
 
 const UserInfo = () => {
   //
@@ -18,9 +16,7 @@ const UserInfo = () => {
     queryFn: getUserDetails,
   });
 
-  const username =
-    useSelector((state: RootState) => state.user.username) ||
-    localStorage.getItem('user');
+  const username = localStorage.getItem('user');
 
   ////LOGIC
 
