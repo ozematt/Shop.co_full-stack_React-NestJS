@@ -41,7 +41,6 @@ const HamburgerListItems = memo(({ onLinkClick }: HamburgerListItemsProps) => {
         </div>{' '}
         Theme
       </li>
-      ;
     </>
   );
 });
