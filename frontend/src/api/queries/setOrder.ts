@@ -1,7 +1,7 @@
 import { OrderData } from '../../lib/types';
 import { URL_BASE } from '../constants';
 
-const addOrder = async (order: OrderData) => {
+const setOrder = async (order: OrderData) => {
   const token = localStorage.getItem('token');
 
   try {
@@ -30,4 +30,4 @@ const addOrder = async (order: OrderData) => {
   }
 };
 
-export default addOrder;
+export default setOrder;

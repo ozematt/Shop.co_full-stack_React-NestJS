@@ -1,7 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { setUserDetails } from '../api/queries';
 
 const userInfoDetailsSchema = z.object({
   username: z.string().min(3, 'Username must be at last 3 characters'),
@@ -11,7 +13,7 @@ const userInfoDetailsSchema = z.object({
   gender: z.enum(['M', 'F'], { message: "Gender must be 'M' or 'F'" }),
 });
 
-type UserInfoDetails = z.infer<typeof userInfoDetailsSchema>;
+export type UserInfoDetails = z.infer<typeof userInfoDetailsSchema>;
 
 type UserInfoDetailsEditProps = {
   onAddDetailsClick: () => void;
@@ -24,17 +26,24 @@ const UserInfoDetailsEdit = memo(
     const {
       register,
       handleSubmit,
-      formState: { errors, isSubmitting, isValid },
+      formState: { errors, isSubmitting },
     } = useForm<UserInfoDetails>({
       resolver: zodResolver(userInfoDetailsSchema),
-      mode: 'onChange',
+    });
+
+    const setUserDetailsMutation = useMutation({
+      mutationFn: setUserDetails,
+      onError: () => {
+        console.log('problem z danymi');
+      },
+      onSuccess: () => {
+        console.log('dane poszły!');
+      },
     });
 
     const onSubmit = (data: UserInfoDetails) => {
       console.log(data);
-    };
-    const handleAddDetails = () => {
-      if (!isValid) return;
+      setUserDetailsMutation.mutate(data);
       onAddDetailsClick();
     };
 
@@ -148,7 +157,6 @@ const UserInfoDetailsEdit = memo(
 
         <button
           type="submit"
-          onClick={handleAddDetails}
           disabled={isSubmitting}
           className="mx-auto mt-5 max-w-[150px] cursor-pointer rounded-full border bg-orange-500 px-[30px] py-[7px] text-sm transition duration-200 ease-in-out hover:scale-95 active:scale-100 max-sm:w-full"
         >

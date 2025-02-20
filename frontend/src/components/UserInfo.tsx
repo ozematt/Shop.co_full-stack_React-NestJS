@@ -1,17 +1,8 @@
 import { useCallback, useState } from 'react';
 import { user } from '../assets/index';
-import { z } from 'zod';
 import { UserInfoDetails, UserInfoDetailsEdit } from '.';
-
-const userInfoDetailsSchema = z.object({
-  username: z.string().min(3, 'Username must be at last 3 characters'),
-  firstName: z.string().min(2, 'First name must be at last 2 characters'),
-  lastName: z.string().min(2, 'First name must be at last 2 characters'),
-  age: z.coerce.number().min(13, 'Age must be at least 13'),
-  gender: z.enum(['M', 'F'], { message: "Gender must be 'M' or 'F'" }),
-});
-
-type UserInfoDetails = z.infer<typeof userInfoDetailsSchema>;
+import { useQuery } from '@tanstack/react-query';
+import { getUserDetails } from '../api/queries';
 
 const UserInfo = () => {
   //
@@ -19,6 +10,14 @@ const UserInfo = () => {
   const [openDetails, setOpenDetails] = useState(false);
   const [openDetailsEdit, setOpenDetailsEdit] = useState(false);
 
+  const { data: userDetails } = useQuery({
+    queryKey: ['userDetails'],
+    queryFn: getUserDetails,
+  });
+
+  console.log(userDetails);
+
+  ////LOGIC
   const handleEditButton = useCallback(() => {
     setOpenDetails(false);
     setOpenDetailsEdit(true);
@@ -30,10 +29,14 @@ const UserInfo = () => {
   }, []);
 
   const handleUserDetailsButton = useCallback(() => {
-    if (openDetailsEdit) return setOpenDetailsEdit(false);
-    setOpenDetails((prev) => !prev);
-    setOpenDetailsEdit(false);
-  }, [openDetailsEdit]);
+    if (userDetails) {
+      setOpenDetails((prev) => !prev);
+      setOpenDetailsEdit(false);
+      return;
+    }
+    setOpenDetailsEdit(true);
+    setOpenDetails(false);
+  }, [userDetails]);
 
   ////UI
   return (

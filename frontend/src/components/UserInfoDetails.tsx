@@ -1,11 +1,23 @@
 import { memo } from 'react';
 
+// import { getUser } from '../api/queries';
+
 type UserInfoDetailsProps = {
   onEditClick: () => void;
 };
 
 const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
   //
+  ////DATA
+  // const {
+  //   data: userDetails,
+  // } = useQuery({
+  //   queryKey: ['userDetails'],
+  //   queryFn: getUserDetails,
+  // });
+
+  // console.log(userDetails);
+
   ////UI
   return (
     <>

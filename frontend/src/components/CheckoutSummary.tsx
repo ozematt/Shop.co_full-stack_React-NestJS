@@ -13,7 +13,7 @@ import {
   CartItemT,
 } from '../lib/types';
 import { useMutation } from '@tanstack/react-query';
-import { addOrder } from '../api/queries';
+import { setOrder as setOrderQuery } from '../api/queries';
 
 const CheckoutSummary = () => {
   //
@@ -53,7 +53,7 @@ const CheckoutSummary = () => {
   }, []);
 
   const orderMutate = useMutation({
-    mutationFn: addOrder,
+    mutationFn: setOrderQuery,
     onError: () => {
       console.log('Error fest');
       setSuccess(false);

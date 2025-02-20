@@ -30,6 +30,7 @@ services:
       - NODE_ENV=development
     ports:
       - "3005:3005"
+      - "5555:5555" # for prisma studio
     depends_on:
       dev-db:
         condition: service_healthy # Wait for MySQL to pass healthcheck
