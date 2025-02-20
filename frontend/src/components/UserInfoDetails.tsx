@@ -56,7 +56,7 @@ const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
       </div>
       <button
         onClick={onEditClick}
-        className="mt-5 cursor-pointer rounded-full border bg-orange-500 px-[40px] py-[7px] text-sm transition duration-200 ease-in-out hover:scale-95 active:scale-100 max-sm:w-full"
+        className="mt-5 cursor-pointer rounded-full border bg-orange-500 px-[40px] py-[7px] text-sm transition duration-200 ease-in-out hover:scale-95 active:scale-100"
       >
         Edit
       </button>
