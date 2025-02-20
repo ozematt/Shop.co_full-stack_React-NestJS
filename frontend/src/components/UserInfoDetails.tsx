@@ -1,8 +1,10 @@
+import { memo } from 'react';
+
 type UserInfoDetailsProps = {
   onEditClick: () => void;
 };
 
-const UserInfoDetails = ({ onEditClick }: UserInfoDetailsProps) => {
+const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
   //
   ////UI
   return (
@@ -32,6 +34,6 @@ const UserInfoDetails = ({ onEditClick }: UserInfoDetailsProps) => {
       </button>
     </>
   );
-};
+});
 
 export default UserInfoDetails;
