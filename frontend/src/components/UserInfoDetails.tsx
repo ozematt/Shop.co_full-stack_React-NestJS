@@ -47,10 +47,10 @@ const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
           <p>Gender:</p>
         </div>
         <div className="flex w-[90px] flex-col items-start gap-2 font-bold">
-          <p>{userDetails.username}</p>
-          <p>{userDetails.firstName} </p>
-          <p>{userDetails.lastName}</p>
-          <p>{userDetails.age}</p>
+          <p>{userDetails?.username}</p>
+          <p>{userDetails?.firstName} </p>
+          <p>{userDetails?.lastName}</p>
+          <p>{userDetails?.age}</p>
           <p>{gender}</p>
         </div>
       </div>

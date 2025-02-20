@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Footer, Newsletter } from '../sections';
@@ -14,6 +14,7 @@ import { authenticate } from '../api/queries';
 const SignIn = () => {
   //
   ////DATA
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useAppDispatch();
   const {
@@ -38,6 +39,8 @@ const SignIn = () => {
       });
     },
     onSuccess: (data, variables) => {
+      queryClient.removeQueries({ queryKey: ['userDetails'] }); // Usuwa cache
+      queryClient.refetchQueries({ queryKey: ['userDetails'] }); // Pobiera nowe dane
       clearErrors(['email']);
 
       localStorage.setItem('token', `Bearer ${data.access_token}`);

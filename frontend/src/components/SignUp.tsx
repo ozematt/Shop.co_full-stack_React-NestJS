@@ -6,7 +6,7 @@ import { Button } from './';
 import { lock, email } from '../assets';
 import { type SignUpSchema, signUpSchema } from '../lib/types';
 import { AppDispatch, useAppDispatch } from '../redux/store';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getUsername } from '../lib/helpers';
 import { setUsername } from '../redux/userSlice';
 import { authenticate } from '../api/queries';
@@ -17,6 +17,8 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const dispatch: AppDispatch = useAppDispatch();
+  const queryClient = useQueryClient();
+
   const {
     register,
     handleSubmit,
@@ -37,6 +39,8 @@ const SignUp = () => {
       });
     },
     onSuccess: (data, variables) => {
+      queryClient.removeQueries({ queryKey: ['userDetails'] }); // Usuwa cache
+      queryClient.refetchQueries({ queryKey: ['userDetails'] }); // Pobiera nowe dane
       clearErrors(['email']);
       localStorage.setItem('token', `Bearer ${data.access_token}`);
       const user = getUsername(variables.email);

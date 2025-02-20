@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { user } from '../assets/index';
 import { UserInfoDetails, UserInfoDetailsEdit } from '.';
 import { useQuery } from '@tanstack/react-query';
@@ -14,15 +14,13 @@ const UserInfo = () => {
   const { data: userDetails, refetch } = useQuery({
     queryKey: ['userDetails'],
     queryFn: getUserDetails,
+    enabled: openDetails,
   });
+  console.log(userDetails);
 
-  const username = localStorage.getItem('user');
+  const username = localStorage.getItem('user') || '';
 
   ////LOGIC
-
-  useEffect(() => {
-    if (openDetails) refetch();
-  }, [openDetails]);
 
   const handleEditButton = useCallback(() => {
     setOpenDetails(false);
