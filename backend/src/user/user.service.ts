@@ -40,7 +40,7 @@ export class UserService {
 
       if (existingUser) {
         throw new HttpException(
-          'Username already exists',
+          { message: 'Username already exists', field: 'username' },
           HttpStatus.BAD_REQUEST,
         );
       }
@@ -58,7 +58,15 @@ export class UserService {
       return details;
     } catch (error) {
       console.error('Error adding user details:', error);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+
+      if (error instanceof HttpException) {
+        throw error; // Passes the original error to the frontend
+      }
+
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -99,7 +107,15 @@ export class UserService {
       return detailsUpdate;
     } catch (error) {
       console.error('Error editing user details:', error);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+
+      if (error instanceof HttpException) {
+        throw error; // Passes the original error to the frontend
+      }
+
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -135,7 +151,15 @@ export class UserService {
       return addresses;
     } catch (error) {
       console.error('Error getting user address:', error);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+
+      if (error instanceof HttpException) {
+        throw error; // Passes the original error to the frontend
+      }
+
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
   async editUserAddress(user: User, dto: EditUserAddressDto) {
@@ -167,7 +191,15 @@ export class UserService {
       return updatedAddress;
     } catch (error) {
       console.error('Error editing user address:', error);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+
+      if (error instanceof HttpException) {
+        throw error; // Passes the original error to the frontend
+      }
+
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 }

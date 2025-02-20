@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { setUserDetails } from '../api/queries';
+import { editUserDetails, setUserDetails } from '../api/queries';
 
 const userInfoDetailsSchema = z.object({
   username: z.string().min(3, 'Username must be at last 3 characters'),
@@ -17,26 +17,37 @@ export type UserInfoDetails = z.infer<typeof userInfoDetailsSchema>;
 
 type UserInfoDetailsEditProps = {
   onAddDetailsClick: () => void;
+  edit: boolean;
 };
 
 const UserInfoDetailsEdit = memo(
-  ({ onAddDetailsClick }: UserInfoDetailsEditProps) => {
+  ({ edit, onAddDetailsClick }: UserInfoDetailsEditProps) => {
     //
     ////DATA
     const {
       register,
       handleSubmit,
+      setError,
+      clearErrors,
       formState: { errors, isSubmitting },
     } = useForm<UserInfoDetails>({
       resolver: zodResolver(userInfoDetailsSchema),
     });
 
+    console.log(errors.username);
+
     const setUserDetailsMutation = useMutation({
-      mutationFn: setUserDetails,
-      onError: () => {
-        console.log('problem z danymi');
+      mutationFn: edit ? editUserDetails : setUserDetails,
+      onError: (error) => {
+        if (error.message) {
+          setError('username', { type: 'custom', message: error.message });
+        } else {
+          console.error('Unexpected error:', error);
+        }
       },
       onSuccess: () => {
+        clearErrors(['username']);
+        onAddDetailsClick();
         console.log('dane poszły!');
       },
     });
@@ -44,7 +55,6 @@ const UserInfoDetailsEdit = memo(
     const onSubmit = (data: UserInfoDetails) => {
       console.log(data);
       setUserDetailsMutation.mutate(data);
-      onAddDetailsClick();
     };
 
     ////UI

@@ -1,22 +1,38 @@
+import { useQuery } from '@tanstack/react-query';
 import { memo } from 'react';
+import { getUserDetails } from '../api/queries';
 
-// import { getUser } from '../api/queries';
+type UserDetailsData = {
+  user_id: number;
+  username: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  age: number;
+};
 
 type UserInfoDetailsProps = {
   onEditClick: () => void;
+  userDetailsData: UserDetailsData;
 };
 
 const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
   //
   ////DATA
-  // const {
-  //   data: userDetails,
-  // } = useQuery({
-  //   queryKey: ['userDetails'],
-  //   queryFn: getUserDetails,
-  // });
+  const { data: userDetails } = useQuery({
+    queryKey: ['userDetails'],
+    queryFn: getUserDetails,
+  });
 
-  // console.log(userDetails);
+  ////LOGIC
+  let gender;
+  if (userDetails) {
+    if (userDetails.gender === 'M') {
+      gender = 'Male';
+    } else {
+      gender = 'Female';
+    }
+  }
 
   ////UI
   return (
@@ -31,11 +47,11 @@ const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
           <p>Gender:</p>
         </div>
         <div className="flex w-[90px] flex-col items-start gap-2 font-satoshi">
-          <p>Username</p>
-          <p>First Name </p>
-          <p>Last Name</p>
-          <p>Age </p>
-          <p>Gender</p>
+          <p>{userDetails.username}</p>
+          <p>{userDetails.firstName} </p>
+          <p>{userDetails.lastName}</p>
+          <p>{userDetails.age}</p>
+          <p>{gender}</p>
         </div>
       </div>
       <button

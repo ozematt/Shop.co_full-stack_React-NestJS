@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { user } from '../assets/index';
 import { UserInfoDetails, UserInfoDetailsEdit } from '.';
 import { useQuery } from '@tanstack/react-query';
@@ -9,23 +9,30 @@ const UserInfo = () => {
   ////DATA
   const [openDetails, setOpenDetails] = useState(false);
   const [openDetailsEdit, setOpenDetailsEdit] = useState(false);
+  const [editUserDetails, setEditUserDetails] = useState(false);
 
-  const { data: userDetails } = useQuery({
+  const { data: userDetails, refetch } = useQuery({
     queryKey: ['userDetails'],
     queryFn: getUserDetails,
   });
 
-  console.log(userDetails);
-
   ////LOGIC
+
+  useEffect(() => {
+    if (openDetails) refetch();
+  }, [openDetails]);
+
   const handleEditButton = useCallback(() => {
     setOpenDetails(false);
     setOpenDetailsEdit(true);
+    setEditUserDetails(true);
   }, []);
 
   const handleAddDetailsButton = useCallback(() => {
     setOpenDetails(true);
     setOpenDetailsEdit(false);
+    setEditUserDetails(false);
+    refetch();
   }, []);
 
   const handleUserDetailsButton = useCallback(() => {
@@ -34,7 +41,8 @@ const UserInfo = () => {
       setOpenDetailsEdit(false);
       return;
     }
-    setOpenDetailsEdit(true);
+
+    setOpenDetailsEdit((prev) => !prev);
     setOpenDetails(false);
   }, [userDetails]);
 
@@ -49,9 +57,17 @@ const UserInfo = () => {
       <p className="mt-2 font-satoshi text-2xl font-medium opacity-60 dark:opacity-100">
         User email
       </p>
-      {openDetails && <UserInfoDetails onEditClick={handleEditButton} />}
+      {openDetails && (
+        <UserInfoDetails
+          onEditClick={handleEditButton}
+          userDetailsData={userDetails}
+        />
+      )}
       {openDetailsEdit && (
-        <UserInfoDetailsEdit onAddDetailsClick={handleAddDetailsButton} />
+        <UserInfoDetailsEdit
+          edit={editUserDetails}
+          onAddDetailsClick={handleAddDetailsButton}
+        />
       )}
 
       <button

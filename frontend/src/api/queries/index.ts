@@ -6,8 +6,10 @@ import setOrder from './setOrder';
 import getProductsByCategory from './getProductsByCategory';
 import getUserDetails from './getUserDetails';
 import setUserDetails from './setUserDetails';
+import editUserDetails from './editUserDetails';
 
 export {
+  editUserDetails,
   setUserDetails,
   getUserDetails,
   getCategoryList,
