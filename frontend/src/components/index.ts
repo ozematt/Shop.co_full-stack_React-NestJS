@@ -113,8 +113,10 @@ import BrandBarItem from './BrandBarItem';
 import CategoryBeautyItem from './CategoryBeautyItem';
 import CategoryClothesItem from './CategoryClothesItem';
 import CategoryElectronicsItem from './CategoryElectronicsItem';
+import UserInfoDetails from './UserInfoDetails';
 
 export {
+  UserInfoDetails,
   CategoryElectronicsItem,
   CategoryClothesItem,
   CategoryBeautyItem,
