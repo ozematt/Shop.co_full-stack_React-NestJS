@@ -83,7 +83,7 @@ const UserInfo = () => {
             type="text"
             placeholder="Username"
             {...register('username')}
-            className={`mt-5 h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-orange-500 dark:text-black ${
+            className={`mt-5 h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500 ${
               errors.username ? 'border border-red-500' : ''
             }`}
           />
@@ -99,7 +99,7 @@ const UserInfo = () => {
             type="text"
             placeholder="First Name"
             {...register('firstName')}
-            className={`h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-orange-500 dark:text-black ${
+            className={`h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500 ${
               errors.firstName ? 'border border-red-500' : ''
             }`}
           />
@@ -114,7 +114,7 @@ const UserInfo = () => {
             type="text"
             placeholder="Last Name"
             {...register('lastName')}
-            className={`h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-orange-500 dark:text-black ${
+            className={`h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500 ${
               errors.lastName ? 'border border-red-500' : ''
             }`}
           />
@@ -131,7 +131,7 @@ const UserInfo = () => {
               type="number"
               min="0"
               {...register('age')}
-              className="h-8 w-[50px] rounded-full bg-grayBG pl-3 focus:outline-orange-500 dark:text-black"
+              className="h-8 w-[50px] rounded-full bg-grayBG pl-3 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500"
             />
           </div>
 
@@ -152,7 +152,7 @@ const UserInfo = () => {
                 className="peer sr-only"
               />
               <div
-                className={`relative grid h-[30px] w-[30px] place-items-center rounded-full text-white ring-1 ring-white transition peer-checked:bg-grayBG peer-checked:text-black ${
+                className={`relative grid h-[30px] w-[30px] place-items-center rounded-full text-black ring-1 ring-black ring-opacity-30 transition peer-checked:bg-grayBG peer-checked:ring-opacity-100 dark:text-white dark:ring-white dark:peer-checked:text-black ${
                   errors.gender ? 'border border-red-500' : ''
                 }`}
               >
@@ -167,7 +167,7 @@ const UserInfo = () => {
                 className="peer sr-only"
               />
               <div
-                className={`relative grid h-[30px] w-[30px] place-items-center rounded-full text-white ring-1 ring-white transition peer-checked:bg-grayBG peer-checked:text-black ${
+                className={`relative grid h-[30px] w-[30px] place-items-center rounded-full text-black ring-1 ring-black ring-opacity-30 transition peer-checked:bg-grayBG peer-checked:ring-opacity-100 dark:text-white dark:ring-white dark:peer-checked:text-black ${
                   errors.gender ? 'border border-red-500' : ''
                 }`}
               >
