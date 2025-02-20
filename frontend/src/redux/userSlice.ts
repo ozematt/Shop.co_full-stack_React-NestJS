@@ -13,7 +13,9 @@ const userSlice = createSlice({
       localStorage.removeItem('user');
     },
     setUsername: (state, action: PayloadAction<string>) => {
-      state.username = action.payload;
+      const username = action.payload;
+      state.username = username;
+      localStorage.setItem('user', username);
     },
     addOrder: (state, action: PayloadAction<OrderData[]>) => {
       state.orders = [...state.orders, ...action.payload];

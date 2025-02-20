@@ -41,7 +41,6 @@ const SignUp = () => {
       localStorage.setItem('token', `Bearer ${data.access_token}`);
       const user = getUsername(variables.email);
       dispatch(setUsername(user));
-      localStorage.setItem('user', user);
       reset(); //form fields reset
       navigate('/shop');
     },

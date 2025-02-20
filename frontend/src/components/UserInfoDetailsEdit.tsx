@@ -4,6 +4,8 @@ import { memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { editUserDetails, setUserDetails } from '../api/queries';
+import { AppDispatch, useAppDispatch } from '../redux/store';
+import { setUsername } from '../redux/userSlice';
 
 const userInfoDetailsSchema = z.object({
   username: z.string().min(3, 'Username must be at last 3 characters'),
@@ -24,6 +26,8 @@ const UserInfoDetailsEdit = memo(
   ({ edit, onAddDetailsClick }: UserInfoDetailsEditProps) => {
     //
     ////DATA
+    const dispatch: AppDispatch = useAppDispatch();
+
     const {
       register,
       handleSubmit,
@@ -45,8 +49,9 @@ const UserInfoDetailsEdit = memo(
           console.error('Unexpected error:', error);
         }
       },
-      onSuccess: () => {
+      onSuccess: (_, variables) => {
         clearErrors(['username']);
+        dispatch(setUsername(variables.username));
         onAddDetailsClick();
         console.log('dane poszły!');
       },

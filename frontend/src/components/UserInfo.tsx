@@ -3,6 +3,8 @@ import { user } from '../assets/index';
 import { UserInfoDetails, UserInfoDetailsEdit } from '.';
 import { useQuery } from '@tanstack/react-query';
 import { getUserDetails } from '../api/queries';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 const UserInfo = () => {
   //
@@ -15,6 +17,10 @@ const UserInfo = () => {
     queryKey: ['userDetails'],
     queryFn: getUserDetails,
   });
+
+  const username =
+    useSelector((state: RootState) => state.user.username) ||
+    localStorage.getItem('user');
 
   ////LOGIC
 
@@ -54,8 +60,8 @@ const UserInfo = () => {
         alt="avatar"
         className="h-[150px] w-[150px] rounded-full bg-grayBG object-contain opacity-80 md:h-[200px] md:w-[200px] dark:bg-zinc-900 dark:bg-opacity-30 dark:opacity-100 dark:invert"
       />
-      <p className="mt-2 font-satoshi text-2xl font-medium opacity-60 dark:opacity-100">
-        User email
+      <p className="mt-9 font-satoshi text-2xl font-medium opacity-60 dark:opacity-100">
+        {username}
       </p>
       {openDetails && (
         <UserInfoDetails
@@ -72,7 +78,7 @@ const UserInfo = () => {
 
       <button
         onClick={handleUserDetailsButton}
-        className="mt-[-30px] cursor-pointer rounded-full border px-[80px] py-[15px] transition duration-200 ease-in-out hover:scale-95 active:scale-100 max-sm:w-full sm:mt-[36px]"
+        className="cursor-pointer rounded-full border px-[80px] py-[15px] transition duration-200 ease-in-out hover:scale-95 active:scale-100 max-sm:w-full sm:mt-[36px]"
       >
         User Details
       </button>
