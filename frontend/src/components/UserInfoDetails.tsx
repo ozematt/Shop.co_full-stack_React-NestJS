@@ -37,8 +37,8 @@ const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
   ////UI
   return (
     <>
-      <div className="mt-9 flex items-start justify-start gap-3">
-        <div className="flex w-[90px] flex-col items-end gap-2 font-satoshi">
+      <div className="mt-9 flex items-start justify-start gap-3 font-satoshi text-lg">
+        <div className="flex w-[90px] flex-col items-end gap-2">
           {' '}
           <p>Username:</p>
           <p>First Name: </p>
@@ -46,7 +46,7 @@ const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
           <p>Age: </p>
           <p>Gender:</p>
         </div>
-        <div className="flex w-[90px] flex-col items-start gap-2 font-satoshi">
+        <div className="flex w-[90px] flex-col items-start gap-2 font-bold">
           <p>{userDetails.username}</p>
           <p>{userDetails.firstName} </p>
           <p>{userDetails.lastName}</p>
