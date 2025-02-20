@@ -114,8 +114,10 @@ import CategoryBeautyItem from './CategoryBeautyItem';
 import CategoryClothesItem from './CategoryClothesItem';
 import CategoryElectronicsItem from './CategoryElectronicsItem';
 import UserInfoDetails from './UserInfoDetails';
+import UserInfoDetailsEdit from './UserInfoDetailsEdit';
 
 export {
+  UserInfoDetailsEdit,
   UserInfoDetails,
   CategoryElectronicsItem,
   CategoryClothesItem,
