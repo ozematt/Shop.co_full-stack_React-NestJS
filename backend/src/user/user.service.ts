@@ -95,6 +95,16 @@ export class UserService {
       if (!details || details.user_id !== user.id) {
         throw new ForbiddenException('Access to resource denied');
       }
+      const existingUser = await this.prisma.userDetails.findUnique({
+        where: { username: dto.username },
+      });
+
+      if (existingUser) {
+        throw new HttpException(
+          { message: 'Username already exists', field: 'username' },
+          HttpStatus.BAD_REQUEST,
+        );
+      }
 
       const detailsUpdate = await this.prisma.userDetails.update({
         where: {
