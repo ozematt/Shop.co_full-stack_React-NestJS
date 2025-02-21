@@ -4,7 +4,17 @@ import { useState } from 'react';
 import { ButtonAddAddress, CheckoutAddressForm } from '.';
 import { useQuery } from '@tanstack/react-query';
 import { getUserAddresses } from '../api/queries';
-import { CheckoutAddressForm as type } from './CheckoutAddressForm';
+
+type AddressFromDB = {
+  fullName: string;
+  street: string;
+  houseNumber: string;
+  city: string;
+  zipCode: string;
+  country: string;
+  user_id: number;
+  id: number;
+};
 
 const CheckoutAddress = () => {
   //
@@ -15,10 +25,11 @@ const CheckoutAddress = () => {
   const isAddress = useSelector(
     (state: RootState) => state.user.userAddressState,
   );
-  const { data: userAddresses, isSuccess } = useQuery({
+  const { data: userAddresses } = useQuery({
     queryKey: ['userAddresses'],
     queryFn: getUserAddresses,
   });
+  console.log(userAddresses);
 
   ////UI
   return (
@@ -40,22 +51,23 @@ const CheckoutAddress = () => {
         )}
       </div>
       {addAddress && <CheckoutAddressForm />}
-      <div className="mt-5 flex flex-wrap gap-5">
+      <div className="mt-5 flex gap-5">
         {' '}
-        <div className="h-[200px] w-fit rounded-[20px] p-6 ring-1 ring-white">
-          {userAddresses?.map((address: type) => (
-            <div className="font-satoshi text-lg">
-              <p className="">{address.fullName}</p>
-              <p>
-                {address.street} {address.houseNumber}
-              </p>
-              <p>
-                {address.city} {address.zipCode}
-              </p>
-              <p>{address.country}</p>
-            </div>
-          ))}
-        </div>
+        {userAddresses?.map((address: AddressFromDB) => (
+          <div
+            key={address.id}
+            className="h-[200px] w-fit rounded-[20px] p-6 font-satoshi text-lg ring-1 ring-white"
+          >
+            <p className="">{address.fullName}</p>
+            <p>
+              {address.street} {address.houseNumber}
+            </p>
+            <p>
+              {address.city} {address.zipCode}
+            </p>
+            <p>{address.country}</p>
+          </div>
+        ))}
         <ButtonAddAddress onClick={() => setAddAddress(true)} />
       </div>
     </>

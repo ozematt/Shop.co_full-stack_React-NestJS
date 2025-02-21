@@ -158,6 +158,7 @@ export class UserService {
           HttpStatus.NOT_FOUND,
         );
       }
+
       return addresses;
     } catch (error) {
       console.error('Error getting user address:', error);
