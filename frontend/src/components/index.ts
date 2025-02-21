@@ -117,8 +117,10 @@ import UserInfoDetails from './UserInfoDetails';
 import UserInfoDetailsEdit from './UserInfoDetailsEdit';
 import FormInputTextField from './FormInputTextField';
 import FormInputAgeField from './FormInputAgeField';
+import FormInputGenderField from './FormInputGenderField';
 
 export {
+  FormInputGenderField,
   FormInputAgeField,
   FormInputTextField,
   UserInfoDetailsEdit,

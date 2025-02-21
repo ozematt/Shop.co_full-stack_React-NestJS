@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { editUserDetails, setUserDetails } from '../api/queries';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { setUsername } from '../redux/userSlice';
-import { FormInputAgeField, FormInputTextField } from '.';
+import { FormInputAgeField, FormInputGenderField, FormInputTextField } from '.';
 
 const userInfoDetailsSchema = z.object({
   username: z.string().min(3, 'Username must be at last 3 characters'),
@@ -91,47 +91,10 @@ const UserInfoDetailsEdit = memo(
           register={register('age')}
           error={errors.age?.message}
         />
-
-        <div className="">
-          <div className="flex items-center gap-3">
-            {' '}
-            <p>Gender:</p>
-            <label className="flex cursor-pointer items-center">
-              <input
-                type="radio"
-                value="M"
-                {...register('gender')}
-                className="peer hidden"
-              />
-              <div
-                className={`relative grid h-[30px] w-[30px] place-items-center rounded-full text-black ring-1 ring-black ring-opacity-30 transition peer-checked:bg-grayBG peer-checked:ring-opacity-100 dark:text-white dark:ring-white dark:peer-checked:text-black ${
-                  errors.gender ? 'border border-red-500' : ''
-                }`}
-              >
-                M
-              </div>
-            </label>
-            <label className="flex cursor-pointer items-center">
-              <input
-                type="radio"
-                value="F"
-                {...register('gender')}
-                className="peer sr-only"
-              />
-              <div
-                className={`relative grid h-[30px] w-[30px] place-items-center rounded-full text-black ring-1 ring-black ring-opacity-30 transition peer-checked:bg-grayBG peer-checked:ring-opacity-100 dark:text-white dark:ring-white dark:peer-checked:text-black ${
-                  errors.gender ? 'border border-red-500' : ''
-                }`}
-              >
-                F
-              </div>
-            </label>
-          </div>
-          {errors.gender && (
-            <p className="text-sm text-red-500">{errors.gender.message}</p>
-          )}
-        </div>
-
+        <FormInputGenderField
+          register={register('gender')}
+          error={errors.gender?.message}
+        />
         <button
           type="submit"
           disabled={isSubmitting}
