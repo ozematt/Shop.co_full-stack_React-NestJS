@@ -26,7 +26,11 @@ const checkoutAddressFormSchema = z.object({
 
 export type CheckoutAddressForm = z.infer<typeof checkoutAddressFormSchema>;
 
-const CheckoutAddressForm = () => {
+type CheckoutAddressFormProps = {
+  onReturnClick: () => void;
+};
+
+const CheckoutAddressForm = ({ onReturnClick }: CheckoutAddressFormProps) => {
   //
   ////DATA
   const dispatch: AppDispatch = useAppDispatch();
@@ -55,68 +59,70 @@ const CheckoutAddressForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mt-7 space-y-7">
-      <FormInputTextField
-        id="fullName"
-        placeholder="Full Name"
-        register={register('fullName')}
-        error={errors.fullName?.message}
-      />
-      <div className="flex w-[380px] gap-3">
-        {' '}
+    <div className="relative">
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-7 space-y-7">
         <FormInputTextField
-          id="street"
-          placeholder="Street"
-          register={register('street')}
-          error={errors.street?.message}
+          id="fullName"
+          placeholder="Full Name"
+          register={register('fullName')}
+          error={errors.fullName?.message}
         />
-        <div className="w-[180px]">
+        <div className="flex w-[380px] gap-3">
           {' '}
           <FormInputTextField
-            id="houseNumber"
-            placeholder="House Number"
-            register={register('houseNumber')}
-            error={errors.houseNumber?.message}
+            id="street"
+            placeholder="Street"
+            register={register('street')}
+            error={errors.street?.message}
           />
+          <div className="w-[180px]">
+            {' '}
+            <FormInputTextField
+              id="houseNumber"
+              placeholder="House Number"
+              register={register('houseNumber')}
+              error={errors.houseNumber?.message}
+            />
+          </div>
         </div>
-      </div>
-      <div className="flex w-[480px] gap-3">
-        <FormInputTextField
-          id="city"
-          placeholder="City"
-          register={register('city')}
-          error={errors.city?.message}
-        />
-        <div className="w-[150px]">
-          {' '}
+        <div className="flex w-[480px] gap-3">
           <FormInputTextField
-            id="zipCode"
-            placeholder="Zip Code"
-            register={register('zipCode')}
-            error={errors.zipCode?.message}
+            id="city"
+            placeholder="City"
+            register={register('city')}
+            error={errors.city?.message}
           />
+          <div className="w-[150px]">
+            {' '}
+            <FormInputTextField
+              id="zipCode"
+              placeholder="Zip Code"
+              register={register('zipCode')}
+              error={errors.zipCode?.message}
+            />
+          </div>
         </div>
-      </div>
-      <FormInputTextField
-        id="country"
-        placeholder="Country"
-        register={register('country')}
-        error={errors.country?.message}
-      />
+        <FormInputTextField
+          id="country"
+          placeholder="Country"
+          register={register('country')}
+          error={errors.country?.message}
+        />
+        <button
+          disabled={isSubmitting}
+          type="submit"
+          className="mt-5 cursor-pointer rounded-full border bg-orange-500 px-[40px] py-[7px] text-sm transition duration-200 ease-in-out hover:scale-95 active:scale-100"
+        >
+          Add address
+        </button>
+      </form>
       <button
-        disabled={isSubmitting}
-        type="submit"
-        className="mt-5 cursor-pointer rounded-full border bg-orange-500 px-[40px] py-[7px] text-sm transition duration-200 ease-in-out hover:scale-95 active:scale-100"
-      >
-        Add address
-      </button>
-      <button
-        // onClick={}
-        className="ml-3 mt-5 cursor-pointer rounded-full border px-[40px] py-[7px] text-sm transition duration-200 ease-in-out hover:scale-95 active:scale-100"
+        onClick={onReturnClick}
+        className="absolute bottom-0 left-[160px] ml-3 mt-5 cursor-pointer rounded-full border px-[40px] py-[7px] text-sm transition duration-200 ease-in-out hover:scale-95 active:scale-100"
       >
         Return
       </button>
-    </form>
+    </div>
   );
 };
 

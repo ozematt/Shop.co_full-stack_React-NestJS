@@ -20,14 +20,14 @@ const Checkout = () => {
   const address = useSelector(
     (state: RootState) => state.user.userAddressState,
   );
-  console.log(address);
+  // console.log(address);
 
   const { data: userAddresses, isSuccess } = useQuery({
     queryKey: ['userAddresses'],
     queryFn: getUserAddresses,
   });
 
-  console.log(isSuccess);
+  // console.log(isSuccess);
 
   ////LOGIC
   useEffect(() => {

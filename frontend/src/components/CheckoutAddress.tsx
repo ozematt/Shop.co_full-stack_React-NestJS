@@ -35,27 +35,23 @@ const CheckoutAddress = () => {
     queryFn: getUserAddresses,
   });
 
+  console.log(addAddress);
+
   ////UI
   return (
     <>
       <div
-        className={`mt-4 hidden ${addAddress && 'flex'} items-center space-y-1 font-integralCFBold text-sm`}
+        className={`mt-4 flex ${addAddress && 'hidden'} items-center space-y-1 font-integralCFBold text-sm`}
       >
-        <div
-          onClick={() => setAddAddress(true)}
-          className="grid h-[200px] w-[150px] cursor-pointer place-items-center rounded-[20px] font-satoshi text-9xl opacity-30 ring-1 ring-black hover:scale-95 hover:opacity-70 active:scale-100 dark:ring-white"
-        >
-          +
-        </div>
-
-        {!isAddress && (
-          <h6 className="p-4 text-5xl opacity-30">
-            Add <br /> Address
-          </h6>
-        )}
+        <ButtonAddAddress onClick={() => setAddAddress(true)} />
+        <h6 className="p-4 text-5xl opacity-30">
+          Add <br /> Address
+        </h6>
       </div>
-      {addAddress && <CheckoutAddressForm />}
-      <div className="mt-5 flex gap-5">
+      {addAddress && (
+        <CheckoutAddressForm onReturnClick={() => setAddAddress(false)} />
+      )}
+      {/* <div className="mt-5 flex gap-5">
         {' '}
         {userAddresses?.map((address: AddressFromDB) => (
           <div
@@ -74,7 +70,7 @@ const CheckoutAddress = () => {
           </div>
         ))}
         <ButtonAddAddress onClick={() => setAddAddress(true)} />
-      </div>
+      </div> */}
     </>
   );
 };
