@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { editUserDetails, setUserDetails } from '../api/queries';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { setUsername } from '../redux/userSlice';
-import { FormInputTextField } from '.';
+import { FormInputAgeField, FormInputTextField } from '.';
 
 const userInfoDetailsSchema = z.object({
   username: z.string().min(3, 'Username must be at last 3 characters'),
@@ -87,22 +87,10 @@ const UserInfoDetailsEdit = memo(
           register={register('lastName')}
           error={errors.lastName?.message}
         />
-
-        <div>
-          <div className="flex items-center gap-2">
-            <p>Age:</p>
-            <input
-              type="number"
-              min="0"
-              {...register('age')}
-              className="h-8 w-[50px] rounded-full bg-grayBG pl-3 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500"
-            />
-          </div>
-
-          {errors.age && (
-            <p className="mt-1 text-sm text-red-500">{errors.age.message}</p>
-          )}
-        </div>
+        <FormInputAgeField
+          register={register('age')}
+          error={errors.age?.message}
+        />
 
         <div className="">
           <div className="flex items-center gap-3">

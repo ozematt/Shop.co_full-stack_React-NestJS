@@ -116,8 +116,10 @@ import CategoryElectronicsItem from './CategoryElectronicsItem';
 import UserInfoDetails from './UserInfoDetails';
 import UserInfoDetailsEdit from './UserInfoDetailsEdit';
 import FormInputTextField from './FormInputTextField';
+import FormInputAgeField from './FormInputAgeField';
 
 export {
+  FormInputAgeField,
   FormInputTextField,
   UserInfoDetailsEdit,
   UserInfoDetails,
