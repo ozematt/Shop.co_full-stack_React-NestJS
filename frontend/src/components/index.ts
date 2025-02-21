@@ -118,8 +118,10 @@ import UserInfoDetailsEdit from './UserInfoDetailsEdit';
 import FormInputTextField from './FormInputTextField';
 import FormInputAgeField from './FormInputAgeField';
 import FormInputGenderField from './FormInputGenderField';
+import CheckoutAddressForm from './CheckoutAddressForm';
 
 export {
+  CheckoutAddressForm,
   FormInputGenderField,
   FormInputAgeField,
   FormInputTextField,

@@ -348,6 +348,7 @@ export type User = z.infer<typeof userSchema>;
 
 export type UserInitialState = {
   username: null | string;
+  userAddressState: boolean;
   orders: OrderData[];
 };
 

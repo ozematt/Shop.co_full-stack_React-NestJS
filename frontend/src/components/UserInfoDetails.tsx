@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { getUserDetails } from '../api/queries';
+import { AppDispatch, useAppDispatch } from '../redux/store';
+import { setUsername } from '../redux/userSlice';
 
 type UserDetailsData = {
   user_id: number;
@@ -19,6 +21,8 @@ type UserInfoDetailsProps = {
 const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
   //
   ////DATA
+  const dispatch: AppDispatch = useAppDispatch();
+
   const { data: userDetails } = useQuery({
     queryKey: ['userDetails'],
     queryFn: getUserDetails,
@@ -33,6 +37,10 @@ const UserInfoDetails = memo(({ onEditClick }: UserInfoDetailsProps) => {
       gender = 'Female';
     }
   }
+
+  useEffect(() => {
+    dispatch(setUsername(userDetails.username));
+  }, [userDetails]);
 
   ////UI
   return (

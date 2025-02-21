@@ -14,7 +14,7 @@ const UserInfo = () => {
   const { data: userDetails, refetch } = useQuery({
     queryKey: ['userDetails'],
     queryFn: getUserDetails,
-    enabled: openDetails,
+    // enabled: openDetails,
   });
 
   const username = localStorage.getItem('user') || '';
