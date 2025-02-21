@@ -29,6 +29,8 @@ const CheckoutAddress = () => {
     queryKey: ['userAddresses'],
     queryFn: getUserAddresses,
   });
+
+  const handleAddressSelect = () => {};
   console.log(userAddresses);
 
   ////UI
@@ -56,9 +58,10 @@ const CheckoutAddress = () => {
         {userAddresses?.map((address: AddressFromDB) => (
           <div
             key={address.id}
-            className="h-[200px] w-fit rounded-[20px] p-6 font-satoshi text-lg ring-1 ring-white"
+            onClick={}
+            className="h-[200px] w-fit cursor-pointer rounded-[20px] p-6 font-satoshi text-xl ring-1 ring-white transition-all hover:scale-95 active:scale-100"
           >
-            <p className="">{address.fullName}</p>
+            <p className="font-bold">{address.fullName}</p>
             <p>
               {address.street} {address.houseNumber}
             </p>
