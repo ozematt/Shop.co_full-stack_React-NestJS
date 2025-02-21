@@ -39,7 +39,6 @@ const UserInfoDetailsEdit = memo(
       resolver: zodResolver(userInfoDetailsSchema),
     });
 
-    ////LOGIC
     const setUserDetailsMutation = useMutation({
       mutationFn: edit ? editUserDetails : setUserDetails,
       onError: (error) => {

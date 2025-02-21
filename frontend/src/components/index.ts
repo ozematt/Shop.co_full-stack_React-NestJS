@@ -119,8 +119,10 @@ import FormInputTextField from './FormInputTextField';
 import FormInputAgeField from './FormInputAgeField';
 import FormInputGenderField from './FormInputGenderField';
 import CheckoutAddressForm from './CheckoutAddressForm';
+import ButtonAddAddress from './ButtonAddAddress';
 
 export {
+  ButtonAddAddress,
   CheckoutAddressForm,
   FormInputGenderField,
   FormInputAgeField,

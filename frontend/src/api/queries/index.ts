@@ -8,8 +8,10 @@ import getUserDetails from './getUserDetails';
 import setUserDetails from './setUserDetails';
 import editUserDetails from './editUserDetails';
 import getUserAddresses from './getUserAddresses';
+import setUserAddress from './setUserAddress';
 
 export {
+  setUserAddress,
   getUserAddresses,
   editUserDetails,
   setUserDetails,
