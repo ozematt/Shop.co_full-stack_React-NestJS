@@ -115,8 +115,10 @@ import CategoryClothesItem from './CategoryClothesItem';
 import CategoryElectronicsItem from './CategoryElectronicsItem';
 import UserInfoDetails from './UserInfoDetails';
 import UserInfoDetailsEdit from './UserInfoDetailsEdit';
+import FormInputTextField from './FormInputTextField';
 
 export {
+  FormInputTextField,
   UserInfoDetailsEdit,
   UserInfoDetails,
   CategoryElectronicsItem,

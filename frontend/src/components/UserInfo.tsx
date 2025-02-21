@@ -54,7 +54,7 @@ const UserInfo = () => {
         alt="avatar"
         className="h-[150px] w-[150px] rounded-full bg-grayBG object-contain opacity-80 md:h-[200px] md:w-[200px] dark:bg-zinc-900 dark:bg-opacity-30 dark:opacity-100 dark:invert"
       />
-      <p className="mt-9 font-satoshi text-2xl font-medium opacity-60 dark:opacity-100">
+      <p className="my-9 font-satoshi text-2xl font-medium opacity-60 dark:opacity-100">
         {username}
       </p>
       {openDetails && (

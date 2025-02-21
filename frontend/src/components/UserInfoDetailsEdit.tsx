@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { editUserDetails, setUserDetails } from '../api/queries';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { setUsername } from '../redux/userSlice';
+import { FormInputTextField } from '.';
 
 const userInfoDetailsSchema = z.object({
   username: z.string().min(3, 'Username must be at last 3 characters'),
@@ -66,55 +67,28 @@ const UserInfoDetailsEdit = memo(
     return (
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-5 pt-5 font-satoshi"
+        className="flex flex-col gap-[27px] pt-5 font-satoshi"
       >
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            {...register('username')}
-            className={`mt-5 h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500 ${
-              errors.username ? 'border border-red-500' : ''
-            }`}
-          />
-          {errors.username && (
-            <p className="mt-1 text-sm text-red-500">
-              {errors.username.message}
-            </p>
-          )}
-        </div>
+        <FormInputTextField
+          id="username"
+          placeholder="Username"
+          register={register('username')}
+          error={errors.username?.message}
+        />
+        <FormInputTextField
+          id="firstName"
+          placeholder="First Name"
+          register={register('firstName')}
+          error={errors.firstName?.message}
+        />
+        <FormInputTextField
+          id="lastName"
+          placeholder="Last Name"
+          register={register('lastName')}
+          error={errors.lastName?.message}
+        />
 
         <div>
-          <input
-            type="text"
-            placeholder="First Name"
-            {...register('firstName')}
-            className={`h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500 ${
-              errors.firstName ? 'border border-red-500' : ''
-            }`}
-          />
-          {errors.firstName && (
-            <p className="mt-1 text-sm text-red-500">
-              {errors.firstName.message}
-            </p>
-          )}
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Last Name"
-            {...register('lastName')}
-            className={`h-[40px] w-[230px] rounded-full bg-grayBG pl-8 focus:outline-none focus:ring-1 focus:ring-black dark:text-black dark:focus:outline-orange-500 ${
-              errors.lastName ? 'border border-red-500' : ''
-            }`}
-          />
-          {errors.lastName && (
-            <p className="mt-1 text-sm text-red-500">
-              {errors.lastName.message}
-            </p>
-          )}
-        </div>
-        <div className="">
           <div className="flex items-center gap-2">
             <p>Age:</p>
             <input
@@ -139,7 +113,7 @@ const UserInfoDetailsEdit = memo(
                 type="radio"
                 value="M"
                 {...register('gender')}
-                className="peer sr-only"
+                className="peer hidden"
               />
               <div
                 className={`relative grid h-[30px] w-[30px] place-items-center rounded-full text-black ring-1 ring-black ring-opacity-30 transition peer-checked:bg-grayBG peer-checked:ring-opacity-100 dark:text-white dark:ring-white dark:peer-checked:text-black ${
