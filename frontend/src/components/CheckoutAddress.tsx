@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import { useState } from 'react';
 import { ButtonAddAddress, CheckoutAddressForm } from '.';
 import { useQuery } from '@tanstack/react-query';
 import { getUserAddresses } from '../api/queries';
+import { setAddress } from '../redux/userSlice';
 
-type AddressFromDB = {
+export type AddressFromDB = {
   fullName: string;
   street: string;
   houseNumber: string;
@@ -19,19 +20,20 @@ type AddressFromDB = {
 const CheckoutAddress = () => {
   //
   ////DATA
-
+  const dispatch: AppDispatch = useAppDispatch();
   const [addAddress, setAddAddress] = useState(false);
 
   const isAddress = useSelector(
     (state: RootState) => state.user.userAddressState,
   );
+  const address1 = useSelector(
+    (state: RootState) => state.user.selectedAddress,
+  );
+
   const { data: userAddresses } = useQuery({
     queryKey: ['userAddresses'],
     queryFn: getUserAddresses,
   });
-
-  const handleAddressSelect = () => {};
-  console.log(userAddresses);
 
   ////UI
   return (
@@ -58,8 +60,8 @@ const CheckoutAddress = () => {
         {userAddresses?.map((address: AddressFromDB) => (
           <div
             key={address.id}
-            onClick={}
-            className="h-[200px] w-fit cursor-pointer rounded-[20px] p-6 font-satoshi text-xl ring-1 ring-white transition-all hover:scale-95 active:scale-100"
+            onClick={() => dispatch(setAddress(address))}
+            className={`h-[200px] w-fit cursor-pointer ${address.id === address1?.id && 'bg-grayBG ring-2 dark:text-black'} rounded-[20px] p-6 font-satoshi text-xl ring-1 ring-black ring-opacity-30 transition-all hover:scale-95 active:scale-100 dark:ring-white`}
           >
             <p className="font-bold">{address.fullName}</p>
             <p>

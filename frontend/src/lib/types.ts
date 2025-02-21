@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { AddressFromDB } from '../components/CheckoutAddress';
 
 //// BUTTON TYPES
 export type ButtonProps = {
@@ -349,6 +350,7 @@ export type User = z.infer<typeof userSchema>;
 export type UserInitialState = {
   username: null | string;
   userAddressState: boolean;
+  selectedAddress: null | AddressFromDB;
   orders: OrderData[];
 };
 
