@@ -16,7 +16,6 @@ const UserInfo = () => {
     queryFn: getUserDetails,
     enabled: openDetails,
   });
-  console.log(userDetails);
 
   const username = localStorage.getItem('user') || '';
 

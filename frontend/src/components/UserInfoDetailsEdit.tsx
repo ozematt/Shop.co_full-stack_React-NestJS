@@ -39,8 +39,7 @@ const UserInfoDetailsEdit = memo(
       resolver: zodResolver(userInfoDetailsSchema),
     });
 
-    console.log(errors.username);
-
+    ////LOGIC
     const setUserDetailsMutation = useMutation({
       mutationFn: edit ? editUserDetails : setUserDetails,
       onError: (error) => {
@@ -54,12 +53,10 @@ const UserInfoDetailsEdit = memo(
         clearErrors(['username']);
         dispatch(setUsername(variables.username));
         onAddDetailsClick();
-        console.log('dane poszły!');
       },
     });
 
     const onSubmit = (data: UserInfoDetails) => {
-      console.log(data);
       setUserDetailsMutation.mutate(data);
     };
 
