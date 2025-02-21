@@ -51,26 +51,28 @@ const CheckoutAddress = () => {
       {addAddress && (
         <CheckoutAddressForm onReturnClick={() => setAddAddress(false)} />
       )}
-      {/* <div className="mt-5 flex gap-5">
-        {' '}
-        {userAddresses?.map((address: AddressFromDB) => (
-          <div
-            key={address.id}
-            onClick={() => dispatch(setAddress(address))}
-            className={`h-[200px] w-fit cursor-pointer ${address.id === address1?.id && 'bg-grayBG ring-2 dark:text-black'} rounded-[20px] p-6 font-satoshi text-xl ring-1 ring-black ring-opacity-30 transition-all hover:scale-95 active:scale-100 dark:ring-white`}
-          >
-            <p className="font-bold">{address.fullName}</p>
-            <p>
-              {address.street} {address.houseNumber}
-            </p>
-            <p>
-              {address.city} {address.zipCode}
-            </p>
-            <p>{address.country}</p>
-          </div>
-        ))}
-        <ButtonAddAddress onClick={() => setAddAddress(true)} />
-      </div> */}
+      {userAddresses && (
+        <div className="mt-5 flex gap-5">
+          {' '}
+          {userAddresses?.map((address: AddressFromDB) => (
+            <div
+              key={address.id}
+              onClick={() => dispatch(setAddress(address))}
+              className={`h-[200px] w-fit cursor-pointer ${address.id === address1?.id && 'bg-grayBG ring-2 dark:text-black'} rounded-[20px] p-6 font-satoshi text-xl ring-1 ring-black ring-opacity-30 transition-all hover:scale-95 active:scale-100 dark:ring-white`}
+            >
+              <p className="font-bold">{address.fullName}</p>
+              <p>
+                {address.street} {address.houseNumber}
+              </p>
+              <p>
+                {address.city} {address.zipCode}
+              </p>
+              <p>{address.country}</p>
+            </div>
+          ))}
+          <ButtonAddAddress onClick={() => setAddAddress(true)} />
+        </div>
+      )}
     </>
   );
 };
