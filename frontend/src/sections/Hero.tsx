@@ -11,12 +11,12 @@ const Hero = () => {
   ////UI
   return (
     <section className="relative bg-grayBG px-4 sm:px-[100px] dark:bg-zinc-900">
-      <div className="w-full max-w-[360px] pt-10 max-sm:mx-auto sm:max-w-[520px] sm:pt-[103px]">
+      <div className="w-full max-w-[490px] pt-10 max-sm:mx-auto sm:max-w-[620px] sm:pt-[103px]">
         {' '}
         <h1 className="font-integralCFBold text-4xl sm:text-[64px] sm:leading-[64px]">
           Discover what makes your style truly yours
         </h1>
-        <p className="mt-[32px] font-satoshi text-[14px] opacity-60 sm:text-base">
+        <p className="mt-[32px] w-full max-w-[400px] font-satoshi text-[14px] opacity-60 sm:text-base">
           Browse through our diverse range of meticulously crafted products,
           designed to highlight your individuality and meet your unique
           preferences.
@@ -43,9 +43,9 @@ const Hero = () => {
         <img
           src={heroIMG}
           alt="hero img"
-          width={670}
-          height={670}
-          className="absolute right-0 top-8 z-10 hidden contrast-150 grayscale min-[1250px]:block"
+          width={690}
+          height={690}
+          className="absolute right-0 top-8 z-10 hidden scale-x-[-1] transform contrast-150 grayscale min-[1250px]:block"
         />
       </div>
     </section>

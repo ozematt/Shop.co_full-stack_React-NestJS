@@ -80,7 +80,7 @@ const ProductDetailsMainButtons = memo(
           <button
             type="button"
             onClick={handleAddToCart}
-            className="ml-[20px] w-full max-w-[400px] rounded-full bg-orange-500 px-6 py-3 font-satoshi font-medium text-white ring-1 ring-white transition duration-200 ease-in-out hover:scale-95 active:scale-100 max-md:text-sm dark:text-black"
+            className="ml-[20px] w-full max-w-[400px] rounded-full bg-orange-500 px-6 py-3 font-satoshi font-medium text-white ring-1 ring-white transition duration-200 ease-in-out hover:scale-95 active:scale-100 max-md:text-sm"
           >
             Add to Cart
           </button>
