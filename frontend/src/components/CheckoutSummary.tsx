@@ -5,7 +5,7 @@ import {
   CheckoutTotalPrice,
   SectionSubtitle,
 } from './';
-import { AppDispatch, useAppDispatch } from '../redux/store';
+import { AppDispatch, RootState, useAppDispatch } from '../redux/store';
 import { clearCart } from '../redux/cartSlice';
 import {
   type OrderData,
@@ -14,6 +14,7 @@ import {
 } from '../lib/types';
 import { useMutation } from '@tanstack/react-query';
 import { setOrder as setOrderQuery } from '../api/queries';
+import { useSelector } from 'react-redux';
 
 const CheckoutSummary = () => {
   //
@@ -22,6 +23,9 @@ const CheckoutSummary = () => {
 
   const [order, setOrder] = useState<OrderData | null>(null);
   const [success, setSuccess] = useState(false);
+  const isAddress = useSelector(
+    (state: RootState) => state.user.selectedAddress,
+  );
 
   ////LOGIC
   //creating order data out of local storage data, with validation
@@ -66,7 +70,10 @@ const CheckoutSummary = () => {
   });
 
   const handleOrder = useCallback(() => {
-    orderMutate.mutate(order as OrderData);
+    if (isAddress) {
+      orderMutate.mutate(order as OrderData);
+      return;
+    }
   }, [dispatch, order]);
 
   ////UI

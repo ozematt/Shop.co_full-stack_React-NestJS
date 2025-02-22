@@ -51,8 +51,6 @@ const CheckoutAddressForm = ({ onReturnClick }: CheckoutAddressFormProps) => {
     mutationFn: setUserAddress,
     onError: () => {},
     onSuccess: () => {
-      queryClient.removeQueries({ queryKey: ['userAddresses'] }); // Usuwa cache
-      queryClient.refetchQueries({ queryKey: ['userAddresses'] }); // Pobiera nowe dane
       dispatch(setUserAddressState(true));
       onReturnClick();
     },

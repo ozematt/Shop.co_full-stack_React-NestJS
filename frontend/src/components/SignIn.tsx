@@ -39,6 +39,8 @@ const SignIn = () => {
       });
     },
     onSuccess: (data, variables) => {
+      queryClient.removeQueries({ queryKey: ['userAddresses'] }); // Usuwa cache
+      queryClient.refetchQueries({ queryKey: ['userAddresses'] }); // Pobiera nowe dane
       queryClient.removeQueries({ queryKey: ['userDetails'] }); // Usuwa cache
       queryClient.refetchQueries({ queryKey: ['userDetails'] }); // Pobiera nowe dane
       clearErrors(['email']);

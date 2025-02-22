@@ -23,9 +23,6 @@ const CheckoutAddress = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const [addAddress, setAddAddress] = useState(false);
 
-  const isAddress = useSelector(
-    (state: RootState) => state.user.userAddressState,
-  );
   const address1 = useSelector(
     (state: RootState) => state.user.selectedAddress,
   );
@@ -35,23 +32,15 @@ const CheckoutAddress = () => {
     queryFn: getUserAddresses,
   });
 
-  console.log(addAddress);
+  // console.log(addAddress);
 
   ////UI
   return (
     <>
-      <div
-        className={`mt-4 flex ${addAddress && 'hidden'} items-center space-y-1 font-integralCFBold text-sm`}
-      >
-        <ButtonAddAddress onClick={() => setAddAddress(true)} />
-        <h6 className="p-4 text-5xl opacity-30">
-          Add <br /> Address
-        </h6>
-      </div>
       {addAddress && (
         <CheckoutAddressForm onReturnClick={() => setAddAddress(false)} />
       )}
-      {userAddresses && (
+      {userAddresses ? (
         <div className="mt-5 flex gap-5">
           {' '}
           {userAddresses?.map((address: AddressFromDB) => (
@@ -71,6 +60,15 @@ const CheckoutAddress = () => {
             </div>
           ))}
           <ButtonAddAddress onClick={() => setAddAddress(true)} />
+        </div>
+      ) : (
+        <div
+          className={`mt-4 flex ${addAddress && 'hidden'} items-center space-y-1 font-integralCFBold text-sm`}
+        >
+          <ButtonAddAddress onClick={() => setAddAddress(true)} />
+          <h6 className="p-4 text-5xl opacity-30">
+            Add <br /> Address
+          </h6>
         </div>
       )}
     </>
