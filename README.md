@@ -77,7 +77,7 @@ The project was built using the following technologies:
 
 ### BACKEND:
 
-
+- **Node.js/NestJS**: Backend development framework for scalable applications.
 - **Postgres**: A relational database used for storing data.
 - **Prisma**: Modern ORM for Node.js with type-safe queries and database migrations.
 - **JWT (JSON Web Tokens)**: A technology used for user authentication.
