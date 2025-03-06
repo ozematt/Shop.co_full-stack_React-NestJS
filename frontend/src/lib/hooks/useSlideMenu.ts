@@ -12,6 +12,7 @@ const useSlideMenu = () => {
         setMenuOpen(false);
         return;
       }
+
       navigate('/');
       setMenuOpen(false);
       // Scrolling to section id after page load
@@ -26,20 +27,6 @@ const useSlideMenu = () => {
   );
 
   // Escape key support
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMenuOpen(false);
-    };
-
-    // start listening when menu is open
-    if (menuOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [menuOpen]);
 
   // Swipe gesture support
   useEffect(() => {
