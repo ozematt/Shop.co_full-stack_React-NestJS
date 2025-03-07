@@ -5,27 +5,6 @@ const useSlideMenu = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleMenuItemClick = useCallback(
-    (id?: string) => {
-      if (!id) {
-        navigate('/shop');
-        setMenuOpen(false);
-        return;
-      }
-
-      navigate('/');
-      setMenuOpen(false);
-      // Scrolling to section id after page load
-      setTimeout(() => {
-        const targetElement = document.getElementById(id);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100); // delay to make sure the page has loaded
-    },
-    [navigate],
-  );
-
   // Escape key support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
