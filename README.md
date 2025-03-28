@@ -1,8 +1,8 @@
-# Shop.co — Built with NestJS
+# 🛒 Shop.co — Built with NestJS 🚀
 
 Welcome to my project Shop.co! The project is available in two versions: one using [Express.js](https://github.com/ozematt/Shop.co_full-stack_React-Express.js) and the other using NestJS. It was created based on a free layout from Figma: [E-commerce Website Template (Freebie)](https://www.figma.com/community/file/1273571982885059508/e-commerce-website-template-freebie). The goal of this project is to practice working with modern frontend and backend tools.
 
-## Features
+## 📌 Features
 
 - **Responsiveness**: The app adjusts to different screen sizes.
 - **State Management**: **Redux Toolkit** is used for global state management.
@@ -17,7 +17,7 @@ Welcome to my project Shop.co! The project is available in two versions: one usi
 - **User Panel** – Users have access to their account information, as well as their purchase history.
 - **Theme Support**: Users can switch between **light** and **dark** themes.
 
-## Screenshots
+##  📸 Screenshots
 
 ### Main View
 
@@ -55,11 +55,11 @@ Welcome to my project Shop.co! The project is available in two versions: one usi
 
 ![DatabaseSchema](./screenshots/Database_schema.webp)
 
-## Technology
+## 🛠️ Technology
 
 The project was built using the following technologies:
 
-### FRONTEND:
+### 💻 FRONTEND:
 
 - **React**: A JavaScript framework for building user interfaces.
 - **React-Router**: A library for managing routes in a React application.
@@ -75,7 +75,7 @@ The project was built using the following technologies:
 - **REST API**: Data is handled through API endpoints.
 - **Vitest** and **React Testing Library**: Tools for unit testing.
 
-### BACKEND:
+### 🔧 BACKEND:
 
 - **Node.js/NestJS**: Backend development framework for scalable applications.
 - **Postgres**: A relational database used for storing data.
@@ -88,7 +88,7 @@ The project was built using the following technologies:
 
 The project is set up to run in Docker containers, which ensures seamless integration between the frontend and backend, and maintains consistency across environments.
 
-## Installation
+## ⚙️ Installation
 
 To install the project, follow the steps below:
 
@@ -112,7 +112,7 @@ To install the project, follow the steps below:
    - **Frontend**: http://localhost:5173/
    - **Backend**: http://localhost:3005/
 
-## Features in progress
+## 🚧 Features in progress
 
 - **Database**: Expanding the database.
 - **Tests**: Adding unit tests and e2e tests.
