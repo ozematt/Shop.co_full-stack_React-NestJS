@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { FormInputTextField } from '.';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { setUserAddress } from '../api/queries';
 import { AppDispatch, useAppDispatch } from '../redux/store';
 import { setUserAddressState } from '../redux/userSlice';
@@ -35,13 +35,13 @@ const CheckoutAddressForm = ({ onReturnClick }: CheckoutAddressFormProps) => {
   ////DATA
   const dispatch: AppDispatch = useAppDispatch();
 
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const {
     register,
     handleSubmit,
-    setError,
-    clearErrors,
+    // setError,
+    // clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<CheckoutAddressForm>({
     resolver: zodResolver(checkoutAddressFormSchema),
